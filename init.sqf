@@ -6,6 +6,7 @@ _time =  "TimeAcceleration" call BIS_fnc_getParamValue;
 settimemultiplier _time;
 missionActive = false;
 [] execVM "core\scripts\dynamicsimulation.sqf";
+[10, true] remoteExec ["H_fnc_deploypoints",2];
 
 [west, "marker_0", "Gravia Airfield"] call BIS_fnc_addRespawnPosition;
 if (isServer) then {
