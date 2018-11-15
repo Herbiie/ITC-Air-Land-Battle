@@ -32,7 +32,7 @@ private _group2 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F
 
 [[west,["_task"],["An insurgent outpost has been identified - Destroy it!","Destroy Outpost","_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
-waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 50} count allUnits) == 0};
+waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 200} count allUnits) == 0};
 
 [["_task","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
 
