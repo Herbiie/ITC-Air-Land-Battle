@@ -56,14 +56,14 @@ params ["_fobpos"];
 		private _co = _coGroup createUnit ["B_officer_F", [(_fobpos select 0)-9.5, (_fobpos select 1)-3.5, 0], [], 0, "NONE"];
 		_co disableai "move";
 		_co allowDamage false;
-		_co addAction ["Request Side Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5];
-		_co addAction ["Show Deployment Points","[] remoteExec [""H_fnc_showpoints"",2]",nil,1.5,true,true,"","true",5];
+		[_co, ["Request Side Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
+		[_co, ["Show Deployment Points","[] remoteExec [""H_fnc_showpoints"",2]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		private _box = "B_supplyCrate_F" createVehicle _fobpos;
 		clearItemCargoGlobal _box;
 		clearMagazineCargoGlobal _box;
 		clearWeaponCargoGlobal _box;
 		clearBackpackCargoGlobal _box;
-		[_box] call H_fnc_arsenal;
+		[[_box]] remoteExec ["H_fnc_arsenal",0]; 
 		
 		
 		
