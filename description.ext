@@ -20,7 +20,7 @@ class CfgSettings {
 
 #include "settings\description.hpp"
 
-respawnOnStart = -1;
+respawnOnStart = 1;
 enableDebugConsole = 1;
 enableTargetDebug = 1;
 
