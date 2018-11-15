@@ -69,7 +69,7 @@ params ["_fobpos"];
 		clearMagazineCargoGlobal _box;
 		clearWeaponCargoGlobal _box;
 		clearBackpackCargoGlobal _box;
-		[[_box]] remoteExec ["H_fnc_arsenal",0]; 
+		[_box] remoteExec ["H_fnc_arsenal",0]; 
 		
 		
 		
