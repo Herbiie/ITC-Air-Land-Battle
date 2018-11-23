@@ -5,7 +5,7 @@
     private _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	private _closeObjects = count nearestObjects [_pos, [], 20];
 	private _nBuilding = _pos distance (nearestBuilding _pos);
-while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
+while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20 OR (_pos distance getMarkerPos "marker_0" < 500)} do {
     _pos = [_base, 300, 1500, 10, 0, 10, 0]  call BIS_fnc_findSafePos;
     _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	_closeObjects = count nearestObjects [_pos, [], 20];
@@ -13,9 +13,10 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 };
 
 
-private _objType = selectRandom [(configfile >> "CfgGroups" >> "Empty" >> "Guerrilla" >> "Camps" >> "CampA"),(configfile >> "CfgGroups" >> "Empty" >> "Guerrilla" >> "Camps" >> "CampB"),(configfile >> "CfgGroups" >> "Empty" >> "Guerrilla" >> "Camps" >> "CampC")];
+private _objType = selectRandom [H_fnc_outpost1,H_fnc_outpost2,H_fnc_outpost3,H_fnc_outpost4];
 
-private _objective = [_pos, sideEmpty, _objType,[],[],[],[],[],random 360] call BIS_fnc_spawnGroup;
+[_pos] call _objType;
+
 
 private _marker = createMarker [format ["Location%1", random 1000], _pos];
 _marker setMarkerType "hd_objective";
@@ -42,6 +43,5 @@ deleteMarker _marker;
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
 
 sleep 300;
-{deleteVehicle _x} forEach units _objective;
 {deleteVehicle _x} forEach units _group1;
 {deleteVehicle _x} forEach units _group2;

@@ -5,7 +5,7 @@
     private _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	private _closeObjects = count nearestObjects [_pos, [], 20];
 	private _nBuilding = _pos distance (nearestBuilding _pos);
-while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
+while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20 OR (_pos distance getMarkerPos "marker_0" < 500)} do {
     _pos = [_base, 300, 1500, 10, 0, 10, 0]  call BIS_fnc_findSafePos;
     _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	_closeObjects = count nearestObjects [_pos, [], 20];

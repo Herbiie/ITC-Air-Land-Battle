@@ -1,9 +1,9 @@
 params ["_amount","_add"];
 
 if (_add) then {
-	deploypoints = deploypoints + _amount;
+	H_alb_deploypoints = H_alb_deploypoints + _amount;
 } else {
-	deploypoints = deploypoints - _amount;
+	H_alb_deploypoints = H_alb_deploypoints - _amount;
 };
 
-publicVariable "deploypoints";
+publicVariable "H_alb_deploypoints";

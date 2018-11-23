@@ -2,7 +2,7 @@ params ["_base"];
 
 private _roads = _base nearRoads 1500;
 private _vcp = position (selectRandom _roads);
-while {_vcp distance _base < 500} do {
+while {_vcp distance _base < 500 OR (_vcp distance getMarkerPos "marker_0" < 500)} do {
 	private _roads = _base nearRoads 1500;
 	private _vcp = position (selectRandom _roads);
 };

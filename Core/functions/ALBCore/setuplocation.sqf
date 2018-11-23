@@ -17,7 +17,7 @@ while {true} do {
 
 	private _LocationName = _location splitstring "-";
 	private _locationNumber = parseNumber (_locationname select (count _locationName - 1));
-	private _thisLocation = locations select _locationNumber;
+	private _thisLocation = H_alb_locations select _locationNumber;
 	private _locationPoints = _thisLocation select 2;
 	if (_locationPoints >= 100) then {
 		_location setMarkerColor "ColorGreen";

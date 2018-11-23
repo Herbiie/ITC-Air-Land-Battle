@@ -4,7 +4,7 @@ params ["_fobpos"];
 		["pbtask"] remoteExec ["BIS_fnc_deleteTask",0];
 		[_fobpos] call H_fnc_pb;
 		[command, 1] remoteExec ["removeAction",0];		
-		_callsign = platoons select count fobs;		
+		_callsign = H_alb_platoons select count H_alb_fobs;		
 		private _fobName = format ["PB %1", _callsign];
 		private _fobmarker = createMarker [_fobName, _fobpos];
 		_fobmarker setMarkerShape "ICON";
@@ -26,8 +26,8 @@ params ["_fobpos"];
 		//player setPos _fobpos;
 		private _respawn = [west,_fobpos,_fobname] call BIS_fnc_addRespawnPosition;
 		
-		_fob = [_fobname, _fobpos, _fobmarker, _group1, _group2];
-		fobs = fobs + [_fob];
+		_fob = ["PB", _fobname, _fobpos, _fobmarker, _group1, _group2];
+		H_alb_fobs = H_alb_fobs + [_fob];
 		
 		private _group4 = createGroup west;
 		private _radar1 = "itc_land_COBRA01" createVehicle [(_fobpos select 0)+20.2998, (_fobpos select 1)+28.4004, 0];
@@ -56,14 +56,15 @@ params ["_fobpos"];
 		private _co = _coGroup createUnit ["B_officer_F", [(_fobpos select 0)-9.5, (_fobpos select 1)-3.5, 0], [], 0, "NONE"];
 		_co disableai "move";
 		_co allowDamage false;
-		[_co, ["Request Side Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
-		[_co, ["Show Deployment Points","[] remoteExec [""H_fnc_showpoints"",2]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
+		[_co, ["Request Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
+		[_co, ["Show Deployment Points","hint format [""Deployment Points: %1"", H_alb_deploypoints]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		private _box = "B_supplyCrate_F" createVehicle _fobpos;
 		clearItemCargoGlobal _box;
 		clearMagazineCargoGlobal _box;
 		clearWeaponCargoGlobal _box;
 		clearBackpackCargoGlobal _box;
 		[_box] remoteExec ["H_fnc_arsenal",0]; 
+		[_box, ["Save Mission and Exit","[] remoteExec [""H_fnc_saveMission"",2]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		
 		
 		
@@ -71,7 +72,7 @@ params ["_fobpos"];
 			[_fobmarker] spawn H_fnc_fobattacks;
 		};
 		
-		deploypoints = deploypoints - 100;
+		H_alb_deploypoints = H_alb_deploypoints - 100;
 		
 		_radar1 enableSimulation false;
 		_radar2 enableSimulation false;

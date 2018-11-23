@@ -1,6 +1,6 @@
 
 author="Herbiie";
-OnLoadName = "ITC Air Land Battle - Altis";
+OnLoadName = "ITC Air Land Battle";
 briefingName = "CO20 ITC Air Land Battle";
-OnLoadMission = "Development Branch Version 1";
+OnLoadMission = "Dev Version 2";
 loadScreen = "images\itcalb.jpg";
