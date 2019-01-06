@@ -3,10 +3,9 @@ params ["_fobpos"];
 	
 		["pbtask"] remoteExec ["BIS_fnc_deleteTask",0];
 		[_fobpos] call H_fnc_pb;
-		[command, 1] remoteExec ["removeAction",0];		
 		_callsign = H_alb_platoons select count H_alb_fobs;		
 		private _fobName = format ["PB %1", _callsign];
-		private _fobmarker = createMarker [_fobName, _fobpos];
+		private _fobmarker = createMarker [format ["%1Marker",_fobName], _fobpos];
 		_fobmarker setMarkerShape "ICON";
 		_fobmarker setMarkerType "mil_triangle";
 		_fobmarker setMarkerColor "ColorBlufor";
@@ -24,7 +23,7 @@ params ["_fobpos"];
 		
 		
 		//player setPos _fobpos;
-		private _respawn = [west,_fobpos,_fobname] call BIS_fnc_addRespawnPosition;
+		private _respawn = [west,_fobmarker,_fobname] call BIS_fnc_addRespawnPosition;
 		
 		_fob = ["PB", _fobname, _fobpos, _fobmarker, _group1, _group2];
 		H_alb_fobs = H_alb_fobs + [_fob];
@@ -57,14 +56,8 @@ params ["_fobpos"];
 		_co disableai "move";
 		_co allowDamage false;
 		[_co, ["Request Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
-		[_co, ["Show Deployment Points","hint format [""Deployment Points: %1"", H_alb_deploypoints]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		private _box = "B_supplyCrate_F" createVehicle _fobpos;
-		clearItemCargoGlobal _box;
-		clearMagazineCargoGlobal _box;
-		clearWeaponCargoGlobal _box;
-		clearBackpackCargoGlobal _box;
-		[_box] remoteExec ["H_fnc_arsenal",0]; 
-		[_box, ["Save Mission and Exit","[] remoteExec [""H_fnc_saveMission"",2]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
+		[_box] call H_fnc_supplybox; 
 		
 		
 		
@@ -72,7 +65,6 @@ params ["_fobpos"];
 			[_fobmarker] spawn H_fnc_fobattacks;
 		};
 		
-		H_alb_deploypoints = H_alb_deploypoints - 100;
 		
 		_radar1 enableSimulation false;
 		_radar2 enableSimulation false;

@@ -1,6 +1,8 @@
-profileNamespace setVariable ["H_alb_fobsSavedAltis",H_alb_fobs];
-profileNamespace setVariable ["H_alb_locationsSavedAltis",H_alb_locations];
-profileNamespace setVariable ["H_alb_deploypointsSavedAltis",H_alb_deploypoints];
+profileNamespace setVariable ["H_alb_fobsSavedA",H_alb_fobs];
+profileNamespace setVariable ["H_alb_locationsSavedA",H_alb_locations];
+profileNamespace setVariable ["H_alb_deploypointsSavedA",H_alb_deploypoints];
+profileNamespace setVariable ["H_alb_gearTierSavedA",H_alb_gearTier];
+profileNamespace setVariable ["H_alb_dateSavedA",date];
 
 H_alb_vehiclestosave = [];
 
@@ -26,7 +28,16 @@ H_alb_vehiclestosave = [];
 	H_alb_vehiclestosave = H_alb_vehiclestosave + [_vehicleArray];
 } forEach H_alb_westVehicles;
 
-profileNamespace setVariable ["H_alb_vehiclesSavedAltis",H_alb_vehiclestosave];
+[] call H_fnc_saveSupplies;
+
+
+{
+	[_x] call H_fnc_savePlayer;
+} forEach allPlayers;
+profileNamespace setVariable ["H_alb_playerIDsSavedA",H_alb_playerIDs];
+profileNamespace setVariable ["H_alb_playersSavedA",H_alb_players];
+profileNamespace setVariable ["H_alb_vehiclesSavedA",H_alb_vehiclestosave];
+profileNamespace setVariable ["H_alb_commanderSavedA",currentCommander select 0];
+profileNamespace setVariable ["H_alb_subcommanderSavedA",subCommanders];
 
 saveProfileNamespace;
-["saveMission"] remoteExec ["BIS_fnc_endMissionServer",0];

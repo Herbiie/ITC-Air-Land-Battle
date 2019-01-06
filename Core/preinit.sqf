@@ -7,14 +7,41 @@ if (isServer) then {
 
 
 // Functions
+// Options Folder
+H_fnc_setOptions = compile (preprocessFileLineNumbers "Core\functions\options\aceOptions.sqf");
+H_fnc_initialOptions = compile (preprocessFileLineNumbers "Core\functions\options\initialOptions.sqf");
+H_fnc_radioOn = compile (preprocessFileLineNumbers "Core\functions\options\radioOn.sqf");
+H_fnc_radioOff = compile (preprocessFileLineNumbers "Core\functions\options\radioOff.sqf");
+H_fnc_checkCommand = compile (preprocessFileLineNumbers "Core\functions\options\checkCommander.sqf");
+H_fnc_commanderOptions = compile (preprocessFileLineNumbers "Core\functions\options\commanderOptions.sqf");
+
+// Management Folder
+H_fnc_callVote = compile (preprocessFileLineNumbers "Core\functions\management\callVote.sqf");
+H_fnc_PlaceVote = compile (preprocessFileLineNumbers "Core\functions\management\placeVote.sqf");
+H_fnc_commanderVote = compile (preprocessFileLineNumbers "Core\functions\management\commanderVote.sqf");
+H_fnc_becomeCommander = compile (preprocessFileLineNumbers "Core\functions\management\becomeCommander.sqf");
+H_fnc_removeCommander = compile (preprocessFileLineNumbers "Core\functions\management\removeCommander.sqf");
+H_fnc_subCommander = compile (preprocessFileLineNumbers "Core\functions\management\subCommander.sqf");
+H_fnc_subCommanderDecision = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderDecision.sqf");
+H_fnc_acceptSubordinate = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderAccept.sqf");
+H_fnc_rejectSubordinate = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderReject.sqf");
+H_fnc_becomeSubCommander = compile (preprocessFileLineNumbers "Core\functions\management\becomeSubCommander.sqf");
+H_fnc_subCommanderRejected = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderRejected.sqf");
+H_fnc_removeSubCommander = compile (preprocessFileLineNumbers "Core\functions\management\removeSubCommander.sqf");
 
 // Persistence Folder
 H_fnc_saveMission = compile (preprocessFileLineNumbers "Core\functions\persistence\saveMission.sqf");
+H_fnc_saveMissionExit = compile (preprocessFileLineNumbers "Core\functions\persistence\saveMissionExit.sqf");
 H_fnc_loadMission = compile (preprocessFileLineNumbers "Core\functions\persistence\loadMission.sqf");
 H_fnc_loadPB = compile (preprocessFileLineNumbers "Core\functions\persistence\loadPB.sqf");
 H_fnc_loadFOB = compile (preprocessFileLineNumbers "Core\functions\persistence\loadFOB.sqf");
 H_fnc_loadVehicles = compile (preprocessFileLineNumbers "Core\functions\persistence\loadVehicles.sqf");
 H_fnc_loadLocation = compile (preprocessFileLineNumbers "Core\functions\persistence\loadLocation.sqf");
+H_fnc_loadPlayer = compile (preprocessFileLineNumbers "Core\functions\persistence\loadPlayer.sqf");
+H_fnc_savePlayer = compile (preprocessFileLineNumbers "Core\functions\persistence\savePlayer.sqf");
+H_fnc_playerExit = compile (preprocessFileLineNumbers "Core\functions\persistence\playerExit.sqf");
+H_fnc_saveSupplies = compile (preprocessFileLineNumbers "Core\functions\persistence\saveSupplies.sqf");
+H_fnc_loadSupplies = compile (preprocessFileLineNumbers "Core\functions\persistence\loadSupplies.sqf");
 
 // Player Folder
 H_fnc_respawn = compile (preprocessFileLineNumbers "Core\functions\player\respawn.sqf");
@@ -32,6 +59,14 @@ H_fnc_sendcontactReport = compile (preprocessFileLineNumbers "Core\functions\ai\
 H_fnc_contact = compile (preprocessFileLineNumbers "Core\functions\ai\contact.sqf");
 H_fnc_aiSetup = compile (preprocessFileLineNumbers "Core\functions\ai\aiSetup.sqf");
 H_fnc_Radio = compile (preprocessFileLineNumbers "Core\functions\ai\radio.sqf");
+H_fnc_playRadio = compile (preprocessFileLineNumbers "Core\functions\ai\playradio.sqf");
+
+// Groups
+H_fnc_opforFireteam = compile (preprocessFileLineNumbers "Core\functions\ai\groups\OPFORFireteam.sqf");
+H_fnc_opforSquad = compile (preprocessFileLineNumbers "Core\functions\ai\groups\OPFORSquad.sqf");
+H_fnc_HNFPatrol = compile (preprocessFileLineNumbers "Core\functions\ai\groups\HNFPatrol.sqf");
+H_fnc_POLPatrol = compile (preprocessFileLineNumbers "Core\functions\ai\groups\POLPatrol.sqf");
+
 
 // Bases Folder
 H_fnc_pb = compile (preprocessFileLineNumbers "Core\functions\bases\pb.sqf");
@@ -45,10 +80,12 @@ H_fnc_fobAttacks = compile (preprocessFileLineNumbers "Core\functions\bases\fobA
 
 // ALB Core Folder
 H_fnc_deploypoints = compile (preprocessFileLineNumbers "Core\functions\ALBCore\deploypoints.sqf");
-H_fnc_arsenal = compile (preprocessFileLineNumbers "Core\functions\ALBCore\arsenal.sqf");
 H_fnc_townPoints = compile (preprocessFileLineNumbers "Core\functions\ALBCore\townPoints.sqf");
 H_fnc_militaryBuildings = compile (preprocessFileLineNumbers "Core\functions\ALBCore\militaryBuildings.sqf");
 H_fnc_setUpLocation = compile (preprocessFileLineNumbers "Core\functions\ALBCore\setUpLocation.sqf");
+H_fnc_setUpJIP = compile (preprocessFileLineNumbers "Core\functions\ALBCore\setUpJIP.sqf");
+H_fnc_civilians = compile (preprocessFileLineNumbers "Core\functions\ALBCore\civilians.sqf");
+H_fnc_civPop = compile (preprocessFileLineNumbers "Core\functions\ALBCore\civPop.sqf");
 
 // Missions
 H_fnc_Outpost = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionOutpost.sqf");
@@ -72,7 +109,14 @@ H_fnc_spawnVehicle = compile (preprocessFileLineNumbers "Core\functions\Logistic
 H_fnc_placeVehicle = compile (preprocessFileLineNumbers "Core\functions\Logistics\placeVehicle.sqf");
 H_fnc_setupAir = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupair.sqf");
 H_fnc_SetUpArty = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupArty.sqf");
+H_fnc_SetUpCommand = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupCommand.sqf");
+H_fnc_SetUpArmourer = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupArmourer.sqf");
 H_fnc_penalty = compile (preprocessFileLineNumbers "Core\functions\Logistics\penalty.sqf");
+H_fnc_arsenal = compile (preprocessFileLineNumbers "Core\functions\Logistics\arsenal.sqf");
+H_fnc_upgradeGear = compile (preprocessFileLineNumbers "Core\functions\Logistics\upgradeGear.sqf");
+// Supply
+H_fnc_supplyBox = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\supplyBox.sqf");
+H_fnc_resupply = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\resupply.sqf");
 
 // Compositions
 H_fnc_outpost1 = compile (preprocessFileLineNumbers "Core\functions\Compositions\outpost1.sqf");

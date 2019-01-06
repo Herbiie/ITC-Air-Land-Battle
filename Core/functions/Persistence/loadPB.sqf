@@ -23,7 +23,7 @@ params ["_fobpos","_fobname"];
 		
 		
 		//player setPos _fobpos;
-		private _respawn = [west,_fobpos,_fobname] call BIS_fnc_addRespawnPosition;
+		private _respawn = [west,_fobmarker,_fobname] call BIS_fnc_addRespawnPosition;
 		
 		
 		private _group4 = createGroup west;
@@ -54,14 +54,7 @@ params ["_fobpos","_fobname"];
 		_co disableai "move";
 		_co allowDamage false;
 		[_co, ["Request Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
-		[_co, ["Show Deployment Points","hint format [""Deployment Points: %1"", H_alb_deploypoints]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		private _box = "B_supplyCrate_F" createVehicle _fobpos;
-		clearItemCargoGlobal _box;
-		clearMagazineCargoGlobal _box;
-		clearWeaponCargoGlobal _box;
-		clearBackpackCargoGlobal _box;
-		[_box] remoteExec ["H_fnc_arsenal",0]; 
-		[_box, ["Save Mission and Exit","[] remoteExec [""H_fnc_saveMission"",2]",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		
 		
 		

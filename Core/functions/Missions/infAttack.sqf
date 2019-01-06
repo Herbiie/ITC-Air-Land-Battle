@@ -10,7 +10,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group1 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group1 = createGroup east;
+[_group1, _pos] call H_fnc_OPFORFireteam; 
 
 _wp = _group1 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";

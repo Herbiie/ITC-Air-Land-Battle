@@ -1,0 +1,13 @@
+H_action_commanderOptions = ["COptions","Commander Options","",{},{true}] call ace_interact_menu_fnc_createAction;
+H_action_commanderRequest = ["Commander","Request To Be Commander","",{[] spawn H_fnc_commanderVote},{true}] call ace_interact_menu_fnc_createAction;
+H_action_subcommanderRequest = ["SubCommander","Request To Be Subordinate Commander","",{[] spawn H_fnc_subCommander},{true}] call ace_interact_menu_fnc_createAction;
+H_action_commanderResign = ["CommanderResign","Resign as Commander","",{[player] spawn H_fnc_removeCommander},{true}] call ace_interact_menu_fnc_createAction;
+H_action_subcommanderResign = ["SubCommanderResign","Resign as Subordinate Commander","",{[player] spawn H_fnc_removesubCommander},{true}] call ace_interact_menu_fnc_createAction;
+H_action_missionOptions = ["ALBOptions","ALB Mission Options","",{},{true}] call ace_interact_menu_fnc_createAction;
+H_action_radioOn = ["RadioOn","Turn Notification Sound On","",{[] spawn H_fnc_radioOn},{true}] call ace_interact_menu_fnc_createAction;
+H_action_radioOff = ["RadioOff","Turn Notification Sound Off","",{[] spawn H_fnc_radioOff},{true}] call ace_interact_menu_fnc_createAction;
+H_action_checkCommand = ["checkCommand","Check who is commander","",{[] call H_fnc_checkCommand},{true}] call ace_interact_menu_fnc_createAction;
+H_action_checkDeploy = ["checkDeploy","Check Deployment Points","",{hint format ["Deployment Points: %1", H_alb_deploypoints]},{true}] call ace_interact_menu_fnc_createAction;
+H_action_savePlayer = ["savePlayer","Player Save and Exit","",{[player] call H_fnc_savePlayer; [] call H_fnc_playerExit},{true}] call ace_interact_menu_fnc_createAction;
+H_action_saveMission = ["saveMission","Mission Save","",{[] call H_fnc_saveMission},{true}] call ace_interact_menu_fnc_createAction;
+H_action_saveMissionExit = ["saveMissionExit","Mission Save and Exit","",{[] call H_fnc_saveMissionExit},{true}] call ace_interact_menu_fnc_createAction;

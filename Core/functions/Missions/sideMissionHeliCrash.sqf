@@ -27,10 +27,35 @@ _pilot1 disableAI "PATH";
 _pilot2 disableAI "PATH";
 private _a = round random 3;
 private _b = round random 3;
-private _callsign = format ["Beast %1'%2",_a, _b];
+private _c = selectRandom H_alb_coolCallsigns;
+private _callsign = format ["%3 %1'%2",_a, _b, _c];
 _pilotgroup setGroupId [_callsign];
 
-[[west,["_task"],["A helicopter has crashed, secure the crashsite until reinforcements arrive.","Defend the Helicopter.","_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+private _adjective = selectRandom h_alb_opNameA;
+private _noun = selectRandom H_alb_opNameB;
+
+private _opname = format ["Operation %1 %2:", _adjective, _noun];
+[[west,["_task"],["
+Situation:<br/>
+A helicopter has crashed, secure the crashsite until reinforcements arrive.<br/>
+<br/>
+Situation Enemy Forces:<br/>
+Insurgents are likely to attack the helicopter with a mixture of infantry with small arms and mortars.<br/>
+<br/>
+Situation Friendly Forces:<br/>
+As per map - there are two friendly pilots at the crashsite.<br/>
+<br/>
+Mission:<br/>
+Protect the crashed helicopter until engineers can arrive in order to prevent it being exploited by insurgents.<br/>
+<br/>
+Execution:<br/>
+Strike team will move to the crashsite, set up a perimeter and hold for 20 minutes.<br/>
+<br/>
+Service Support:<br/>
+As per SOPs.<br/>
+<br/>
+Command and Signals:<br/>
+As per SOPs.<br/>",format ["%1 Defend Helicopter", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
 sleep 4;
 
@@ -55,20 +80,21 @@ _time24 = [_time,"HH:MM"] call BIS_fnc_timeToString;
 
 [[west,["_task2","_task"],[format ["Hold crashsite until reinforcements arrive. Reinforcements are expected at %1", _time24], format ["Hold Crashsite until %1.", _time24],"_task2marker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
-[_pos, 100, 5] spawn H_fnc_randomAttacks;
+[_pos, 100, 15] spawn H_fnc_randomAttacks;
 private _a = 0;
 private _b = 1200;
+private _failed = false;
 while {_a < _b} do {
 	sleep 5;
 	_a = _a + 5;
 	_c = round ((_b - _a)/60);
 	[format ["%1 minutes remaining", _c]] remoteExec ["hint",0];
-	if ({_X distance _pos > 25 && side _x == west} count allUnits == 0) then {
+	if ({_x distance _pos < 25 && side _x == west} count allUnits == 0) then {
 		_b = 0;
 		[["_task2","FAILED"],BIS_fnc_taskSetState] remoteExec ["call",0];
 		sleep 3;
 		[["_task","FAILED"],BIS_fnc_taskSetState] remoteExec ["call",0];
-		private _failed = true;
+		_failed = true;
 		deleteMarker _marker;
 		[20, false] remoteExec ["H_fnc_deploypoints",2];
 		[20, _base, false] remoteExec ["H_fnc_townPoints",2];

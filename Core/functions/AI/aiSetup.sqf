@@ -1,8 +1,6 @@
 params ["_unit", "_groupID", "_patrol", "_base"];
 
-	{
-	    _x enableDynamicSimulation true;
-	} forEach units group _unit;
+	group _unit enableDynamicSimulation  true;
 
 if (side _unit == west) then {
 	_unit setGroupID [_groupID];
@@ -15,7 +13,15 @@ if (side _unit == west) then {
 
 	if (_patrol) then {
 		[_unit, getMarkerPos _base, 1000] spawn H_fnc_patrol;
+		allPatrols = allPatrols + [group _unit];
+		publicVariable "allPatrols";
 	};
+	
+	/* if (_patrol && !(isNil "currentCommander")) then {
+		private _commander = currentCommander select 1;
+		_commander hcSetGroup [group _unit];
+	};
+	*/
 	
 	if (_patrol && (_tracking == 1)) then {
 		[_unit] spawn H_fnc_tracker;
@@ -29,14 +35,21 @@ if (side _unit == west) then {
 	} forEach units group _unit;
 };
 
-if (side _unit == east) then {
+if (side _unit == independent) then {
+	if (_patrol && (_tracking == 1)) then {
+		[_unit] spawn H_fnc_tracker;
+	};
 	group _unit deleteGroupWhenEmpty true;
 	{
 	    _x addEventHandler ["killed", "
-			params [""_dead"", ""_killer"", ""_instigator"", ""_useEffects""];
-			[1, true] remoteExec [""H_fnc_deploypoints"",2];
-			[1, position _dead, true] remoteExec [""H_fnc_townPoints"",2]"
-		];
+				[2, getMarkerPos _base, false] remoteExec [""H_fnc_townPoints"",2]
+				"];
 	} forEach units group _unit;
+	if (_patrol) then {
+		[_unit, getMarkerPos _base, 1000] spawn H_fnc_patrol;
+	};
+};
 
+if (side _unit == east) then {
+	group _unit deleteGroupWhenEmpty true;
 };

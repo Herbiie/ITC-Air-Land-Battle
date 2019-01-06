@@ -30,7 +30,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group1 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group1 = createGroup east;
+[_group1, _pos] call H_fnc_OPFORFireteam; 
 [leader _group1, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 _wp = _group1 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -50,7 +51,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group2 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditShockTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group2 = createGroup east;
+[_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group2, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 _wp = _group2 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -70,7 +72,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group3 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditCombatGroup"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group3 = createGroup east;
+[_group3, _pos] call H_fnc_OPFORSquad; 
 [leader _group3, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 _wp = _group3 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -92,7 +95,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group4 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group4 = createGroup east;
+[_group4, _pos] call H_fnc_OPFORSquad; 
 [leader _group4, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 _wp = _group4 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -112,7 +116,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group5 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditShockTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group5 = createGroup east;
+[_group5, _pos] call H_fnc_OPFORSquad; 
 [leader _group5, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 _wp = _group5 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -131,8 +136,9 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	_closeObjects = count nearestObjects [_pos, [], 20];
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
+private _group6 = createGroup east;
+[_group6, _pos] call H_fnc_OPFORSquad; 
 [leader _group6, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-private _group6 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditCombatGroup"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
 
 _wp = _group6 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -153,8 +159,9 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	_closeObjects = count nearestObjects [_pos, [], 20];
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
+private _group7 = createGroup east;
+[_group7, _pos] call H_fnc_OPFORSquad; 
 [leader _group7, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-private _group7 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
 
 _wp = _group7 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -174,7 +181,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group8 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditShockTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group8 = createGroup east;
+[_group8, _pos] call H_fnc_OPFORSquad; 
 [leader _group8, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 _wp = _group8 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";
@@ -194,7 +202,8 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 
-private _group9 = [_pos, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditCombatGroup"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group9 = createGroup east;
+[_group9, _pos] call H_fnc_OPFORSquad; 
 [leader _group9, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 _wp = _group9 addWaypoint [getMarkerPos _base, 0];
 _wp setWaypointType "MOVE";

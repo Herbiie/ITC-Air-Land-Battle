@@ -1,5 +1,5 @@
 sleep 0.1;
-private _vehicleList = profileNamespace getVariable "H_alb_vehiclesSavedAltis";
+private _vehicleList = profileNamespace getVariable "H_alb_vehiclesSavedA";
 {
 	_x params ["_class", "_position", "_dir", "_fuel","_cost","_magazines","_weapons","_items","_backpacks"];
 	private _vehicle = _class createVehicle _position;

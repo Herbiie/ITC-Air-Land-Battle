@@ -2,10 +2,14 @@ params ["_unit"];
 
 private _group = group _unit;
 private _callsign = groupID group _unit;
+private _side = side _unit;
 
 sleep 0.1;
 private _marker = createmarker [_callsign, _unit];
-_marker setMarkerType "b_inf";
+switch (_side) do {
+case WEST: {_marker setMarkerType "b_inf"};
+case INDEPENDENT: {_marker setMarkerType "n_inf"};
+};
 
 private _size = format ["%1size", _callsign];
 private _unitSize = createmarker [_size, _unit];

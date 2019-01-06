@@ -1,0 +1,13 @@
+private _profileName = profileName;
+[player,1,["ACE_SelfActions","COptions","CommanderResign"]] call ace_interact_menu_fnc_removeActionFromObject;
+[player,1,["ACE_SelfActions","COptions","saveMission"]] call ace_interact_menu_fnc_removeActionFromObject;
+[player,1,["ACE_SelfActions","COptions","saveMissionExit"]] call ace_interact_menu_fnc_removeActionFromObject;
+[player, 1, ["ACE_SelfActions","COptions"],H_action_commanderRequest] call ace_interact_menu_fnc_addActionToObject;
+//[player, 1, ["ACE_SelfActions","COptions"],H_action_subcommanderRequest] call ace_interact_menu_fnc_addActionToObject;
+removeAllActions mt;
+removeAllActions command;
+removeAllActions air;
+removeAllActions arty;
+removeAllActions arm;
+hcRemoveAllGroups player;
+[format ["%1 has resigned as commander",_profilename]] remoteExec ["hint",0];

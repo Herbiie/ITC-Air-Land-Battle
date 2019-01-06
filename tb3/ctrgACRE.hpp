@@ -12,7 +12,7 @@ class CTRGACRE {
 		secKit[] = {};
 		pisKit[] = {"16Rnd_9x21_Mag",};
 		
-		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio","NVGogglesB_blk_F"};
+		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio","NVGoggles"};
 		
 		headgear[] = {
 			"H_HelmetSpecB_paint1",
@@ -57,68 +57,6 @@ class CTRGACRE {
 			
 		magazines[] = {}; items[] = {};
 	};
-	class TL: baseUnit {
-			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
-				{"HandGrenade",2},
-				{"SmokeShell",2},
-				{"ACE_DAGR",1},
-				{"ACE_Vector",1},
-				{"ACRE_PRC148",1},
-				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
-			};	
-		backpackContents[] = {
-				{"ITC_Land_B_AR2i_Packed",1},
-		};
-	};
-	class JTAC: baseUnit {
-			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
-				{"HandGrenade",2},
-				{"SmokeShell",2},
-				{"ACE_DAGR",1},
-				{"ACE_Vector",1},
-				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
-			};	
-		backpackContents[] = {
-				{"ACRE_PRC117f",1},
-		};
-	};
-	class R: baseUnit {	
-		backpackContents[] = {				
-				{"30Rnd_556x45_Stanag",6},
-				{"HandGrenade",2},
-				{"SmokeShell",2},				
-		};
-	};
-	class AR: baseUnit {
-		weapons[] = {"arifle_SPAR_02_blk_F","hgun_P07_khk_F",};
-		priKit[] = {"150Rnd_556x45_Drum_Mag_Tracer_F","optic_erco_blk_F",};	
-			vestContents[] = {					
-				{"150Rnd_556x45_Drum_Mag_Tracer_F",2},
-				{"HandGrenade",2},
-				{"SmokeShell",2},
-				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
-			};
-		backpackContents[] = {				
-				{"150Rnd_556x45_Drum_Mag_Tracer_F",3},
-				{"HandGrenade",2},
-				{"SmokeShell",2},				
-		};
-	};
-	class MED: baseUnit {	
-		backpackContents[] = {	
-			{"ACE_fieldDressing",15},
-			{"ACE_morphine",15},
-			{"ACE_tourniquet",5},	
-			{"ACE_epinephrine",15},
-			{"ACE_packingBandage",10},
-			{"ACE_quikclot",15},
-			{"ACE_elasticBandage",20},
-			{"ACE_salineIV_250",12},				
-		};
-	};
+	
+	class R: baseUnit {};
 };

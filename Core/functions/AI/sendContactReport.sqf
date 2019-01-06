@@ -24,7 +24,7 @@ while {_a < 300} do {
 	sleep 5;
 	private _group = group _soldier;
 	private _leader = leader _group;
-	if ({(_leader knowsAbout _x >= 1.5) && (side _x == east)} count allUnits == 0) then {
+	if ({(_leader knowsAbout _x >= 1) && (side _x == east)} count allUnits == 0) then {
 		[] spawn H_fnc_radio;
 		[_leader, format ["Command this is %1, %1 is no longer in contact, out.", _callsign]]  remoteExec ["sideChat", 0];
 		_a = 300;

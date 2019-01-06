@@ -52,54 +52,6 @@ class NATOACRE {
 			
 		magazines[] = {}; items[] = {};
 	};
-	class TL: baseUnit {
-			vestContents[] = {					
-				{"30Rnd_65x39_caseless_mag",6},
-				{"HandGrenade",2},
-				{"SmokeShell",2},
-				{"ACE_DAGR",1},
-				{"ACE_Vector",1},
-				{"NVGoggles",1},
-			};	
-		backpackContents[] = {
-				{"30Rnd_65x39_caseless_mag",4},
-				{"SmokeShellRed",2},
-				{"SmokeShellGreen",2},
-				{"SmokeShellBlue",2},
-		};
-	};
-	class R: baseUnit {	
-		backpackContents[] = {				
-				{"30Rnd_65x39_caseless_mag",6},
-				{"HandGrenade",2},
-				{"SmokeShell",2},				
-		};
-	};
-	class AR: baseUnit {	
-		weapons[] = {"arifle_MX_SW_pointer_F",};
-		priKit[] = {"100Rnd_65x39_caseless_mag",};	
-			vestContents[] = {					
-				{"100Rnd_65x39_caseless_mag",3},
-				{"HandGrenade",2},
-				{"SmokeShell",2},
-				{"NVGoggles",1},
-			};
-		backpackContents[] = {				
-				{"100Rnd_65x39_caseless_mag",4},
-				{"HandGrenade",2},
-				{"SmokeShell",2},				
-		};
-	};
-	class MED: baseUnit {	
-		backpackContents[] = {	
-			{"ACE_fieldDressing",15},
-			{"ACE_morphine",15},
-			{"ACE_tourniquet",5},	
-			{"ACE_epinephrine",15},
-			{"ACE_packingBandage",10},
-			{"ACE_quikclot",15},
-			{"ACE_elasticBandage",20},
-			{"ACE_salineIV_250",12},				
-		};
-	};
+	
+	class R: baseUnit {};
 };

@@ -1,4 +1,5 @@
-if (H_alb_deploypoints > 500) then {
+if (H_alb_deploypoints >= 500) then {
+		publicVariable "H_alb_deploypoints";
 	openMap [true, false];
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos", "_alt", "_shift"];
@@ -18,7 +19,8 @@ if (H_alb_deploypoints > 500) then {
 			["This location is not valid, either due to objects in the way or a slope."] remoteExec ["hint",0];
 			[]  call H_fnc_newFOB;
 		} else {
-		_fobpos remoteExec ["H_fnc_spawnFOB",2];
+			_fobpos remoteExec ["H_fnc_spawnFOB",2];
+			H_alb_deploypoints = H_alb_deploypoints - 500;
 		};
 	}];
 } else {

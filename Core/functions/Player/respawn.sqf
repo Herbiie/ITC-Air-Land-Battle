@@ -56,7 +56,12 @@ if (player isKindOf "Man") then {
 	if ((count _vestContents) > 0) then { [player,_vestContents] call tb3_fsetVestContents; };
 	
 player setVariable ["ACE_hasEarPlugsIn", true, true];
-_EH = player addEventHandler ["killed", {[_this select 0] call H_fnc_savegear}];
+_EH = player addEventHandler ["killed", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	private _penalty = "DeathPenalty" call BIS_fnc_getParamValue;
+	[_penalty, false] remoteExec ["H_fnc_deploypoints",2];
+	[_this select 0] call H_fnc_savegear;
+	[_penalty, position _unit, false] remoteExec ["H_fnc_townPoints",2];
+
+}];
 [player] spawn H_fnc_startOnSafe;
-private _penalty = "DeathPenalty" call BIS_fnc_getParamValue;
-[_penalty, false] remoteExec ["H_fnc_deploypoints",2];

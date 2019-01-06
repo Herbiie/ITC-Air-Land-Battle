@@ -20,7 +20,31 @@ _marker2 setMarkerColor "ColorBluFor";
 _marker2 setMarkerSize [25, 25];
 _marker2 setMarkerBrush "Border";
 
-[[west,["_task"],["Set up a Vehicle Checkpoint at the marked location for 20 minutes.","Set Up VCP.","_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+private _adjective = selectRandom h_alb_opNameA;
+private _noun = selectRandom H_alb_opNameB;
+
+private _opname = format ["Operation %1 %2:", _adjective, _noun];
+[[west,["_task"],["
+Situation:<br/>
+Insurgents have been enjoying freedom of movement across the local area. In order to clamp down on insurgent activity, your team is to set up a Vehicle Check Point at the marked location.<br/>
+<br/>
+Situation Enemy Forces:<br/>
+Insurgents are likely to attack the VCP with small arms and mortars when it is set up.<br/>
+<br/>
+Situation Friendly Forces:<br/>
+As per map.<br/>
+<br/>
+Mission:<br/>
+Block insurgent movement at marked location in order to disrupt insurgent activity.<br/>
+<br/>
+Execution:<br/>
+Team will move to the VCP location and hold it for 20 minutes.<br/>
+<br/>
+Service Support:<br/>
+As per SOPs.<br/>
+<br/>
+Command and Signals:<br/>
+As per SOPs.<br/>",format ["%1 Set Up VCP", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
 _smoke = "SmokeShellBlue_Infinite" createVehicle _vcp;
 
@@ -41,7 +65,8 @@ _time24 = [_time,"HH:MM"] call BIS_fnc_timeToString;
 
 [[west,["_task2","_task"],[format ["Hold VCP location until %1", _time24], format ["Hold VCP until %1.", _time24],"_task2marker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
-[_vcp, 200, 5] spawn H_fnc_randomAttacks;
+sleep 10;
+[_vcp, 100, 10] spawn H_fnc_randomAttacks;
 private _a = 0;
 private _b = 1200;
 while {_a < _b} do {

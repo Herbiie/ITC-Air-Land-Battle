@@ -1,8 +1,8 @@
 params ["_base"];
-private _adjective = selectRandom ["Husky","Icy","Aboriginal","Troubled","Faithful","Weak","Uneven","Jittery","Nimble","Useless","Rotten","Eager","Wanting","Expensive","Roomy","Knotty","Agonising","Odd","Scientific","Repulsive","Magical","Knowledgeable","Toothsome","Chivalrous","Gusty","Steep","Ossified","Next","Thinkable","Sloppy","Honourable","Limping","Material","Hulking","Scarce","Damp","Voracious","Awake","Ahead","Empty","Motionless","Attractive","Dazzling","Unbecoming","Materialistic","Nebulous","Difficult","Graceful","Elastic"];
-private _noun = selectRandom ["Cheetah","Mole","Seal","Chimpanzee","Otter","Mongoose","Burro","Aoudad","Antelope","Chameleon","Capybara","Marten","Skunk","Kangaroo","Eagle","Owl","Bull","Bumble Bee","Vicuna","Starfish","Ferret","Polar Bear","Leopard","Monkey","Alpaca","Budgerigar","Grizzly Bear","Lovebird","Salamander","Panda","Yak","Deer","Ocelot","Sheep","Steer","Hog","Parrot","Colt","Elk","Llama","Gazelle","Duckbill Platypus","Pig","Warthog","Rat","Hamster","Bat","Anteater","Groundhog","Mandrill","Coyote"];
+private _adjective = selectRandom h_alb_opNameA;
+private _noun = selectRandom H_alb_opNameB;
 
-private _opname = format ["Operation %1 %2", _adjective, _noun];
+private _opname = format ["Operation %1 %2:", _adjective, _noun];
 
 [[west,["_task"],["
 Situation:<br/>
@@ -25,7 +25,7 @@ As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
 As per SOPs.<br/>
-",format ["%1: Destroy Insurgent Outposts", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+",format ["%1 Destroy Insurgent Outposts", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
 	private _pos1 = [_base, 300, 1500, 10, 0, 10, 0]  call BIS_fnc_findSafePos;
     private _nearRoad = [_pos1, 50] call BIS_fnc_nearestRoad;
@@ -71,11 +71,13 @@ _marker1 setMarkerType "hd_objective";
 _marker1 setMarkerColor "ColorRed";
 _marker1 setMarkerText "Insurgent Outpost";
 
-private _group11 = [_pos1, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group11 = createGroup east;
+[_group11, _pos] call H_fnc_OPFORSquad; 
 [leader _group11, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 [_group11] call CBA_fnc_taskDefend;
 
-private _group12 = [_pos1, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group12 = createGroup east;
+[_group12, _pos] call H_fnc_OPFORSquad; 
 [leader _group12, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 [leader _group12, _pos1, 200] spawn H_fnc_patrol; 
 
@@ -89,11 +91,13 @@ _marker2 setMarkerType "hd_objective";
 _marker2 setMarkerColor "ColorRed";
 _marker2 setMarkerText "Insurgent Outpost";
 
-private _group21 = [_pos2, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group21 = createGroup east;
+[_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group21, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 [_group21] call CBA_fnc_taskDefend;
 
-private _group22 = [_pos2, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group22 = createGroup east;
+[_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group22, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 [leader _group22, _pos2, 200] spawn H_fnc_patrol; 
 
@@ -107,15 +111,18 @@ _marker3 setMarkerType "hd_objective";
 _marker3 setMarkerColor "ColorRed";
 _marker3 setMarkerText "Insurgent Outpost";
 
-private _group31 = [_pos3, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group31 = createGroup east;
+[_group31, _pos] call H_fnc_OPFORSquad; 
 [leader _group31, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 [_group31] call CBA_fnc_taskDefend;
 
-private _group32 = [_pos3, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group32 = createGroup east;
+[_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group32, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 [leader _group32, _pos3, 200] spawn H_fnc_patrol;
 
-private _group33 = [_pos3, East, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "BanditFireTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+private _group33 = createGroup east;
+[_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group33, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
 [leader _group33, _pos3, 200] spawn H_fnc_patrol;
 

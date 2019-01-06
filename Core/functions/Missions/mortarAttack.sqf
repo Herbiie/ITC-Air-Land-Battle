@@ -15,15 +15,15 @@ private _group = createGroup east;
 (crew _mortar) joinSilent _group;
 sleep 3;
 private _target = [[[getMarkerPos _base, 150]],[]] call BIS_fnc_randomPos;
-private _rounds = round random 3;
+private _rounds = ceil random 3;
 _mortar doArtilleryFire [_target, "8Rnd_82mm_Mo_shells", _rounds];
 sleep 3;
 private _target = [[[getMarkerPos _base, 150]],[]] call BIS_fnc_randomPos;
-private _rounds = round random 3;
+private _rounds = ceil random 3;
 _mortar doArtilleryFire [_target, "8Rnd_82mm_Mo_shells", _rounds];
 sleep 3;
 private _target = [[[getMarkerPos _base, 150]],[]] call BIS_fnc_randomPos;
-private _rounds = round random 3;
+private _rounds = ceil random 3;
 _mortar doArtilleryFire [_target, "8Rnd_82mm_Mo_shells", _rounds];
 
 sleep 600;

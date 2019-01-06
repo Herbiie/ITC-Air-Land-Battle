@@ -20,7 +20,7 @@ class CfgSettings {
 
 #include "settings\description.hpp"
 
-respawnOnStart = 1;
+respawnOnStart = -1;
 enableDebugConsole = 1;
 enableTargetDebug = 1;
 
@@ -30,6 +30,11 @@ class CfgDebriefing
 	{
 		title = "Mission Saved.";
 		description = "Mission has been saved successfully.";
+	};
+	class playerExit
+	{
+		title = "Player Stats Saved.";
+		description = "Your stats have been saved successfully.";
 	};
 };
 
@@ -49,7 +54,6 @@ class Params
 		texts[] = {"Morning","Day","Evening","Night"};
 		values[] = {6,12,18,0};
 		default = 12;
-		function = "BIS_fnc_paramDaytime"; 
 		isGlobal = 1; 
 	};
 	class Tracking
@@ -87,13 +91,6 @@ class Params
 		texts[] = {"On","Off"};
 		default = 1;
 	};
-	class RadioNotifications
-	{
-		title = "AI Chat Notification Sounds";
-		values[] = {1,2};
-		texts[] = {"On","Off"};
-		default = 1;
-	};
 	class DeathPenalty
 	{
 		title = "Civilian/Player Death Penalty";
@@ -107,6 +104,13 @@ class Params
 		values[] = {1,5,10,20};
 		texts[] = {"Low","Moderate","High","Severe"};
 		default = 5;
+	};
+	class AISkill
+	{
+		title = "AI Skill";
+		values[] = {0.25, 0.5, 0.75, 1};
+		texts[] = {"Low","Moderate","High","Severe"};
+		default = 0.5;
 	};
 	class DynamicSimulation
 	{
