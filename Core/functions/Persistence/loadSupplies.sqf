@@ -1,4 +1,4 @@
-private _crates = profileNamespace getVariable "H_alb_savedCratesA";
+private _crates = H_alb_crates;
 
 crateNames = [];
 {

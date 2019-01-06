@@ -1,9 +1,3 @@
-profileNamespace setVariable ["H_alb_fobsSavedA",H_alb_fobs];
-profileNamespace setVariable ["H_alb_locationsSavedA",H_alb_locations];
-profileNamespace setVariable ["H_alb_deploypointsSavedA",H_alb_deploypoints];
-profileNamespace setVariable ["H_alb_gearTierSavedA",H_alb_gearTier];
-profileNamespace setVariable ["H_alb_dateSavedA",date];
-
 H_alb_vehiclestosave = [];
 
 {	
@@ -32,13 +26,28 @@ H_alb_vehiclestosave = [];
 	[_x] call H_fnc_savePlayer;
 } forEach allPlayers;
 
-[] call H_fnc_saveSupplies;
+private _crates = [];
+{
+	if (!(vehicleVarName _x == "arsenal")) then {
+		private _backpacks = [];
+		{		
+			private _backpackItems = itemCargo _x;
+			private _backpackWeapons = weaponCargo _x;
+			private _backpackMagazines = magazineCargo _x;
+			private _backpackDescription = typeOf _x;
+			_backpacks = _backpacks + [[_backpackDescription, _backpackMagazines, _backpackWeapons, _backpackItems]];
+		} forEach everyBackpack _x;
+		private _magazines = magazineCargo _x;
+		private _weapons = weaponCargo _x;
+		private _items = itemCargo _x;
+		private _nearestMarker = [allMapMarkers, _x] call BIS_fnc_nearestPosition;
+		private _crateVariable = [_nearestMarker, _backpacks, _magazines, _items, _weapons];
+		_crates = _crates + [_crateVariable];
+	};
+} forEach allMissionObjects "B_supplyCrate_F";
 
-profileNamespace setVariable ["H_alb_playerIDsSavedA",H_alb_playerIDs];
-profileNamespace setVariable ["H_alb_playersSavedA",H_alb_players];
-profileNamespace setVariable ["H_alb_vehiclesSavedA",H_alb_vehiclestosave];
-profileNamespace setVariable ["H_alb_commanderSavedA",currentCommander select 0];
-profileNamespace setVariable ["H_alb_subcommanderSavedA",subCommanders];
+private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,currentCommander select 0,subCommanders,_crates];
+profileNamespace setVariable ["H_alb_Altis",_saveVariable];
 
 saveProfileNamespace;
 ["saveMission"] remoteExec ["BIS_fnc_endMissionServer",0];

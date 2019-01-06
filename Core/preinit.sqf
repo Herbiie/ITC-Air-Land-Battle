@@ -40,7 +40,6 @@ H_fnc_loadLocation = compile (preprocessFileLineNumbers "Core\functions\persiste
 H_fnc_loadPlayer = compile (preprocessFileLineNumbers "Core\functions\persistence\loadPlayer.sqf");
 H_fnc_savePlayer = compile (preprocessFileLineNumbers "Core\functions\persistence\savePlayer.sqf");
 H_fnc_playerExit = compile (preprocessFileLineNumbers "Core\functions\persistence\playerExit.sqf");
-H_fnc_saveSupplies = compile (preprocessFileLineNumbers "Core\functions\persistence\saveSupplies.sqf");
 H_fnc_loadSupplies = compile (preprocessFileLineNumbers "Core\functions\persistence\loadSupplies.sqf");
 
 // Player Folder

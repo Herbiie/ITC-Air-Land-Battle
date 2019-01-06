@@ -12,7 +12,7 @@ enableDynamicSimulationSystem true;
 [west, "marker_0", "Theatre HQ"] call BIS_fnc_addRespawnPosition;
 
 
-private _saved = profileNamespace getVariable "H_alb_locationsSavedA";
+private _saved = profileNamespace getVariable "H_alb_Altis";
 
 if (isServer) then {
 	allPatrols = [];
@@ -53,10 +53,6 @@ if (isServer && ("LoadPrevious" call BIS_fnc_getParamValue == 1) && !(isNil "_sa
 	H_alb_opNameB = ["Cheetah","Mole","Seal","Chimpanzee","Otter","Mongoose","Burro","Aoudad","Antelope","Chameleon","Capybara","Marten","Skunk","Kangaroo","Eagle","Owl","Bull","Bumble Bee","Vicuna","Starfish","Ferret","Polar Bear","Leopard","Monkey","Alpaca","Budgerigar","Grizzly Bear","Lovebird","Salamander","Panda","Yak","Deer","Ocelot","Sheep","Steer","Hog","Parrot","Colt","Elk","Llama","Gazelle","Duckbill Platypus","Pig","Warthog","Rat","Hamster","Bat","Anteater","Groundhog","Mandrill","Coyote"];
 	[] execVM "core\scripts\handlepoints.sqf";
 	[] call H_fnc_loadMission;
-	H_alb_players = profileNamespace getVariable "H_alb_playersSavedA";
-	publicVariable "H_alb_players";
-	H_alb_playerIDs = profileNamespace getVariable "H_alb_playerIDsSavedA";
-	publicVariable "H_alb_playerIDs";
 };
 
 if (isServer && ("LoadPrevious" call BIS_fnc_getParamValue == 1) && (isNil "_saved")) then {
