@@ -61,6 +61,7 @@ params ["_fobpos","_fobname"];
 		_co allowDamage false;
 		[_co, ["Request Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		[_co, ["Request Operation","[_this select 0] spawn H_fnc_operationRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
+		[_co, ["Purchase Items", "[] call H_fnc_openShop",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		private _box = "B_supplyCrate_F" createVehicle _fobpos;
 		clearItemCargoGlobal _box;
 		clearMagazineCargoGlobal _box;

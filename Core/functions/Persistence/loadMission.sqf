@@ -1,6 +1,4 @@
 private _savedVariable = profileNamespace getVariable "H_alb_Altis";
-currentCommander = _savedVariable select 8;;
-publicVariable "currentCommander";
 H_alb_fobs = _savedVariable select 0;
 publicVariable "H_alb_fobs";
 H_alb_locations = _savedVariable select 1;
@@ -14,14 +12,14 @@ publicVariable "H_alb_gearTier";
 H_alb_date = _savedVariable select 4;
 publicVariable "H_alb_date";
 //[H_alb_date] remoteExec ["BIS_fnc_paramDaytime",0];
-H_alb_date call BIS_fnc_paramDaytime;
+setDate H_alb_date;
 H_alb_playerIDs = _savedVariable select 5;
 publicVariable "H_alb_playerIDs";
 H_alb_players = _savedVariable select 6;
 publicVariable "H_alb_players";
 H_alb_savedVehicles = _savedVariable select 7;
 publicVariable "H_alb_savedVehicles";
-H_alb_crates = _savedVariable select 10;
+H_alb_crates = _savedVariable select 8;
 publicVariable "H_alb_crates";
 {
 	if ((_x select 0) == "PB") then {

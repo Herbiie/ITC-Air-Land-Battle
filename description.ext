@@ -77,6 +77,13 @@ class Params
 		texts[] = {"CTRG","NATO"};
 		default = 1;
 	};
+	class EnFaction
+	{
+		title = "Enemy Faction";
+		values[] = {1,2,3};
+		texts[] = {"Altis Insurgents","Altis Guerillas","Tanoa Rebels"};
+		default = 1;
+	};
 	class FOBAttacks
 	{
 		title = "FOB Attacks";
@@ -110,7 +117,7 @@ class Params
 		title = "AI Skill";
 		values[] = {0.25, 0.5, 0.75, 1};
 		texts[] = {"Low","Moderate","High","Severe"};
-		default = 0.5;
+		default = 1;
 	};
 	class DynamicSimulation
 	{
@@ -142,5 +149,59 @@ class CfgSounds
 		name		= "Radio2";
 		sound[]		= { "@a3\Ui_F_Curator\Data\Sound\CfgSound\ping02.wss", 1.5, 1, 100 };
 		titles[]	= { 0, "" };
+	};
+};
+
+class CfgNotifications
+{
+	class Notification
+	{
+		title = "%1"; 
+		iconPicture = "images\itcalb.jpg"; 
+		iconText = ""; 
+		description = "%2"; 
+		color[] = {1,1,1,1}; 
+		duration = 6; 
+		priority = 0; 
+		difficulty[] = {};
+	};
+};
+
+#include "core\functions\dialog\dialogs.hpp"
+
+class ITEMS_DIALOG {
+	idd = 19990;
+	movingEnable = true;
+	controlsBackground[] = { };
+	objects[] = { };
+	class controls {
+		class RscListbox_1500: RscListbox
+		{
+			idc = 1500;
+			x = 0.25;
+			y = 0.75-(safeZoneH/2);
+			w = safeZoneW/4;
+			h = safeZoneH/2;
+		};
+		class RscButton_1600: RscButton
+		{
+			idc = 1600;
+			x = 0.25;
+			y = 0.75;
+			w = safeZoneW/8;
+			h = safeZoneH/8;
+			text = "Buy";
+			action = "[lbData [1500,(lbCurSel 1500)]] call H_fnc_buyItem";
+		};
+		class RscButton_1601: RscButton
+		{
+			idc = 1601;
+			x = 0.25+(safeZoneW/8);
+			y = 0.75;
+			w = safeZoneW/8;
+			h = safeZoneH/8;
+			text = "Cancel";
+			action = "closeDialog 0";
+		};
 	};
 };

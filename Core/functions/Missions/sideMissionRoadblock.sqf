@@ -65,3 +65,7 @@ deleteMarker _marker;
 sleep 300;
 {deleteVehicle _x} forEach units _group1;
 {deleteVehicle _x} forEach units _group2;
+
+{
+	_x addScore 10;
+} forEach allPlayers;

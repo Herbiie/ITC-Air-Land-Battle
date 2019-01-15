@@ -17,6 +17,7 @@ private _saved = profileNamespace getVariable "H_alb_Altis";
 if (isServer) then {
 	allPatrols = [];
 	publicVariable "allPatrols";
+	
 };
 
 

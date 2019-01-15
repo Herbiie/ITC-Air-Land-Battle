@@ -7,7 +7,7 @@ class CTRG {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_SPAR_01_blk_ERCO_Pointer_F","hgun_P07_khk_F",};
+		weapons[] = {"arifle_SPAR_01_blk_F",};
 		priKit[] = {"30Rnd_556x45_Stanag",};
 		secKit[] = {};
 		pisKit[] = {"16Rnd_9x21_Mag",};
@@ -45,7 +45,6 @@ class CTRG {
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
 			};
 			
 		backpack[] = {

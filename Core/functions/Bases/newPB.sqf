@@ -22,6 +22,7 @@ if (H_alb_deploypoints >= 100) then {
 		} else {
 			[_fobpos] remoteExec ["H_fnc_spawnPB",2];
 			H_alb_deploypoints = H_alb_deploypoints - 100;
+			publicVariable "H_alb_deploypoints";
 			};
 		}];
 } else {

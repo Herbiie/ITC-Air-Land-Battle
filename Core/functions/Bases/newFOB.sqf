@@ -21,6 +21,7 @@ if (H_alb_deploypoints >= 500) then {
 		} else {
 			_fobpos remoteExec ["H_fnc_spawnFOB",2];
 			H_alb_deploypoints = H_alb_deploypoints - 500;
+			publicVariable "H_alb_deploypoints";
 		};
 	}];
 } else {

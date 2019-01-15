@@ -2,6 +2,34 @@
 if (isServer) then {
 	createFOB = false;
 	createPB = false;
+
+// Set AI Factions
+	private _factionValue = "Faction" call BIS_fnc_getParamValue;
+
+	switch (_factionValue) do {
+		case 1: {
+			H_aiFaction = "CTRGAI"
+		};
+		case 2: {
+			H_aiFaction = "NATOAI"
+		};
+	};
+	publicVariable "H_aiFaction";
+	
+	private _enfactionValue = "enFaction" call BIS_fnc_getParamValue;
+
+	switch (_enfactionValue) do {
+		case 1: {
+			H_enFaction = "ALTISI"
+		};
+		case 2: {
+			H_enFaction = "ALTISG"
+		};
+		case 3: {
+			H_enFaction = "TANOAR"
+		};
+	};
+	publicVariable "H_aiFaction";
 };
 
 
@@ -65,6 +93,8 @@ H_fnc_opforFireteam = compile (preprocessFileLineNumbers "Core\functions\ai\grou
 H_fnc_opforSquad = compile (preprocessFileLineNumbers "Core\functions\ai\groups\OPFORSquad.sqf");
 H_fnc_HNFPatrol = compile (preprocessFileLineNumbers "Core\functions\ai\groups\HNFPatrol.sqf");
 H_fnc_POLPatrol = compile (preprocessFileLineNumbers "Core\functions\ai\groups\POLPatrol.sqf");
+H_fnc_BLUFORSquad = compile (preprocessFileLineNumbers "Core\functions\ai\groups\BLUFORSquad.sqf");
+H_fnc_BLUFORFireTeam = compile (preprocessFileLineNumbers "Core\functions\ai\groups\BLUFORFireTeam.sqf");
 
 
 // Bases Folder
@@ -113,9 +143,15 @@ H_fnc_SetUpArmourer = compile (preprocessFileLineNumbers "Core\functions\Logisti
 H_fnc_penalty = compile (preprocessFileLineNumbers "Core\functions\Logistics\penalty.sqf");
 H_fnc_arsenal = compile (preprocessFileLineNumbers "Core\functions\Logistics\arsenal.sqf");
 H_fnc_upgradeGear = compile (preprocessFileLineNumbers "Core\functions\Logistics\upgradeGear.sqf");
+H_fnc_buyItem = compile (preprocessFileLineNumbers "Core\functions\Logistics\buyItem.sqf");
+H_fnc_openShop = compile (preprocessFileLineNumbers "Core\functions\Logistics\openShop.sqf");
 // Supply
 H_fnc_supplyBox = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\supplyBox.sqf");
 H_fnc_resupply = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\resupply.sqf");
+
+
+// Dialog
+H_fnc_fillLB = compile (preprocessFileLineNumbers "Core\functions\dialog\fillLB.sqf");
 
 // Compositions
 H_fnc_outpost1 = compile (preprocessFileLineNumbers "Core\functions\Compositions\outpost1.sqf");

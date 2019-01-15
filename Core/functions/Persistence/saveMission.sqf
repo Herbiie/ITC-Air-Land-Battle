@@ -48,7 +48,7 @@ private _crates = [];
 {
 	[_x] call H_fnc_savePlayer;
 } forEach allPlayers;
-private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,currentCommander select 0,subCommanders,_crates];
+private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates];
 profileNamespace setVariable ["H_alb_Altis",_saveVariable];
 
 saveProfileNamespace;

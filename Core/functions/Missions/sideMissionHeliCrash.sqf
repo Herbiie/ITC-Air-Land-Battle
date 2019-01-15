@@ -109,3 +109,7 @@ If (!_failed) then {
 	[20, true] remoteExec ["H_fnc_deploypoints",2];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
 };
+
+{
+	_x addScore 10;
+} forEach allPlayers;

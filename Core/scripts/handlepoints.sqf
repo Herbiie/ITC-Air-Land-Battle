@@ -2,18 +2,16 @@ while {true} do {
 	sleep 20;
 	if (H_alb_deploypoints > 99 && !createPB) then {
 		createPB = true;
-		[[west,["pbtask"],["A new Patrol base with a NATO squad is available for deployment. Speak to the Theatre Commander at Camp Rogain to set the new PB's location.","New PB Available","_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+		["Notification",["New PB Available","The Commander can purchase the new PB at HQ."]] remoteExec ["BIS_fnc_showNotification",0];
 	};
-	if (H_alb_deploypoints < 100 && !(isNil "pbtask")) then {
-		[[pbtask],BIS_fnc_DeleteTask] remoteExec ["call",0];
+	if (H_alb_deploypoints < 100) then {
 		createPB = false;
 	};
 	if (H_alb_deploypoints > 499 && !createFOB) then {
 		createFOB = true;
-		[[west,["fobtask"],["A new Forward Operating Base (FOB) with a NATO platoon is available for deployment. Speak to the Theatre Commander at Camp Rogain to set the new FOB's location.","New FOB Available","_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+		["Notification",["New FOB Available","The Commander can purchase the new FOB at HQ."]] remoteExec ["BIS_fnc_showNotification",0];
 	};
-	if (H_alb_deploypoints < 500 &&!(isNil "fobtask")) then {
-		[[fobtask],BIS_fnc_DeleteTask] remoteExec ["call",0];
+	if (H_alb_deploypoints < 500) then {
 		createFOB = false;
 	};
 };

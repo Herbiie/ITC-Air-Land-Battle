@@ -12,21 +12,20 @@ params ["_fobpos"];
 		
 		_callsign = H_alb_platoons select count H_alb_fobs;
 		
-		private _group1 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfSquad"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+		private _group1 = createGroup WEST;
+		[_group1, _fobMarker, _fobname, false] call H_fnc_BLUFORSquad;
 		[getMarkerPos _fobmarker, nil, units _group1, 30, 0, false, true] call ace_ai_fnc_garrison;
-		[leader _group1, _fobname, false, _fobmarker] spawn H_fnc_aiSetup;
 		{
 			_x forceSpeed 0;
 		} forEach units _group1;
 		
-		private _group2 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
-		[leader _group2, format ["%1'1", _callsign], true, _fobmarker] spawn H_fnc_aiSetup;
 		
-		private _group3 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
-		[leader _group3, format ["%1'2", _callsign], true, _fobmarker] spawn H_fnc_aiSetup;
-		
-		private _group5 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
-		[leader _group5, format ["%1'3", _callsign], true, _fobmarker] spawn H_fnc_aiSetup;
+		private _group2 = createGroup WEST;
+		[_group2, _fobMarker, format ["%1'1", _callsign], true] call H_fnc_BLUFORFireTeam;
+		private _group3 = createGroup WEST;
+		[_group3, _fobMarker, format ["%1'2", _callsign], true] call H_fnc_BLUFORFireTeam;
+		private _group2 = createGroup WEST;
+		[_group5, _fobMarker, format ["%1'3", _callsign], true] call H_fnc_BLUFORFireTeam;
 		
 		private _group4 = createGroup west;
 		private _radar1 = "itc_land_COBRA01" createVehicle [(_fobpos select 0)+10.3994, (_fobpos select 1)+10.8008, 0];
@@ -59,9 +58,11 @@ params ["_fobpos"];
 		private _cogroup = createGroup west;
 		private _copos = [_fobpos, 0, 3, 2, 0, 1, 0, [], [0,0,0]]  call BIS_fnc_findSafePos;
 		private _co = _coGroup createUnit ["B_officer_F", _copos, [], 0, "NONE"];
+		[_co, "OF"] call H_fnc_aiLoadout;
 		_co disableai "move";
 		_co allowDamage false;
 		[_co, ["Request Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
+		[_co, ["Purchase Items", "[] call H_fnc_openShop",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		[_co, ["Request Operation","[_this select 0] spawn H_fnc_operationRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		private _box = "B_supplyCrate_F" createVehicle _fobpos;
 		clearItemCargoGlobal _box;

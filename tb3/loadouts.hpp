@@ -4,10 +4,6 @@ class TB3_Gear {//Gear definitions stay within this.
 	
 	#include "ctrg.hpp"
 	#include "nato.hpp"
-	#include "ctrgACRE.hpp"
-	#include "natoACRE.hpp"
-	#include "ctrgTFAR.hpp"
-	#include "natoTFAR.hpp"
 	#include "civilian.hpp"
 	#include "opfor.hpp"
 	#include "hnf.hpp"

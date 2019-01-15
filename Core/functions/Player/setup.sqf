@@ -37,6 +37,4 @@
 		[_penalty, position _unit, false] remoteExec ["H_fnc_townPoints",2];	 
 	 }];
 	 
-[west,["baseTask"],["Build patrol bases and FOBs, request missions and fight insurgents to help secure an area. When a town is secure, its flag will go green.","Fight the Insurgency","basetaskmarker"],objNull,1,3,true] call BIS_fnc_taskCreate;
-
 [] call H_fnc_initialOptions;

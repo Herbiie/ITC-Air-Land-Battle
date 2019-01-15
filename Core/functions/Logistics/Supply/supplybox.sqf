@@ -29,6 +29,7 @@ _box addMagazineCargoGlobal ["HandGrenade", 20];
 _box addMagazineCargoGlobal ["B_IR_Grenade", 5];
 _box addMagazineCargoGlobal ["SmokeShell", 10];
 _box addMagazineCargoGlobal ["DemoCharge_Remote_Mag", 3];
+_box addBackpackCargoGlobal ["B_respawn_TentDome_F", 1];
 
 switch (_faction) do {
 
@@ -36,7 +37,7 @@ switch (_faction) do {
 	// CTRG
 		_box addWeaponCargoGlobal ["arifle_SPAR_02_blk_F", 1];
 		_box addWeaponCargoGlobal ["launch_NLAW_F", 2];
-		_box addMagazineCargoGlobal ["150Rnd_556x45_Drum_Mag_Tracer_F", 8];
+		_box addMagazineCargoGlobal ["150Rnd_556x45_Drum_Mag_Tracer_F", 7];
 		_box addMagazineCargoGlobal ["30Rnd_556x45_Stanag_red", 30];		
 		if (H_alb_gearTier >= 1) then {
 			_box addMagazineCargoGlobal ["20rnd_762x51_mag", 8];
@@ -64,7 +65,7 @@ switch (_faction) do {
 	// NATO
 		_box addWeaponCargoGlobal ["arifle_MX_SW_F", 1];
 		_box addWeaponCargoGlobal ["launch_NLAW_F", 2];
-		_box addMagazineCargoGlobal ["100Rnd_65x39_caseless_mag_Tracer", 8];
+		_box addMagazineCargoGlobal ["100Rnd_65x39_caseless_mag_Tracer", 7];
 		_box addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", 30];
 		if (H_alb_gearTier >= 1) then {
 			_box addMagazineCargoGlobal ["20rnd_762x51_mag", 8];

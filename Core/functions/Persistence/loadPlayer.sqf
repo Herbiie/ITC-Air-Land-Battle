@@ -14,7 +14,6 @@ if (_playerSaved) then {
 
 	_playerArray params ["_playerIDSaved", "_score", "_dir", "_position", "_playerKit"];
 	_playerKit params ["_weapons", "_PriKit", "_SecKit", "_PisKit", "_backpack", "_backpackitems", "_headgear", "_uniform", "_uniformItems", "_vest", "_vestItems", "_goggles", "_assignedItems"];
-	player addPlayerScores [_score select 0, _score select 1, _score select 2, _score select 3, _score select 4];
 	private _backpackContents =  (_backpackItems) call BIS_fnc_consolidateArray;
 	private _vestContents =  (_vestItems) call BIS_fnc_consolidateArray;
 	private _uniformContents =  (_uniformItems) call BIS_fnc_consolidateArray;
@@ -59,7 +58,7 @@ if (_playerSaved) then {
 	sleep 0.1;
 	player setPos _position;
 	player setDir _dir;
-	
+	[player,_score] call BIS_fnc_addScore;
 	
 	
 } else {
