@@ -12,6 +12,7 @@ if (isServer) then {
 		case 3: {H_Faction = "USMCWD"};
 		case 4: {H_Faction = "USMCDE"};
 		case 5: {H_Faction = "USARMYUCP"};
+		case 6: {H_Faction = "USARMYOCP"};
 	};
 	publicVariable "H_Faction";
 	
