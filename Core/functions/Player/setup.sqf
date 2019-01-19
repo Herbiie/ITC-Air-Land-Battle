@@ -1,12 +1,7 @@
 
-	params ["_unit", "_newSpawn", "_colour","_UnitID","_loadout"];
+	params ["_unit", "_colour","_UnitID","_loadout"];
 	
-	if ((("Faction" call BIS_fnc_getParamValue) == 1) && _newSpawn) then {
-			[_unit, "CTRG",_loadout] call H_fnc_Loadout;
-	};
-	if ((("Faction" call BIS_fnc_getParamValue) == 2) && _newSpawn) then {
-			[_unit, "NATO",_loadout] call H_fnc_Loadout;
-	};
+	[_unit, H_Faction,_loadout] call H_fnc_Loadout;
 	
 	switch (_colour) do {
 		case "RED": {

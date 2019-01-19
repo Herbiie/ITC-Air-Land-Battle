@@ -12,14 +12,14 @@ params ["_fobpos"];
 		_fobmarker setMarkerText _fobName;
 		
 		private _group1 = createGroup WEST;
-		[_group1, _fobMarker, _fobname, false] call H_fnc_BLUFORFireTeam;
+		[_group1, _fobmarker, _fobname, false] call H_fnc_BLUFORFireTeam;
 		[getMarkerPos _fobmarker, nil, units _group1, 30, 0, false, true] call ace_ai_fnc_garrison;
 		{
 			_x forceSpeed 0;
 		} forEach units _group1;
 		
 		private _group2 = createGroup WEST;
-		[_group2, _fobMarker, format ["%1'1", _callsign], true] call H_fnc_BLUFORFireTeam;
+		[_group2, _fobmarker, format ["%1'1", _callsign], true] call H_fnc_BLUFORFireTeam;
 		
 		
 		//player setPos _fobpos;

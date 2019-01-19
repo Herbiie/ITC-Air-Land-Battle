@@ -7,13 +7,15 @@ if (isServer) then {
 	private _factionValue = "Faction" call BIS_fnc_getParamValue;
 
 	switch (_factionValue) do {
-		case 1: {
-			H_aiFaction = "CTRGAI"
-		};
-		case 2: {
-			H_aiFaction = "NATOAI"
-		};
+		case 1: {H_Faction = "CTRG"};
+		case 2: {H_Faction = "NATO"};
+		case 3: {H_Faction = "USMCWD"};
+		case 4: {H_Faction = "USMCDE"};
+		case 5: {H_Faction = "USARMYUCP"};
 	};
+	publicVariable "H_Faction";
+	
+	H_aiFaction = format ["%1AI",H_Faction];
 	publicVariable "H_aiFaction";
 	
 	private _enfactionValue = "enFaction" call BIS_fnc_getParamValue;
@@ -42,6 +44,7 @@ H_fnc_radioOn = compile (preprocessFileLineNumbers "Core\functions\options\radio
 H_fnc_radioOff = compile (preprocessFileLineNumbers "Core\functions\options\radioOff.sqf");
 H_fnc_checkCommand = compile (preprocessFileLineNumbers "Core\functions\options\checkCommander.sqf");
 H_fnc_commanderOptions = compile (preprocessFileLineNumbers "Core\functions\options\commanderOptions.sqf");
+H_fnc_allynessCheck = compile (preprocessFileLineNumbers "Core\functions\options\allynessCheck.sqf");
 
 // Management Folder
 H_fnc_callVote = compile (preprocessFileLineNumbers "Core\functions\management\callVote.sqf");
@@ -87,6 +90,7 @@ H_fnc_contact = compile (preprocessFileLineNumbers "Core\functions\ai\contact.sq
 H_fnc_aiSetup = compile (preprocessFileLineNumbers "Core\functions\ai\aiSetup.sqf");
 H_fnc_Radio = compile (preprocessFileLineNumbers "Core\functions\ai\radio.sqf");
 H_fnc_playRadio = compile (preprocessFileLineNumbers "Core\functions\ai\playradio.sqf");
+H_fnc_aiLoadout = compile (preprocessFileLineNumbers "Core\functions\ai\ailoadout.sqf");
 
 // Groups
 H_fnc_opforFireteam = compile (preprocessFileLineNumbers "Core\functions\ai\groups\OPFORFireteam.sqf");
@@ -133,11 +137,8 @@ H_fnc_HeliCrash = compile (preprocessFileLineNumbers "Core\functions\Missions\si
 H_fnc_operationOutposts = compile (preprocessFileLineNumbers "Core\functions\Missions\operationOutposts.sqf");
 
 // Logistics
-H_fnc_SetUpMT = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupMT.sqf");
 H_fnc_spawnVehicle = compile (preprocessFileLineNumbers "Core\functions\Logistics\spawnVehicle.sqf");
 H_fnc_placeVehicle = compile (preprocessFileLineNumbers "Core\functions\Logistics\placeVehicle.sqf");
-H_fnc_setupAir = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupair.sqf");
-H_fnc_SetUpArty = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupArty.sqf");
 H_fnc_SetUpCommand = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupCommand.sqf");
 H_fnc_SetUpArmourer = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupArmourer.sqf");
 H_fnc_penalty = compile (preprocessFileLineNumbers "Core\functions\Logistics\penalty.sqf");
@@ -145,6 +146,8 @@ H_fnc_arsenal = compile (preprocessFileLineNumbers "Core\functions\Logistics\ars
 H_fnc_upgradeGear = compile (preprocessFileLineNumbers "Core\functions\Logistics\upgradeGear.sqf");
 H_fnc_buyItem = compile (preprocessFileLineNumbers "Core\functions\Logistics\buyItem.sqf");
 H_fnc_openShop = compile (preprocessFileLineNumbers "Core\functions\Logistics\openShop.sqf");
+H_fnc_setupOfficer = compile (preprocessFileLineNumbers "Core\functions\Logistics\setUpOfficer.sqf");
+H_fnc_equipment = compile (preprocessFileLineNumbers "Core\functions\Logistics\equipment.sqf");
 // Supply
 H_fnc_supplyBox = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\supplyBox.sqf");
 H_fnc_resupply = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\resupply.sqf");

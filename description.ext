@@ -73,8 +73,8 @@ class Params
 	class Faction
 	{
 		title = "Player Faction";
-		values[] = {1,2};
-		texts[] = {"CTRG","NATO"};
+		values[] = {1,2,3,4,5};
+		texts[] = {"CTRG","NATO","USMC Woodland (RHS)","USMC Desert (RHS)","US Army UCP (RHS)"};
 		default = 1;
 	};
 	class EnFaction

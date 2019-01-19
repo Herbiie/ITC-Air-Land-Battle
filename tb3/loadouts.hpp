@@ -7,4 +7,8 @@ class TB3_Gear {//Gear definitions stay within this.
 	#include "civilian.hpp"
 	#include "opfor.hpp"
 	#include "hnf.hpp"
+	#include "usmcwd.hpp"
+	#include "usmcde.hpp"
+	#include "usarmyucp.hpp"
+	#include "usarmyocp.hpp"
 };

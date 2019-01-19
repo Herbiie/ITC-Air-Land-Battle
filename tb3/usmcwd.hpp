@@ -1,4 +1,4 @@
-class CTRG { 
+class USMCWD { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 1;
@@ -7,25 +7,20 @@ class CTRG {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_SPAR_01_blk_F",};
-		priKit[] = {"30Rnd_556x45_Stanag",};
+		weapons[] = {"rhs_weap_m16a4_carryhandle",};
+		priKit[] = {"rhs_mag_30Rnd_556x45_Mk318_Stanag",};
 		secKit[] = {};
-		pisKit[] = {"16Rnd_9x21_Mag",};
+		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio","NVGoggles"};
 		
 		headgear[] = {
-			"H_HelmetSpecB_paint1",
-			"H_HelmetSpecB_paint2",
-			"H_HelmetSpecB_sand",
-			"H_HelmetSpecB_snakeskin",
-			"H_HelmetSpecB",
+			"rhsusf_lwh_helmet_marpatwd",
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CTRG_1",
-			"U_B_CTRG_3",
+			"rhs_uniform_FROG01_wd",
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -38,17 +33,17 @@ class CTRG {
 				{"ACE_Flashlight_KSF1",1},
 			};
 			
-		vest[] = {"V_PlateCarrierH_CTRG",
+		vest[] = {"rhsusf_spc_rifleman",
 		};
 			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"B_IR_Grenade",1},
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_rgr",
+			"rhsusf_falconii_coy_gr",
 		};
 		backpackContents[] = {
 				
@@ -60,7 +55,7 @@ class CTRG {
 	class R: baseUnit {};
 };
 
-class CTRGTFAR { 
+class USMCWDTFAR { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 1;
@@ -69,25 +64,20 @@ class CTRGTFAR {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_SPAR_01_blk_F",};
-		priKit[] = {"30Rnd_556x45_Stanag",};
+		weapons[] = {"rhs_weap_m16a4_carryhandle",};
+		priKit[] = {"rhs_mag_30Rnd_556x45_Mk318_Stanag",};
 		secKit[] = {};
-		pisKit[] = {"16Rnd_9x21_Mag",};
+		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio","NVGoggles"};
 		
 		headgear[] = {
-			"H_HelmetSpecB_paint1",
-			"H_HelmetSpecB_paint2",
-			"H_HelmetSpecB_sand",
-			"H_HelmetSpecB_snakeskin",
-			"H_HelmetSpecB",
+			"rhsusf_lwh_helmet_marpatwd",
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CTRG_1",
-			"U_B_CTRG_3",
+			"rhs_uniform_FROG01_wd",
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -101,17 +91,17 @@ class CTRGTFAR {
 				{"TFAR_rf7800str",1},
 			};
 			
-		vest[] = {"V_PlateCarrierH_CTRG",
+		vest[] = {"rhsusf_spc_rifleman",
 		};
 			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"B_IR_Grenade",1},
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_rgr",
+			"rhsusf_falconii_coy_gr",
 		};
 		backpackContents[] = {
 				
@@ -123,7 +113,7 @@ class CTRGTFAR {
 	class R: baseUnit {};
 };
 
-class CTRGACRE { 
+class USMCWDACRE { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 1;
@@ -132,25 +122,20 @@ class CTRGACRE {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_SPAR_01_blk_F",};
-		priKit[] = {"30Rnd_556x45_Stanag",};
+		weapons[] = {"rhs_weap_m16a4_carryhandle",};
+		priKit[] = {"rhs_mag_30Rnd_556x45_Mk318_Stanag",};
 		secKit[] = {};
-		pisKit[] = {"16Rnd_9x21_Mag",};
+		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio","NVGoggles"};
 		
 		headgear[] = {
-			"H_HelmetSpecB_paint1",
-			"H_HelmetSpecB_paint2",
-			"H_HelmetSpecB_sand",
-			"H_HelmetSpecB_snakeskin",
-			"H_HelmetSpecB",
+			"rhsusf_lwh_helmet_marpatwd",
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CTRG_1",
-			"U_B_CTRG_3",
+			"rhs_uniform_FROG01_wd",
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -163,17 +148,17 @@ class CTRGACRE {
 				{"ACE_Flashlight_KSF1",1},
 			};
 			
-		vest[] = {"V_PlateCarrierH_CTRG",
+		vest[] = {"rhsusf_spc_rifleman",
 		};
 			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"B_IR_Grenade",1},
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_rgr",
+			"rhsusf_falconii_coy_gr",
 		};
 		backpackContents[] = {
 				
@@ -185,7 +170,7 @@ class CTRGACRE {
 	class R: baseUnit {};
 };
 
-class CTRGAI { 
+class USMCWDAI { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 1;
@@ -194,26 +179,20 @@ class CTRGAI {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_SPAR_01_blk_ERCO_Pointer_F","hgun_P07_khk_F",};
-		priKit[] = {"30Rnd_556x45_Stanag",};
+		weapons[] = {"rhs_weap_m16a4_acog_usmc",};
+		priKit[] = {"rhs_mag_30Rnd_556x45_Mk318_Stanag",};
 		secKit[] = {};
-		pisKit[] = {"16Rnd_9x21_Mag",};
+		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio"};
 		
 		headgear[] = {
-			"H_HelmetSpecB_paint1",
-			"H_HelmetSpecB_paint2",
-			"H_HelmetSpecB_sand",
-			"H_HelmetSpecB_snakeskin",
-			"H_HelmetSpecB",
+			"rhsusf_lwh_helmet_marpatwd",
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CTRG_1",
-			"U_B_CTRG_2",
-			"U_B_CTRG_3",
+			"rhs_uniform_FROG01_wd",
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -227,10 +206,10 @@ class CTRGAI {
 				{"ACE_PersonalAidKit",1},
 			};
 			
-		vest[] = {"V_PlateCarrierH_CTRG",
+		vest[] = {"rhsusf_spc_rifleman",
 		};
 			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"B_IR_Grenade",1},
@@ -238,7 +217,7 @@ class CTRGAI {
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_rgr",
+			"rhsusf_falconii_coy_gr",
 		};
 		backpackContents[] = {
 				
@@ -248,16 +227,15 @@ class CTRGAI {
 	};
 	class SL: baseUnit {
 			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"ACE_DAGR",1},
 				{"ACE_Vector",1},
 				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
 			};	
 		backpackContents[] = {
-				{"30Rnd_556x45_Stanag",4},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",4},
 				{"SmokeShellRed",2},
 				{"SmokeShellGreen",2},
 				{"SmokeShellBlue",2},
@@ -265,19 +243,18 @@ class CTRGAI {
 	};
 	class OF: baseUnit {
 		headgear[] = {
-			"H_Cap_khaki_specops_UK",
+			"rhs_8point_marpatwd",
 		};
 			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"ACE_DAGR",1},
 				{"ACE_Vector",1},
 				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
 			};	
 		backpackContents[] = {
-				{"30Rnd_556x45_Stanag",4},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",4},
 				{"SmokeShellRed",2},
 				{"SmokeShellGreen",2},
 				{"SmokeShellBlue",2},
@@ -285,38 +262,36 @@ class CTRGAI {
 	};
 	class TL: baseUnit {
 			vestContents[] = {					
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"ACE_DAGR",1},
 				{"ACE_Vector",1},
 				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
 			};	
 		backpackContents[] = {
-				{"30Rnd_556x45_Stanag",12},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",12},
 		};
 	};
 	
 	class R: baseUnit {	
 		backpackContents[] = {				
-				{"30Rnd_556x45_Stanag",6},
+				{"rhs_mag_30Rnd_556x45_Mk318_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},				
 		};
 	};
 	class AR: baseUnit {
-		weapons[] = {"arifle_SPAR_02_blk_F","hgun_P07_khk_F",};
-		priKit[] = {"150Rnd_556x45_Drum_Mag_Tracer_F","optic_erco_blk_F",};	
+		weapons[] = {"rhs_weap_m249_pip_usmc",};
+		priKit[] = {"rhsusf_100Rnd_556x45_M855_soft_pouch",};	
 			vestContents[] = {					
-				{"150Rnd_556x45_Drum_Mag_Tracer_F",2},
+				{"rhsusf_100Rnd_556x45_M855_soft_pouch",3},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"B_IR_Grenade",1},
-				{"16Rnd_9x21_Mag",2},
 			};
 		backpackContents[] = {				
-				{"150Rnd_556x45_Drum_Mag_Tracer_F",3},
+				{"rhsusf_100Rnd_556x45_M855_soft_pouch",4},
 				{"HandGrenade",2},
 				{"SmokeShell",2},				
 		};

@@ -9,7 +9,7 @@ settimemultiplier _time;
 radioNotifications = true;
 enableDynamicSimulationSystem true;
 
-[west, "marker_0", "Theatre HQ"] call BIS_fnc_addRespawnPosition;
+[west, "hqmarker", "Theatre HQ"] call BIS_fnc_addRespawnPosition;
 
 
 private _saved = profileNamespace getVariable "H_alb_Altis";
@@ -17,6 +17,7 @@ private _saved = profileNamespace getVariable "H_alb_Altis";
 if (isServer) then {
 	allPatrols = [];
 	publicVariable "allPatrols";
+	[] call H_fnc_equipment;
 	
 };
 
@@ -77,17 +78,17 @@ if (isServer && ("LoadPrevious" call BIS_fnc_getParamValue == 1) && (isNil "_sav
 };
 
 if (isServer && "FOBAttacks" call BIS_fnc_getParamValue == 1) then {
-	["marker_0"] spawn H_fnc_fobattacks;
+	["hqmarker"] spawn H_fnc_fobattacks;
 };
 
 if (!isDedicated && ("LoadPrevious" call BIS_fnc_getParamValue == 1) && !(isNil "_saved")) then {
 	[] call H_fnc_loadPlayer;
 };
 if (!isDedicated && ("LoadPrevious" call BIS_fnc_getParamValue == 1) && (isNil "_saved")) then {
-	[player, true, "RED", "Arson 1'1", "R"] call H_fnc_setup;
+	[player,"RED", "Arson 1'1", "R"] call H_fnc_setup;
 };
 if (!isDedicated && ("LoadPrevious" call BIS_fnc_getParamValue == 0)) then {
-	[player, true, "RED", "Arson 1'1", "R"] call H_fnc_setup;
+	[player,"RED", "Arson 1'1", "R"] call H_fnc_setup;
 };
 if (("LoadPrevious" call BIS_fnc_getParamValue == 1) && (isNil "_saved")) then {
 	_date =  "Daytime" call BIS_fnc_getParamValue;

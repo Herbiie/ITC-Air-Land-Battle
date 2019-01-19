@@ -62,7 +62,5 @@ if (_playerSaved) then {
 	
 	
 } else {
-	forceRespawn player;
-	sleep 0.1;
-	[player, true, "RED", "Arson 1'1", "R"] call H_fnc_setup;	
+	[player, "RED", "Arson 1'1", "R"] call H_fnc_setup;	
 };

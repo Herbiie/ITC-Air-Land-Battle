@@ -17,12 +17,6 @@ if (side _unit == west) then {
 		publicVariable "allPatrols";
 	};
 	
-	/* if (_patrol && !(isNil "currentCommander")) then {
-		private _commander = currentCommander select 1;
-		_commander hcSetGroup [group _unit];
-	};
-	*/
-	
 	if (_patrol && (_tracking == 1)) then {
 		[_unit] spawn H_fnc_tracker;
 	};
