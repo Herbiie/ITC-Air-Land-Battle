@@ -1,5 +1,5 @@
 params ["_playerID","_playerName"];
-hintC format ["%1 is now commander.", _playerName];
+["Notification",["New Commander",format ["%1 is now commander.", _playerName]]] remoteExec ["BIS_fnc_showNotification",0];
 
 currentCommander = [_playerID, player, _playerName];
 publicVariable "currentCommander";

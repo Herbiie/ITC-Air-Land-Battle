@@ -1,11 +1,12 @@
 params ["_subject","_length","_margin"];
 [] spawn H_fnc_radio;
 private _c = 0;
+["Notification",["New Vote",format ["%1 vote will start in 10 Seconds", _subject]]] remoteExec ["BIS_fnc_showNotification",0];
 while {_c <= 10} do {
 	private _d = 10 - _c;
-	[format ["%1 vote will start in %2",_subject,_d]] remoteExec ["hint",0];
-	sleep 1;
+	[[format ["<t align='center' shadow='1'><br/><br/><br/><br/><br/>%1 vote will start in %2</t>", _subject,_d],0,1,0]] remoteExec ["BIS_fnc_EXP_camp_SITREP",0];
 	_c = _c + 1;
+	sleep 1;
 };
 currentVoteYes = 0;
 publicVariable "currentVoteYes";
@@ -18,16 +19,9 @@ publicVariable "voteOver";
 private _a = 0;
 while {_a <= _length} do {
 	private _b = _length - _a;
-	// private _totalPlayers = count allPlayers;
-	[format ["%1 VOTE IN PROGRESS %2 Y:%3 N:%4",_subject,_b, currentVoteYes, currentVoteNo]] remoteExec ["hint",0];
-	// private _totalPercentage = currentVoteYes/_totalPlayers;
-	/*
-	if (_totalPercentage >= _margin) then {
-		exitWith {};
-	};
-	*/
-	sleep 1;
+	[[format ["<t align='center' shadow='1'><br/><br/><br/><br/><br/>%1 VOTE IN PROGRESS %2 Y:%3 N:%4</t>", _subject,_b, currentVoteYes, currentVoteNo],0,1,0]] remoteExec ["BIS_fnc_EXP_camp_SITREP",0];
 	_a = _a + 1;
+	sleep 1;
 };
 [player] remoteExec ["removeAllActions",0];
 private _totalVotes = currentVoteYes + currentVoteNo;
