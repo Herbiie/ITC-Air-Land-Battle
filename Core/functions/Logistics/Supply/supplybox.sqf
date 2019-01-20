@@ -204,5 +204,32 @@ switch (_faction) do {
 		};
 	
 	};
+	
+	case 7: {
+	// CSAT
+		_box addWeaponCargoGlobal ["arifle_CTARS_blk_F", 1];
+		_box addWeaponCargoGlobal ["launch_RPG32_F", 2];
+		_box addMagazineCargoGlobal ["100Rnd_580x42_Mag_F", 7];
+		_box addMagazineCargoGlobal ["30Rnd_65x39_caseless_green", 30];
+		if (H_alb_gearTier >= 1) then {
+			_box addMagazineCargoGlobal ["10Rnd_93x64_DMR_05_Mag", 8];
+			_box addWeaponCargoGlobal ["srifle_DMR_05_blk_F", 1];
+			_box addWeaponCargoGlobal ["arifle_Katiba_GL_F", 1];
+			_box addMagazineCargoGlobal ["1Rnd_HE_Grenade_shell", 10];
+			_box additemCargoGlobal ["optic_DMS", 1];
+			_box addMagazineCargoGlobal ["LMG_Zafir_F", 1];
+			_box addWeaponCargoGlobal ["150Rnd_762x54_Box", 5];
+		};
+		if (H_alb_gearTier >= 2) then {
+			_box addMagazineCargoGlobal ["launch_O_Vorona_green_F", 1];
+			_box addWeaponCargoGlobal ["Vorona_HEAT", 2];
+		};
+		if (H_alb_gearTier >= 3) then {
+			_box addMagazineCargoGlobal ["5Rnd_127x108_Mag", 8];
+			_box addWeaponCargoGlobal ["srifle_GM6_F", 1];
+			_box additemCargoGlobal ["optic_SOS", 1];
+		};
+	
+	};
 };
 

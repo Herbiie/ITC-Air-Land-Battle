@@ -29,6 +29,11 @@ switch (H_Faction) do {
 		H_Air_vehicles = [["RHS_MELB_H6M",75],["RHS_MELB_MH6M",100],["RHS_MELB_AH6M",150],["RHS_UH60M_MEV2",175],["RHS_UH60M2",200],["RHS_UH60M",250],["RHS_CH_47F",350],["RHS_AH64D_wd",500],["ITC_A519",750],["ITC_Gripen",1000],["ITC_F181E",1250],["ITC_A10E",1500]];
 		H_Arty_vehicles = [["B_Mortar_01_F",100],["itc_land_b_SPH_Sholef2",400],["itc_land_b_mlrs_seara2",700]];
 	};
+	case "CSAT": {
+		H_MT_vehicles = [["O_Quadbike_01_F",10],["O_LSV_02_unarmed_F",20],["O_LSV_02_armed_F",30],["O_LSV_02_AT_F",40],["O_MRAP_02_F",50],[")_MRAP_02_hmg_F",60],[")_MRAP_02_gmg_F",70]];
+		H_Air_vehicles = [["O_Heli_Light_02_unarmed_F",100],["O_Heli_Light_02_dynamicLoadout_F",150],["O_Heli_Transport_04_bench_F",250],["O_Heli_Transport_04_covered_F",300],["O_Heli_Attack_02_dynamicLoadout_F",500],["ITC_A519",750],["ITC_Gripen",1000],["ITC_F181E",1250],["ITC_A10E",1500]];
+		H_Arty_vehicles = [["B_Mortar_01_F",100],["itc_land_o_sph_sochor2",400],["itc_land_o_mlrs_zamak",700]];
+	};
 
 };
 

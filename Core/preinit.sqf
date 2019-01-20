@@ -3,7 +3,7 @@ if (isServer) then {
 	createFOB = false;
 	createPB = false;
 
-// Set AI Factions
+// Set Factions
 	private _factionValue = "Faction" call BIS_fnc_getParamValue;
 
 	switch (_factionValue) do {
@@ -13,6 +13,7 @@ if (isServer) then {
 		case 4: {H_Faction = "USMCDE"};
 		case 5: {H_Faction = "USARMYUCP"};
 		case 6: {H_Faction = "USARMYOCP"};
+		case 7: {H_Faction = "CSAT"};
 	};
 	publicVariable "H_Faction";
 	
@@ -32,7 +33,7 @@ if (isServer) then {
 			H_enFaction = "TANOAR"
 		};
 	};
-	publicVariable "H_aiFaction";
+	publicVariable "H_enFaction";
 };
 
 

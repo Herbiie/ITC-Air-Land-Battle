@@ -11,4 +11,5 @@ class TB3_Gear {//Gear definitions stay within this.
 	#include "usmcde.hpp"
 	#include "usarmyucp.hpp"
 	#include "usarmyocp.hpp"
+	#include "csat.hpp"
 };
