@@ -18,3 +18,6 @@ private _a = 0;
 	};
 } forEach _locations;
 publicVariable "H_alb_locations";
+
+startingMarkers = allMapMarkers;
+publicVariable "startingMarkers";

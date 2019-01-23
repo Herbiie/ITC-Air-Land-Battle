@@ -1,3 +1,20 @@
+H_alb_markerstosave = [];
+
+{
+	if (!(_x in startingMarkers)) then {
+		private _markerType = getMarkerType _x;
+		private _markerColor = getMarkerColor _x;
+		private _markerSize = getMarkerSize _x;
+		private _markerPos = getMarkerPos _x;
+		private _markerShape = markerShape _x;
+		private _markerDir = markerDir _x;
+		private _markerBrush = markerBrush _x;
+		private _markerText = markerText _x;
+		private _marker = [_x, _markerType, _markerColor, _markerSize, _markerPos, _markerShape, _markerDir, _markerBrush, _markerText];
+		H_alb_markerstosave = H_alb_markerstosave + [_marker];
+	};
+} forEach allMapMarkers;
+
 H_alb_vehiclestosave = [];
 
 {	
@@ -46,7 +63,7 @@ private _crates = [];
 	};
 } forEach allMissionObjects "B_supplyCrate_F";
 
-private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates];
+private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates,H_alb_markerstosave];
 profileNamespace setVariable ["H_alb_Altis",_saveVariable];
 
 saveProfileNamespace;

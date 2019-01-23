@@ -1,5 +1,6 @@
 private _playerID = getPlayerUID player;
 private _playerSaved = _playerID in H_alb_playerIDs;
+[player, "RED", "Arson 1'1", "R"] call H_fnc_setup;
 if (_playerSaved) then {
 
 	private _playerNumber = 0;
@@ -54,13 +55,10 @@ if (_playerSaved) then {
 	if ((count _vestContents) > 0) then { [player,_vestContents] call tb3_fsetVestContents; };
 	
 	player setVariable ["ACE_hasEarPlugsIn", true, true];
-	[player, false, "RED", "Arson 1'1", "R"] call H_fnc_setup;
 	sleep 0.1;
 	player setPos _position;
 	player setDir _dir;
 	[player,_score] call BIS_fnc_addScore;
 	
 	
-} else {
-	[player, "RED", "Arson 1'1", "R"] call H_fnc_setup;	
 };
