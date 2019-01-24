@@ -137,6 +137,8 @@ H_fnc_VCP = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMiss
 H_fnc_randomAttacks = compile (preprocessFileLineNumbers "Core\functions\Missions\randomAttacks.sqf");
 H_fnc_HeliCrash = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionHeliCrash.sqf");
 H_fnc_operationOutposts = compile (preprocessFileLineNumbers "Core\functions\Missions\operationOutposts.sqf");
+H_fnc_AreaClear = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionClear.sqf");
+H_fnc_CaptureHVT = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionCapture.sqf");
 
 // Logistics
 H_fnc_spawnVehicle = compile (preprocessFileLineNumbers "Core\functions\Logistics\spawnVehicle.sqf");

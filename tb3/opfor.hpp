@@ -138,6 +138,14 @@ class ALTISI {
 class TL: baseUnit {
 		weapons[] = {"arifle_AK12_F",};	
 	};
+class OF: baseUnit {
+		weapons[] = {};
+		uniform[] = {
+			"U_BG_leader",
+		};
+			vestContents[] = {		
+			};
+	};
 class R1: baseUnit {
 	};
 class R2: baseUnit {
@@ -296,6 +304,14 @@ class ALTISG {
 class TL: baseUnit {
 		weapons[] = {"arifle_AK12_F",};	
 	};
+class OF: baseUnit {
+		weapons[] = {};
+		uniform[] = {
+			"U_BG_leader",
+		};
+			vestContents[] = {		
+			};
+	};
 class R1: baseUnit {
 	};
 class R2: baseUnit {
@@ -448,6 +464,14 @@ class TANOAR {
 	};
 class TL: baseUnit {
 		weapons[] = {"arifle_AK12_F",};	
+	};
+class OF: baseUnit {
+		weapons[] = {};
+		uniform[] = {
+			"U_BG_leader",
+		};
+			vestContents[] = {		
+			};
 	};
 class R1: baseUnit {
 	};

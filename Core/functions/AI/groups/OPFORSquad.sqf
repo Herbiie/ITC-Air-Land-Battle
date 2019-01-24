@@ -2,13 +2,6 @@ params ["_group","_pos"];
 private _aiSkill = "AISkill" call BIS_fnc_getParamValue;
 private _playerCount = count allPlayers;
 
-/*
-this addEventHandler [""killed"", ""
-			params [""_dead"", ""_killer"", ""_instigator"", ""_useEffects""];
-			[1, true] remoteExec [""H_fnc_deploypoints"",1];
-			[1, position _dead, true] remoteExec [""H_fnc_townPoints"",1]""
-		]
-*/
 		
 
 if (_playercount > 2) then {
@@ -17,7 +10,8 @@ if (_playercount > 2) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -28,7 +22,8 @@ if (_playercount > 5) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -39,7 +34,8 @@ if (_playercount > 5) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -50,7 +46,8 @@ if (_playercount > 5) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -61,7 +58,8 @@ if (_playercount > 10) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -72,7 +70,8 @@ if (_playercount > 10) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -83,7 +82,8 @@ if (_playercount > 10) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -94,7 +94,8 @@ if (_playercount > 10) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -105,7 +106,8 @@ if (_playercount > 15) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -116,7 +118,8 @@ if (_playercount > 15) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -127,7 +130,8 @@ if (_playercount > 15) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -138,7 +142,8 @@ if (_playercount > 15) then {
 		this addEventHandler [""killed"", {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
-				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+				[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]
+			_killer addScore 1}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -148,7 +153,8 @@ if (_playercount > 15) then {
 	this addEventHandler [""killed"", {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
-			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]
+			_killer addScore 1}
 		];
 	
 ", _aiSkill, "PRIVATE"];
@@ -158,7 +164,8 @@ if (_playercount > 15) then {
 	this addEventHandler [""killed"", {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
-			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]
+			_killer addScore 1}
 		];
 	
 ", _aiSkill, "PRIVATE"];
@@ -168,7 +175,8 @@ if (_playercount > 15) then {
 	this addEventHandler [""killed"", {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
-			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2];
+			_killer addScore 1}
 		];
 	
 ", _aiSkill, "PRIVATE"];
@@ -179,7 +187,8 @@ if (_playercount > 15) then {
 	this addEventHandler [""killed"", {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
-			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]}
+			[1, position _dead, true] remoteExec ['H_fnc_townPoints',2]
+			_killer addScore 1}
 		];
 	
 ", _aiSkill, "CORPORAL"];
