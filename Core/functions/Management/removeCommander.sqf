@@ -10,4 +10,5 @@ removeAllActions air;
 removeAllActions arty;
 removeAllActions arm;
 hcRemoveAllGroups player;
-[format ["%1 has resigned as commander",_profilename]] remoteExec ["hint",0];
+player setRank "PRIVATE";
+["Notification",["Commander Resigns",format ["%1 has resigned as commander.", _profileName]]] remoteExec ["BIS_fnc_showNotification",0];

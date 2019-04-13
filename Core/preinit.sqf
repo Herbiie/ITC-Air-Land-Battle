@@ -9,11 +9,7 @@ if (isServer) then {
 	switch (_factionValue) do {
 		case 1: {H_Faction = "CTRG"};
 		case 2: {H_Faction = "NATO"};
-		case 3: {H_Faction = "USMCWD"};
-		case 4: {H_Faction = "USMCDE"};
-		case 5: {H_Faction = "USARMYUCP"};
-		case 6: {H_Faction = "USARMYOCP"};
-		case 7: {H_Faction = "CSAT"};
+		case 3: {H_Faction = "CSAT"};
 	};
 	publicVariable "H_Faction";
 	
@@ -82,6 +78,7 @@ H_fnc_TeleportToSL = compile (preprocessFileLineNumbers "Core\functions\player\t
 H_fnc_startOnSafe = compile (preprocessFileLineNumbers "Core\functions\player\startOnSafe.sqf");
 H_fnc_saveGear = compile (preprocessFileLineNumbers "Core\functions\player\saveGear.sqf");
 H_fnc_loadout = compile (preprocessFileLineNumbers "Core\functions\player\loadout.sqf");
+H_fnc_allyness = compile (preprocessFileLineNumbers "Core\functions\player\allyness.sqf");
 
 // AI Folder
 H_fnc_patrol = compile (preprocessFileLineNumbers "Core\functions\ai\patrol.sqf");
@@ -137,6 +134,7 @@ H_fnc_VCP = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMiss
 H_fnc_randomAttacks = compile (preprocessFileLineNumbers "Core\functions\Missions\randomAttacks.sqf");
 H_fnc_HeliCrash = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionHeliCrash.sqf");
 H_fnc_operationOutposts = compile (preprocessFileLineNumbers "Core\functions\Missions\operationOutposts.sqf");
+H_fnc_operationCapture = compile (preprocessFileLineNumbers "Core\functions\Missions\operationCapture.sqf");
 H_fnc_AreaClear = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionClear.sqf");
 H_fnc_CaptureHVT = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionCapture.sqf");
 
@@ -152,6 +150,8 @@ H_fnc_buyItem = compile (preprocessFileLineNumbers "Core\functions\Logistics\buy
 H_fnc_openShop = compile (preprocessFileLineNumbers "Core\functions\Logistics\openShop.sqf");
 H_fnc_setupOfficer = compile (preprocessFileLineNumbers "Core\functions\Logistics\setUpOfficer.sqf");
 H_fnc_equipment = compile (preprocessFileLineNumbers "Core\functions\Logistics\equipment.sqf");
+H_fnc_setUpSupply = compile (preprocessFileLineNumbers "Core\functions\Logistics\setUpSupply.sqf");
+H_fnc_fuelBladder = compile (preprocessFileLineNumbers "Core\functions\Logistics\fuelBladder.sqf");
 // Supply
 H_fnc_supplyBox = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\supplyBox.sqf");
 H_fnc_resupply = compile (preprocessFileLineNumbers "Core\functions\Logistics\Supply\resupply.sqf");

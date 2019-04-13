@@ -113,3 +113,10 @@ If (!_failed) then {
 {
 	_x addScore 10;
 } forEach allPlayers;
+sleep 300;
+{
+	deleteVehicle _x;
+} forEach (_pos nearObjects 20);
+{
+	deleteVehicle _x;
+} forEach units _pilotgroup;

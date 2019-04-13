@@ -1,4 +1,4 @@
-private _allyness = score player;
+private _allyness = H_allyness;
 
 if (_allyness < 25) then {
 	hint format ["%1 Allyness Remaining. You're one of the least cool soldiers in theatre.", _allyness];

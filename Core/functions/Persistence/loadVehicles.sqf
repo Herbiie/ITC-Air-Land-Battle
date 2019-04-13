@@ -1,7 +1,7 @@
 sleep 0.1;
 private _vehicleList = H_alb_savedVehicles;
 {
-	_x params ["_class", "_position", "_dir", "_fuel","_cost","_magazines","_weapons","_items","_backpacks"];
+	_x params ["_class", "_position", "_dir", "_fuel","_cost","_magazines","_weapons","_items","_backpacks","_damage"];
 	private _vehicle = _class createVehicle _position;
 	_vehicle setDir _dir;
 	_vehicle setFuel _fuel;
@@ -52,6 +52,9 @@ private _vehicleList = H_alb_savedVehicles;
 			};
 		} forEach _backpacks;
 	};
+	{
+		[_vehicle, (_x select 0), (_x select 1)] call BIS_fnc_setHitPointDamage;
+	} forEach _damage;
 	H_alb_westVehicles = H_alb_westVehicles + [[_vehicle,_cost]];
 	publicVariable "H_alb_westVehicles";
 } forEach _vehicleList;

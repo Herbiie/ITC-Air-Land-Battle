@@ -13,7 +13,7 @@ if (_playerSaved) then {
 	} forEach H_alb_players;
 	private _playerArray = H_alb_players select _playerNumber;
 
-	_playerArray params ["_playerIDSaved", "_score", "_dir", "_position", "_playerKit"];
+	_playerArray params ["_playerIDSaved", "_score", "_dir", "_position", "_playerKit", "_commander","_subComamnder"];
 	_playerKit params ["_weapons", "_PriKit", "_SecKit", "_PisKit", "_backpack", "_backpackitems", "_headgear", "_uniform", "_uniformItems", "_vest", "_vestItems", "_goggles", "_assignedItems"];
 	private _backpackContents =  (_backpackItems) call BIS_fnc_consolidateArray;
 	private _vestContents =  (_vestItems) call BIS_fnc_consolidateArray;
@@ -56,9 +56,28 @@ if (_playerSaved) then {
 	
 	player setVariable ["ACE_hasEarPlugsIn", true, true];
 	sleep 0.1;
+	
+	if (_commander && (count currentCommander == 0)) then {
+		[_playerID, profileName] call H_fnc_becomeCommander;
+	};
+	
+	if (_subComamnder) then {
+		player setRank "Sergeant";
+		[arty,H_Arty_vehicles] call H_fnc_setUpOfficer;
+		[mt,H_MT_vehicles] call H_fnc_setUpOfficer;
+		[air,H_Air_vehicles] call H_fnc_setUpOfficer;
+		[sup] call H_fnc_setUpSupply;
+		[player,1,["ACE_SelfActions","COptions","SubCommander"]] call ace_interact_menu_fnc_removeActionFromObject;
+		[player,1,["ACE_SelfActions","COptions","Commander"]] call ace_interact_menu_fnc_removeActionFromObject;
+		[player, 1, ["ACE_SelfActions","COptions"],H_action_subcommanderResign] call ace_interact_menu_fnc_addActionToObject;
+		_playerName = profileName;
+		["Notification",["New Sub-Commander",format ["%1 is now a sub-commander.", _playerName]]] remoteExec ["BIS_fnc_showNotification",0];
+		subCommanders = subCommanders + [_playerID];
+		publicVariable "subCommanders";
+	};
 	player setPos _position;
 	player setDir _dir;
-	[player,_score] call BIS_fnc_addScore;
+	H_allyness = _score;
 	
 	
 };

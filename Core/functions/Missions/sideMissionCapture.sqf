@@ -21,7 +21,7 @@ private _objType = selectRandom [H_fnc_hq1,H_fnc_hq2];
 private _marker = createMarker [format ["Location%1", random 1000], _pos];
 _marker setMarkerType "hd_objective";
 _marker setMarkerColor "ColorRed";
-_marker setMarkerText "Insurgent Outpost";
+_marker setMarkerText "Insurgent HQ";
 
 private _group1 = createGroup east;
 [_group1, _pos] call H_fnc_OPFORSquad;
@@ -42,31 +42,34 @@ private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
 [[west,["_task"],["Situation:<br/>
-An insurgent outpost has been identified at the location marked on the map.<br/>
+A prominent insurgent commander has been sighted at an Insurgent HQ. The capture of this commander would be a major blow for the insurgency.<br/>
 <br/>
 Situation Enemy Forces:<br/>
-The outpost will have 6 - 10 insurgents manning defensive positions or carrying out patrols. Insurgents are armed with a mixture of small arms and RPGs.<br/>
+The HQ will have 6 - 10 insurgents manning defensive positions or carrying out patrols. Insurgents are armed with a mixture of small arms and RPGs.<br/>
 <br/>
 Situation Friendly Forces:<br/>
 As per map.<br/>
 <br/>
 Mission:<br/>
-Destroy the enemy outpost at the marker in order to disrupt insurgent activity.<br/>
+Capture the insurgent commander and return him to base.<br/>
 <br/>
 Execution:<br/>
-Strike team will insert near objective and destroy enemy forces at the outpost.<br/>
+Strike team will insert near objective and destroy enemy forces to capture insurgent commander and return him to base. The commander will be unarmed and wearing military clothing. Cable ties will be required.<br/>
 <br/>
 Service Support:<br/>
 As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
-As per SOPs.<br/>",format ["%1 Destroy Outpost", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+As per SOPs.<br/>",format ["%1 Capture HVT", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+
+waitUntil {{side _x == WEST && (_x distance _commander < 50)} count allunits > 0};
+[_commander, true] call ACE_captives_fnc_setSurrendered;
 
 waitUntil {(_commander distance _base < 50) OR !(alive _commander)};
 
 if (alive _commander) then {
 	["_task","SUCCEEDED"] remoteExec ["BIS_fnc_taskSetState",0];
-
+	deleteVehicle _commander;
 	deleteMarker _marker;
 		missionActive = false;
 		[20, true] remoteExec ["H_fnc_deploypoints",2];
@@ -75,6 +78,9 @@ if (alive _commander) then {
 	sleep 300;
 	{deleteVehicle _x} forEach units _group1;
 	{deleteVehicle _x} forEach units _group2;
+	{
+		deleteVehicle _x;
+	} forEach (_pos nearObjects 20);
 
 	{
 		_x addScore 10;

@@ -3,7 +3,7 @@ params ["_points","_position","_add"];
 	locationPositions = [];
 	
 	{
-		private _distance = (_x select 1)  distance _position;
+		private _distance = (_x select 1) distance _position;
 		locationPositions pushback [_distance, _x select 0];
 	} forEach H_alb_locations;
 	

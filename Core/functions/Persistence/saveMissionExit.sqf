@@ -35,7 +35,13 @@ H_alb_vehiclestosave = [];
 	private _magazines = magazineCargo _veh;
 	private _weapons = weaponCargo _veh;
 	private _items = itemCargo _veh;
-	private _vehicleArray = [_vehicleType, _position, _direction, _fuel, _cost,_magazines, _weapons, _items, _backpacks];
+	private _damageArray = getAllHitPointsDamage _veh;
+	private _damage = [];
+	{
+		private _thisDamage = [_x, ((_damageArray select 2) select _forEachIndex)];
+		_damage = _damage + [_thisDamage];
+	} forEach (_damageArray select 0);
+	private _vehicleArray = [_vehicleType, _position, _direction, _fuel, _cost,_magazines, _weapons, _items, _backpacks, _damage];
 	H_alb_vehiclestosave = H_alb_vehiclestosave + [_vehicleArray];
 } forEach H_alb_westVehicles;
 
@@ -63,7 +69,16 @@ private _crates = [];
 	};
 } forEach allMissionObjects "B_supplyCrate_F";
 
-private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates,H_alb_markerstosave];
+private _fuelCanisters = [];
+
+{
+	private _fuelPos = position _x;
+	private _fuelAmount = [_x] call ace_refuel_fnc_getFuel;
+	_fuelCanisters = _fuelCanisters + [[_fuelPos, _fuelAmount]];
+}  forEach allMissionObjects "FlexibleTank_01_sand_F";
+
+
+private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates,H_alb_markerstosave,_fuelCanisters];
 profileNamespace setVariable ["H_alb_Altis",_saveVariable];
 
 saveProfileNamespace;

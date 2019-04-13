@@ -1,5 +1,7 @@
 params ["_co"];
 
-private _mission = selectRandom ["H_fnc_operationOutposts"];
+hint "Finding Operation...";
 
-	[position _co] remoteExec [_mission,2];
+private _mission = selectRandom ["H_fnc_operationOutposts","H_fnc_operationCapture"];
+
+[position _co] remoteExec [_mission,2];

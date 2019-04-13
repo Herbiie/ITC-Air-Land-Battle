@@ -1,6 +1,4 @@
 params ["_unit","_type"];
-
-
 {
 	private _classname = _x select 0;
 	private _cost = _x select 1;

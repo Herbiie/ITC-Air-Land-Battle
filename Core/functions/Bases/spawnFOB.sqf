@@ -24,7 +24,7 @@ params ["_fobpos"];
 		[_group2, _fobMarker, format ["%1'1", _callsign], true] call H_fnc_BLUFORFireTeam;
 		private _group3 = createGroup WEST;
 		[_group3, _fobMarker, format ["%1'2", _callsign], true] call H_fnc_BLUFORFireTeam;
-		private _group2 = createGroup WEST;
+		private _group5 = createGroup WEST;
 		[_group5, _fobMarker, format ["%1'3", _callsign], true] call H_fnc_BLUFORFireTeam;
 		
 		private _group4 = createGroup west;

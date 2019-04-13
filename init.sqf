@@ -18,6 +18,10 @@ if (isServer) then {
 	allPatrols = [];
 	publicVariable "allPatrols";
 	[] call H_fnc_equipment;
+	currentCommander = [];
+	subCommanders = [];
+	publicVariable "currentCommander";
+	publicVariable "subCommanders";
 	
 };
 
@@ -40,10 +44,6 @@ if (isServer && ("LoadPrevious" call BIS_fnc_getParamValue == 0)) then {
 	publicVariable "H_alb_players";
 	[] execVM "core\scripts\findTowns.sqf";
 	[] execVM "core\scripts\handlepoints.sqf";
-	currentCommander = [];
-	subCommanders = [];
-	publicVariable "currentCommander";
-	publicVariable "subCommanders";
 	H_alb_gearTier = 0;
 	publicVariable "H_alb_gearTier";
 };
@@ -71,10 +71,6 @@ if (isServer && ("LoadPrevious" call BIS_fnc_getParamValue == 1) && (isNil "_sav
 	publicVariable "H_alb_westVehicles";
 	[] execVM "core\scripts\findTowns.sqf";
 	[] execVM "core\scripts\handlepoints.sqf";
-	currentCommander = [];
-	subCommanders = [];
-	publicVariable "currentCommander";
-	publicVariable "subCommanders";
 };
 
 if (isServer && "FOBAttacks" call BIS_fnc_getParamValue == 1) then {

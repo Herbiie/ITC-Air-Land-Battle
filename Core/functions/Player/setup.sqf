@@ -19,6 +19,7 @@
 	
 	};
 	
+	H_allyness = 0;
 	
 	_unit setGroupID [_UnitID];
 	

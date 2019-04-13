@@ -12,21 +12,20 @@ params ["_fobpos","_fobname"];
 		private _callsign = format ["%1 %2", _split select 1, _split select 2];
 		
 		
-		private _group1 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfSquad"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+		private _group1 = createGroup WEST;
+		[_group1, _fobMarker, _fobname, false] call H_fnc_BLUFORSquad;
 		[getMarkerPos _fobmarker, nil, units _group1, 30, 0, false, true] call ace_ai_fnc_garrison;
-		[leader _group1, _fobname, false, _fobmarker] spawn H_fnc_aiSetup;
 		{
 			_x forceSpeed 0;
 		} forEach units _group1;
 		
-		private _group2 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
-		[leader _group2, format ["%1'1", _callsign], true, _fobmarker] spawn H_fnc_aiSetup;
 		
-		private _group3 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
-		[leader _group3, format ["%1'2", _callsign], true, _fobmarker] spawn H_fnc_aiSetup;
-		
-		private _group5 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
-		[leader _group5, format ["%1'3", _callsign], true, _fobmarker] spawn H_fnc_aiSetup;
+		private _group2 = createGroup WEST;
+		[_group2, _fobMarker, format ["%1'1", _callsign], true] call H_fnc_BLUFORFireTeam;
+		private _group3 = createGroup WEST;
+		[_group3, _fobMarker, format ["%1'2", _callsign], true] call H_fnc_BLUFORFireTeam;
+		private _group5 = createGroup WEST;
+		[_group5, _fobMarker, format ["%1'3", _callsign], true] call H_fnc_BLUFORFireTeam;
 		
 		private _group4 = createGroup west;
 		private _radar1 = "itc_land_COBRA01" createVehicle [(_fobpos select 0)+10.3994, (_fobpos select 1)+10.8008, 0];

@@ -24,7 +24,7 @@ if (side _unit == west) then {
 	{
 	    _x addEventHandler ["killed", "
 				[2, false] remoteExec [""H_fnc_deploypoints"",2];
-				[2, getMarkerPos _base, false] remoteExec [""H_fnc_townPoints"",2]
+				[2, position (_this select 0), false] remoteExec [""H_fnc_townPoints"",2]
 				"];
 	} forEach units group _unit;
 };
@@ -36,7 +36,7 @@ if (side _unit == independent) then {
 	group _unit deleteGroupWhenEmpty true;
 	{
 	    _x addEventHandler ["killed", "
-				[2, getMarkerPos _base, false] remoteExec [""H_fnc_townPoints"",2]
+				[2, position (_this select 0), false] remoteExec [""H_fnc_townPoints"",2]
 				"];
 	} forEach units group _unit;
 	if (_patrol) then {

@@ -37,7 +37,7 @@ while {_loop} do {
 	
 		if (actionChance == 1) then {
 		_loop = false;
-		_mission = selectRandom [H_fnc_infAttack, H_fnc_mortarAttack];
+		_mission = selectRandom [H_fnc_infAttack,H_fnc_mortarAttack,H_fnc_mortarAttack];
 		[_marker] call _mission;
 		_loop = true;
 	};

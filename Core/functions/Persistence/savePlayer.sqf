@@ -45,9 +45,23 @@ publicVariable "H_alb_players";
 	private _assignedItems = assignedItems _savingPlayer;
 	private _position = getPos _savingPlayer;
 	private _dir = getDir _savingPlayer;
-	private _score = score _savingPlayer;
 	private _playerKit = [_weapon, _PriKit, _SecKit, _PisKit, _backpack, _backpackitems, _headgear, _uniform, _uniformItems, _vest, _vestItems, _goggles, _assignedItems];
-	H_alb_players = H_alb_players + [[_playerID, _score, _dir, _position, _playerKit]];
+	
+	private _score = _savingPlayer getVariable ["H_allyness",0];
+	
+	private _isCommander = false;
+	
+	if ((currentCommander select 1) == player) then {
+		_isCommander = true;
+	};
+	
+	private _isSubCommander = false;
+	
+	if (_playerID in subCommanders) then {
+		_isSubCommander = true;
+	};
+	
+	H_alb_players = H_alb_players + [[_playerID, _score, _dir, _position, _playerKit, _isCommander, _isSubCommander]];
 	publicVariable "H_alb_players";
 	H_alb_playerIDs = H_alb_playerIDs + [_playerID];
 	publicVariable "H_alb_playerIDs"

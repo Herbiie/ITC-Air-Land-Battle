@@ -66,3 +66,10 @@ sleep 0.1;
 	
 	
 } forEach H_alb_fobs;
+
+{
+	private _fuel = "FlexibleTank_01_sand_F" createVehicle (_x select 0);
+	[_fuel, 1] call ace_cargo_fnc_setSize;
+	[_fuel, true, [0, 1, 1], 10] call ace_dragging_fnc_setCarryable;
+	[_fuel, (_X select 2)] call ace_refuel_fnc_setFuel;
+} forEach H_alb_fuelCanisters;

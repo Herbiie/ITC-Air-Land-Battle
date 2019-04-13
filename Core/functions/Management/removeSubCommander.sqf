@@ -1,8 +1,11 @@
 removeAllActions mt;
 removeAllActions air;
 removeAllActions arty;
+removeAllActions sup;
+private _playerName = profileName;
+private _playerID = getPlayerUID player;
 [player,1,["ACE_SelfActions","COptions","SubCommanderResign"]] call ace_interact_menu_fnc_removeActionFromObject;
 [player, 1, ["ACE_SelfActions","COptions"],H_action_subcommanderRequest] call ace_interact_menu_fnc_addActionToObject;
 [player, 1, ["ACE_SelfActions","COptions"],H_action_commanderRequest] call ace_interact_menu_fnc_addActionToObject;
-subCommanders = subCommanders - [_applicantID];
-publicVariable "subCommanders";
+player setRank "PRIVATE";
+["Notification",["Sub-Commander Resigns",format ["%1 has resigned as sub-commander.", _playerName]]] remoteExec ["BIS_fnc_showNotification",0];

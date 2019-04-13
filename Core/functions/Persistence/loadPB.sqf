@@ -11,15 +11,15 @@ params ["_fobpos","_fobname"];
 		private _split = _fobname splitstring " ";
 		private _callsign = format ["%1 %2", _split select 1, _split select 2];
 		
-		private _group1 = [_fobpos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
+		private _group1 = createGroup WEST;
+		[_group1, _fobmarker, _fobname, false] call H_fnc_BLUFORFireTeam;
 		[getMarkerPos _fobmarker, nil, units _group1, 30, 0, false, true] call ace_ai_fnc_garrison;
-		[leader _group1, _fobname, false, _fobmarker] call H_fnc_aiSetup;
 		{
 			_x forceSpeed 0;
 		} forEach units _group1;
 		
-		private _group2 = [[_fobpos select 0, (_fobpos select 1)+25, 0], west, (configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfTeam"),[],[],[],[],[]] call BIS_fnc_spawnGroup;
-		[leader _group2, format ["%1'1", _callsign], true, _fobmarker] call H_fnc_aiSetup;
+		private _group2 = createGroup WEST;
+		[_group2, _fobmarker, format ["%1'1", _callsign], true] call H_fnc_BLUFORFireTeam;
 		
 		
 		//player setPos _fobpos;
@@ -51,11 +51,13 @@ params ["_fobpos","_fobname"];
 		
 		private _cogroup = createGroup west;
 		private _co = _coGroup createUnit ["B_officer_F", [(_fobpos select 0)-9.5, (_fobpos select 1)-3.5, 0], [], 0, "NONE"];
+		[_co, "OF"] call H_fnc_aiLoadout;
 		_co disableai "move";
 		_co allowDamage false;
 		[_co, ["Request Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		[_co, ["Purchase Items", "[] call H_fnc_openShop",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		private _box = "B_supplyCrate_F" createVehicle _fobpos;
+		[_box] call H_fnc_supplybox; 
 		
 		
 		

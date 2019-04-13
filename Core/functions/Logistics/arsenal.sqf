@@ -19,29 +19,6 @@ _faction = "Faction" call BIS_fnc_getParamValue;
 		};
 		
 		case 3: {
-			// USMC Woodland
-			[_box,
-			["rhs_weap_m16a4_carryhandle","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_lwh_helmet_marpatwd","rhsusf_lwh_helmet_marpatwd_blk_ess","rhsusf_lwh_helmet_marpatwd_headset_blk2","rhsusf_lwh_helmet_marpatwd_headset_blk","rhsusf_lwh_helmet_marpatwd_headset","rhsusf_lwh_helmet_marpatwd_ess","rhs_uniform_FROG01_wd","rhsusf_spc_rifleman","rhsusf_spc_iar","rhsusf_spc_patchless","rhsusf_spc_squadleader","rhsusf_spc_teamleader","rhs_weap_m249","rhsusf_100Rnd_556x45_M855_soft_pouch","rhs_weap_M136","rhs_weap_m72a7","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_ANPVS_14"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		
-		case 4: {
-			// USMC Desert
-			[_box,
-			["rhs_weap_m16a4_carryhandle","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_lwh_helmet_marpatd","rhsusf_lwh_helmet_marpatd_blk_ess","rhsusf_lwh_helmet_marpatd_headset_blk2","rhsusf_lwh_helmet_marpatd_headset_blk","rhsusf_lwh_helmet_marpatd_headset","rhsusf_lwh_helmet_marpatd_ess","rhs_uniform_FROG01_d","rhsusf_spc_rifleman","rhsusf_spc_iar","rhsusf_spc_patchless","rhsusf_spc_squadleader","rhsusf_spc_teamleader","rhs_weap_m249","rhsusf_100Rnd_556x45_M855_soft_pouch","rhs_weap_M136","rhs_weap_m72a7","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_ANPVS_14"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		
-		case 5: {
-			// US Army UCP
-			[_box,
-			["rhs_weap_m4a1_carryhandle","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_ach_helmet_ucp","rhsusf_ach_helmet_ess_ucp","rhsusf_ach_helmet_headset_ucp","rhsusf_ach_helmet_headset_ess_ucp","rhs_uniform_cu_ucp","rhs_uniform_cu_ucp_101st","rhs_uniform_cu_ucp_10th","rhs_uniform_cu_ucp_1stcav","rhs_uniform_cu_ucp_82nd","rhsusf_iotv_ucp_Rifleman","rhsusf_iotv_ucp_Rifleman","rhsusf_iotv_ucp_Grenadier","rhsusf_iotv_ucp_Medic","rhsusf_iotv_ucp_Squadleader","rhs_weap_m249","rhsusf_100Rnd_556x45_M855_soft_pouch","rhs_weap_M136","rhs_weap_m72a7","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_ANPVS_14"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		
-		case 6: {
-			// US Army OCP
-			[_box,
-			["rhs_weap_m4a1_carryhandle","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_ach_helmet_ocp","rhsusf_ach_helmet_ess_ocp","rhsusf_ach_helmet_headset_ocp","rhsusf_ach_helmet_headset_ess_ocp","rhs_uniform_cu_ocp","rhs_uniform_cu_ocp_101st","rhs_uniform_cu_ocp_10th","rhs_uniform_cu_ocp_1stcav","rhs_uniform_cu_ocp_82nd","rhsusf_iotv_ocp_Rifleman","rhsusf_iotv_ocp_Rifleman","rhsusf_iotv_ocp_Grenadier","rhsusf_iotv_ocp_Medic","rhsusf_iotv_ocp_Squadleader","rhs_weap_m249","rhsusf_100Rnd_556x45_M855_soft_pouch","rhs_weap_M136","rhs_weap_m72a7","rhs_mag_30Rnd_556x45_Mk318_Stanag","rhsusf_ANPVS_14"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 7: {
 			// CSAT
 			[_box, ["H_HelmetO_ocamo","H_HelmetLeaderO_ocamo","H_MilCap_ocamo","H_HelmetO_oucamo","H_HelmetLeaderO_oucamo","H_HelmetSpecO_ocamo","H_HelmetSpecO_blk","U_O_CombatUniform_oucamo","U_O_SpecopsUniform_ocamo","U_O_SpecopsUniform_blk","U_O_OfficerUniform_ocamo","H_HelmetO_ViperSP_hex_F","H_HelmetO_ViperSP_ghex_F","H_HelmetSpecO_ghex_F","H_HelmetLeaderO_ghex_F","H_HelmetO_ghex_F","V_HarnessO_ghex_F","V_HarnessOGL_ghex_F","V_BandollierB_ghex_F","H_Tank_black_F","H_HelmetCrew_O_ghex_F","H_MilCap_ghex_F","U_O_CombatUniform_ocamo","V_HarnessO_brn","V_HarnessOGL_brn","V_HarnessO_gry","V_HarnessOGL_gry","V_HarnessOSpec_brn","V_HarnessOSpec_gry","H_MilCap_oucamo","B_AssaultPack_cbr","arifle_Katiba_F","arifle_CTARS_blk_F","100Rnd_580x42_Mag_F","30Rnd_65x39_caseless_green","launch_RPG32_F","30Rnd_65x39_caseless_green_mag_Tracer","B_ViperHarness_hex_F","NVGoggles_OPFOR"]] call ace_arsenal_fnc_addVirtualItems;
 		};
@@ -63,22 +40,6 @@ if (H_alb_gearTier >= 1) then {
 			["arifle_MX_GL_F","arifle_MXM_F","srifle_DMR_03_tan_F","20Rnd_762x51_Mag"]] call ace_arsenal_fnc_addVirtualItems;
 		};
 		case 3: {
-			// USMC Woodland
-			[_box, ["rhs_weap_sr25_usmc","rhsusf_20Rnd_762x51_SR25_m118_special_Mag","rhs_weap_m16a4_carryhandle_M203","rhsusf_ANPVS_15"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 4: {
-			// USMC Desert
-			[_box, ["rhs_weap_sr25_usmc","rhsusf_20Rnd_762x51_SR25_m118_special_Mag","rhs_weap_m16a4_carryhandle_M203","rhsusf_ANPVS_15"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 5: {
-			// US Army UCP
-			[_box, ["rhs_weap_m14ebrri","rhsusf_20Rnd_762x51_SR25_m118_special_Mag","rhs_weap_m4a1_carryhandle_m203","rhsusf_ANPVS_15"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 6: {
-			// US Army OCP
-			[_box, ["rhs_weap_m14ebrri","rhsusf_20Rnd_762x51_SR25_m118_special_Mag","rhs_weap_m4a1_carryhandle_m203","rhsusf_ANPVS_15"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 7: {
 			// CSAT
 			[_box, ["srifle_DMR_05_blk_F","10Rnd_93x64_DMR_05_Mag","arifle_Katiba_GL_F","LMG_Zafir_F","150Rnd_762x54_Box"]] call ace_arsenal_fnc_addVirtualItems;
 		};
@@ -98,22 +59,6 @@ if (H_alb_gearTier >= 2) then {
 			["3Rnd_HE_Grenade_shell","3Rnd_UGL_FlareWhite_F","3Rnd_UGL_FlareGreen_F","3Rnd_UGL_FlareRed_F","3Rnd_UGL_FlareYellow_F","3Rnd_UGL_FlareCIR_F","3Rnd_Smoke_Grenade_shell","3Rnd_SmokeRed_Grenade_shell","3Rnd_SmokeGreen_Grenade_shell","3Rnd_SmokeYellow_Grenade_shell","3Rnd_SmokePurple_Grenade_shell","3Rnd_SmokeBlue_Grenade_shell","3Rnd_SmokeOrange_Grenade_shell","MMG_02_sand_F","130Rnd_338_Mag"]] call ace_arsenal_fnc_addVirtualItems;
 		};
 		case 3: {
-			// USMC Woodland
-			[_box, ["rhs_weap_m240B","rhsusf_50Rnd_762x51","rhs_weap_M590_8RD","rhsusf_8Rnd_00Buck","rhs_weap_smaw_gr_optic","rhs_mag_smaw_HEDP","rhs_weap_m27iar"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 4: {
-			// USMC Desert
-			[_box, ["rhs_weap_m240B","rhsusf_50Rnd_762x51","rhs_weap_M590_8RD","rhsusf_8Rnd_00Buck","rhs_weap_smaw_gr_optic","rhs_mag_smaw_HEDP","rhs_weap_m27iar"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 5: {
-			// US Army UCP
-			[_box, ["rhs_weap_m240B","rhsusf_50Rnd_762x51","rhs_weap_M590_8RD","rhsusf_8Rnd_00Buck","rhs_weap_maaws_optic","rhs_mag_maaws_HEDP"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 6: {
-			// US Army OCP
-			[_box, ["rhs_weap_m240B","rhsusf_50Rnd_762x51","rhs_weap_M590_8RD","rhsusf_8Rnd_00Buck","rhs_weap_maaws_optic","rhs_mag_maaws_HEDP"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 7: {
 			// CSAT
 			[_box, ["launch_O_Vorona_green_F","Vorona_HEAT","Vorona_HE"]] call ace_arsenal_fnc_addVirtualItems;
 		};
@@ -133,22 +78,6 @@ if (H_alb_gearTier >= 3) then {
 			["srifle_LRR_F","7Rnd_408_Mag","launch_MRAWS_olive_rail_F","MRAWS_HEAT_F","MRAWS_HE_F","NVGogglesB_blk_F"]] call ace_arsenal_fnc_addVirtualItems;
 		};
 		case 3: {
-			// USMC Woodland
-			[_box, ["rhs_weap_fgm148","rhs_weap_m40a5_wd","rhsusf_5Rnd_762x51_AICS_m118_special_Mag"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 4: {
-			// USMC Desert
-			[_box, ["rhs_weap_fgm148","rhs_weap_m40a5_wd","rhsusf_5Rnd_762x51_AICS_m118_special_Mag"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 5: {
-			// US Army UCP
-			[_box, ["rhs_weap_fgm148","rhs_weap_m24sws_wd_leu","rhsusf_5Rnd_762x51_m993_Mag"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 6: {
-			// US Army OCP
-			[_box, ["rhs_weap_fgm148","rhs_weap_m24sws_wd_leu","rhsusf_5Rnd_762x51_m993_Mag"]] call ace_arsenal_fnc_addVirtualItems;
-		};
-		case 7: {
 			// CSAT
 			[_box, ["launch_Titan_F","launch_B_Titan_short_F","Titan_AA","Titan_AT","Titan_AP","srifle_GM6_F","5Rnd_127x108_Mag"]] call ace_arsenal_fnc_addVirtualItems;
 		};

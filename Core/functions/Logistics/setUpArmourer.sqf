@@ -1,5 +1,6 @@
 params ["_unit"];
 
+[_unit, "OF"] call H_fnc_aiLoadout;
 _unit disableai "move";
 _unit allowDamage false;
 

@@ -23,6 +23,8 @@ H_alb_crates = _savedVariable select 8;
 publicVariable "H_alb_crates";
 H_alb_markers = _savedVariable select 9;
 publicVariable "H_alb_markers";
+H_alb_fuelCanisters = _savedVariable select 10;
+publicVariable "H_alb_fuelCanisters";
 startingMarkers = allMapMarkers;
 publicVariable "startingMarkers";
 {

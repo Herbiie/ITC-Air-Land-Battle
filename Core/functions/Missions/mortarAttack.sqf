@@ -1,13 +1,11 @@
 params ["_base"];
 	private _pos = [getMarkerPos _base, 500, 1000, 5, 0, 10, 0]  call BIS_fnc_findSafePos;
-    private _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
+   private _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	private _closeObjects = count nearestObjects [_pos, [], 20];
-	private _nBuilding = _pos distance (nearestBuilding _pos);
-while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
+while {!isNull _nearRoad OR _closeObjects < 12} do {
      _pos = [getMarkerPos _base, 500, 1000, 5, 0, 10, 0]  call BIS_fnc_findSafePos;
     _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	_closeObjects = count nearestObjects [_pos, [], 20];
-	private _nBuilding = _pos distance (nearestBuilding _pos);
 };
 private _mortar = "I_Mortar_01_F" createVehicle _pos;
 createVehicleCrew _mortar;

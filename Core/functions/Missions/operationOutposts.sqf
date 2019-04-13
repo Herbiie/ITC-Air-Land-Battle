@@ -162,5 +162,14 @@ while {_obj1 OR _obj2 OR _obj3} do {
 deleteMarker _marker1;
 deleteMarker _marker2;
 deleteMarker _marker3;
+{
+	deleteVehicle _x;
+} forEach (_pos1 nearObjects 40);
+{
+	deleteVehicle _x;
+} forEach (_pos2 nearObjects 40);
+{
+	deleteVehicle _x;
+} forEach (_pos3 nearObjects 40);
 [50, true] remoteExec ["H_fnc_deploypoints",2];
 [50, _base, true] remoteExec ["H_fnc_townPoints",2];

@@ -70,6 +70,9 @@ deleteMarker _marker;
 sleep 300;
 {deleteVehicle _x} forEach units _group1;
 {deleteVehicle _x} forEach units _group2;
+{
+	deleteVehicle _x;
+} forEach (_pos nearObjects 20);
 
 {
 	_x addScore 10;

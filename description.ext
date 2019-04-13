@@ -73,8 +73,8 @@ class Params
 	class Faction
 	{
 		title = "Player Faction";
-		values[] = {1,2,3,4,5,6,7};
-		texts[] = {"CTRG","NATO","USMC Woodland (RHS)","USMC Desert (RHS)","US Army UCP (RHS)","US Army OCP (RHS)","CSAT"};
+		values[] = {1,2,3};
+		texts[] = {"CTRG","NATO","CSAT"};
 		default = 1;
 	};
 	class EnFaction
@@ -117,7 +117,7 @@ class Params
 		title = "AI Skill";
 		values[] = {0.25, 0.5, 0.75, 1};
 		texts[] = {"Low","Moderate","High","Severe"};
-		default = 1;
+		default = 0.5;
 	};
 	class DynamicSimulation
 	{
