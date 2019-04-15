@@ -116,5 +116,31 @@ switch (_faction) do {
 		};
 	
 	};
+	case 4: {
+	// AAF
+		_box addWeaponCargoGlobal ["LMG_Mk200_LP_BI_F", 1];
+		_box addWeaponCargoGlobal ["launch_NLAW_F", 2];
+		_box addMagazineCargoGlobal ["200Rnd_65x39_cased_Box", 3];
+		_box addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 30];
+		if (H_alb_gearTier >= 1) then {
+			_box addMagazineCargoGlobal ["20Rnd_762x51_Mag", 8];
+			_box addWeaponCargoGlobal ["srifle_EBR_F", 1];
+			_box addWeaponCargoGlobal ["arifle_Mk20_GL_F", 1];
+			_box addMagazineCargoGlobal ["1Rnd_HE_Grenade_shell", 10];
+			_box additemCargoGlobal ["optic_DMS", 1];
+			_box addMagazineCargoGlobal ["LMG_Mk200_LP_BI_F", 1];
+			_box addWeaponCargoGlobal ["200Rnd_65x39_cased_Box", 5];
+		};
+		if (H_alb_gearTier >= 2) then {
+			_box addMagazineCargoGlobal ["launch_MRAWS_olive_rail_F", 1];
+			_box addWeaponCargoGlobal ["MRAWS_HEAT_F", 2];
+		};
+		if (H_alb_gearTier >= 3) then {
+			_box addMagazineCargoGlobal ["5Rnd_127x108_Mag", 8];
+			_box addWeaponCargoGlobal ["srifle_GM6_F", 1];
+			_box additemCargoGlobal ["optic_SOS", 1];
+		};
+	
+	};
 };
 

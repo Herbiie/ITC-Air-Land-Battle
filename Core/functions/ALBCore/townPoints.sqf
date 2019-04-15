@@ -1,18 +1,11 @@
 params ["_points","_position","_add"];
 	
-	locationPositions = [];
-	
+	_closestLoc = nil;
 	{
-		private _distance = (_x select 1) distance _position;
-		locationPositions pushback [_distance, _x select 0];
+	   if(isNil "_closestLoc" || {(_position distance (_x # 1)) < (_position distance (_closestLoc # 1))}) then {_closestLoc = _x};
 	} forEach H_alb_locations;
-	
-	locationPositions sort true;
-	
-	private _nearestLocation = locationPositions select 0;
-	private _nearestLocationName = (_nearestLocation select 1) splitstring "-";
-	private _locationNumber = parseNumber (_nearestLocationName select (count _nearestLocationName - 1));
-	private _chosenLocation = H_alb_locations select _locationNumber;
+	private _locSelect = H_alb_locations find _closestLoc;
+	private _chosenLocation = H_alb_locations deleteAt _locSelect;
 	private _currentPoints = _chosenLocation select 2;
 	
 	if (_add) then {
@@ -20,4 +13,7 @@ params ["_points","_position","_add"];
 	} else {
 		_chosenLocation set [2, _currentPoints - _points];
 	};
+	
+	H_alb_locations = H_alb_locations + [_chosenLocation];
+	publicVariable "H_alb_locations";
 	

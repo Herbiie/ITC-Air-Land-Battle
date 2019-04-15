@@ -23,7 +23,7 @@ if (H_alb_deploypoints >= 100) then {
 			[_fobpos] remoteExec ["H_fnc_spawnPB",2];
 			H_alb_deploypoints = H_alb_deploypoints - 100;
 			publicVariable "H_alb_deploypoints";
-			["Notification",["PB Deployed",format ["PB deployed at %1.<br/>%2 Deployment Points Remaining.", mapGridPosition _fobpos, H_alb_deploypoints]]] remoteExec ["BIS_fnc_showNotification",0];
+			["Notification",["PB Deployed",format ["PB ready for deployment at %1.<br/>%2 Deployment Points Remaining.", mapGridPosition _fobpos, H_alb_deploypoints]]] remoteExec ["BIS_fnc_showNotification",0];
 			openMap [false, false];
 			};
 		}];

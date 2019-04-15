@@ -22,6 +22,11 @@ _faction = "Faction" call BIS_fnc_getParamValue;
 			// CSAT
 			[_box, ["H_HelmetO_ocamo","H_HelmetLeaderO_ocamo","H_MilCap_ocamo","H_HelmetO_oucamo","H_HelmetLeaderO_oucamo","H_HelmetSpecO_ocamo","H_HelmetSpecO_blk","U_O_CombatUniform_oucamo","U_O_SpecopsUniform_ocamo","U_O_SpecopsUniform_blk","U_O_OfficerUniform_ocamo","H_HelmetO_ViperSP_hex_F","H_HelmetO_ViperSP_ghex_F","H_HelmetSpecO_ghex_F","H_HelmetLeaderO_ghex_F","H_HelmetO_ghex_F","V_HarnessO_ghex_F","V_HarnessOGL_ghex_F","V_BandollierB_ghex_F","H_Tank_black_F","H_HelmetCrew_O_ghex_F","H_MilCap_ghex_F","U_O_CombatUniform_ocamo","V_HarnessO_brn","V_HarnessOGL_brn","V_HarnessO_gry","V_HarnessOGL_gry","V_HarnessOSpec_brn","V_HarnessOSpec_gry","H_MilCap_oucamo","B_AssaultPack_cbr","arifle_Katiba_F","arifle_CTARS_blk_F","100Rnd_580x42_Mag_F","30Rnd_65x39_caseless_green","launch_RPG32_F","30Rnd_65x39_caseless_green_mag_Tracer","B_ViperHarness_hex_F","NVGoggles_OPFOR"]] call ace_arsenal_fnc_addVirtualItems;
 		};
+		
+		case 4: {
+			// AAF
+			[_box, ["H_HelmetIA","H_HelmetIA_camo","H_Cap_blk_Raven","H_Booniehat_dgtl","H_MilCap_dgtl","arifle_Mk20_F","V_PlateCarrierIA1_dgtl","V_Chestrig_oli","30Rnd_556x45_Stanag","launch_NLAW_F","30Rnd_556x45_Stanag_Tracer_Red","NVGoggles_INDEP"]] call ace_arsenal_fnc_addVirtualItems;
+		};
 
 
 
@@ -43,6 +48,10 @@ if (H_alb_gearTier >= 1) then {
 			// CSAT
 			[_box, ["srifle_DMR_05_blk_F","10Rnd_93x64_DMR_05_Mag","arifle_Katiba_GL_F","LMG_Zafir_F","150Rnd_762x54_Box"]] call ace_arsenal_fnc_addVirtualItems;
 		};
+		case 4: {
+			// AAF
+			[_box, ["srifle_EBR_F","20Rnd_762x51_Mag","LMG_Mk200_LP_BI_F","200Rnd_65x39_cased_Box","arifle_Mk20_GL_F"]] call ace_arsenal_fnc_addVirtualItems;
+		};
 	};
 };
 	
@@ -62,6 +71,10 @@ if (H_alb_gearTier >= 2) then {
 			// CSAT
 			[_box, ["launch_O_Vorona_green_F","Vorona_HEAT","Vorona_HE"]] call ace_arsenal_fnc_addVirtualItems;
 		};
+		case 4: {
+			// AAF
+			[_box, ["launch_MRAWS_olive_rail_F","MRAWS_HEAT_F","MRAWS_HE_F"]] call ace_arsenal_fnc_addVirtualItems;
+		};
 	};
 };
 	
@@ -79,6 +92,10 @@ if (H_alb_gearTier >= 3) then {
 		};
 		case 3: {
 			// CSAT
+			[_box, ["launch_Titan_F","launch_B_Titan_short_F","Titan_AA","Titan_AT","Titan_AP","srifle_GM6_F","5Rnd_127x108_Mag"]] call ace_arsenal_fnc_addVirtualItems;
+		};
+		case 4: {
+			// AAF
 			[_box, ["launch_Titan_F","launch_B_Titan_short_F","Titan_AA","Titan_AT","Titan_AP","srifle_GM6_F","5Rnd_127x108_Mag"]] call ace_arsenal_fnc_addVirtualItems;
 		};
 	};

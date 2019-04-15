@@ -1,4 +1,4 @@
-class NATO { 
+class AAF { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 0;
@@ -7,20 +7,20 @@ class NATO {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_MX_F",};
-		priKit[] = {"30Rnd_65x39_caseless_mag",};
+		weapons[] = {"arifle_Mk20_F",};
+		priKit[] = {"30Rnd_556x45_Stanag"};
 		secKit[] = {};
 		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio"};
 		
 		headgear[] = {
-			"H_HelmetB"
+			"H_HelmetIA"
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CombatUniform_mcam",
+			"U_I_CombatUniform",
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -34,17 +34,17 @@ class NATO {
 			};
 			
 		vest[] = {
-			"V_PlateCarrier1_rgr",						
+			"V_PlateCarrierIA1_dgtl",						
 		};
 			vestContents[] = {					
-				{"30Rnd_65x39_caseless_mag",6},
+				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"NVGoggles",1},
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_cbr",
+			"B_AssaultPack_dgtl",
 		};
 		backpackContents[] = {
 				
@@ -57,7 +57,7 @@ class NATO {
 	
 };
 
-class NATOACRE { 
+class AAFACRE { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 0;
@@ -66,20 +66,20 @@ class NATOACRE {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_MX_F",};
-		priKit[] = {"30Rnd_65x39_caseless_mag",};
+		weapons[] = {"arifle_Mk20_F",};
+		priKit[] = {"30Rnd_556x45_Stanag",};
 		secKit[] = {};
 		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio"};
 		
 		headgear[] = {
-			"H_HelmetB"
+			"H_HelmetIA"
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CombatUniform_mcam",
+			"U_I_CombatUniform",
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -93,17 +93,17 @@ class NATOACRE {
 			};
 			
 		vest[] = {
-			"V_PlateCarrier1_rgr",						
+			"V_PlateCarrierIA1_dgtl",						
 		};
 			vestContents[] = {					
-				{"30Rnd_65x39_caseless_mag",6},
+				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"NVGoggles",1},
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_cbr",
+			"B_AssaultPack_dgtl",
 		};
 		backpackContents[] = {
 				
@@ -115,7 +115,7 @@ class NATOACRE {
 	class R: baseUnit {};
 };
 
-class NATOAI { 
+class AAFAI { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 1;
@@ -124,26 +124,20 @@ class NATOAI {
 		backpackRandom = 0;
 		vestRandom = 1;			
 		
-		weapons[] = {"arifle_MX_ACO_pointer_F",};
-		priKit[] = {"30Rnd_65x39_caseless_mag",};
+		weapons[] = {"arifle_Mk20_ACO_pointer_F",};
+		priKit[] = {"30Rnd_556x45_Stanag",};
 		secKit[] = {};
 		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio","NVGoggles"};
 		
 		headgear[] = {
-			"H_HelmetB",
-			"H_HelmetB_camo",
-			"H_HelmetB_paint",
-			"H_HelmetB_light",
+			"H_HelmetIA"
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CombatUniform_mcam",
-			"U_B_CombatUniform_mcam_tshirt",
-			"U_B_CombatUniform_mcam_vest",
-			"U_B_CombatUniform_mcam_worn",
+			"U_I_CombatUniform"
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -158,21 +152,16 @@ class NATOAI {
 			};
 			
 		vest[] = {
-			"V_PlateCarrier1_rgr",
-			"V_PlateCarrier2_rgr",
-			"V_PlateCarrier3_rgr",
-			"V_PlateCarrierGL_rgr",
-			"V_PlateCarrierSpec_rgr",
-			"V_PlateCarrierSpec_mtp",
+			"V_PlateCarrierIA1_dgtl"
 		};
 			vestContents[] = {					
-				{"30Rnd_65x39_caseless_mag",6},
+				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_cbr",
+			"B_AssaultPack_dgtl",
 		};
 		backpackContents[] = {
 				
@@ -182,14 +171,14 @@ class NATOAI {
 	};
 	class SL: baseUnit {
 			vestContents[] = {					
-				{"30Rnd_65x39_caseless_mag",6},
+				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"ACE_DAGR",1},
 				{"ACE_Vector",1},
 			};	
 		backpackContents[] = {
-				{"30Rnd_65x39_caseless_mag",4},
+				{"30Rnd_556x45_Stanag",4},
 				{"SmokeShellRed",2},
 				{"SmokeShellGreen",2},
 				{"SmokeShellBlue",2},
@@ -197,7 +186,7 @@ class NATOAI {
 	};
 	class OF: baseUnit {
 		headgear[] = {
-			"H_Cap_tan_specops_US",
+			"H_MilCap_dgtl",
 		};
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio"};
 			vestContents[] = {					
@@ -218,32 +207,32 @@ class NATOAI {
 	};
 	class TL: baseUnit {
 			vestContents[] = {					
-				{"30Rnd_65x39_caseless_mag",6},
+				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"Binocular",1},
 			};	
 		backpackContents[] = {
-				{"30Rnd_65x39_caseless_mag",12},
+				{"30Rnd_556x45_Stanag",12},
 		};
 	};
 	class R: baseUnit {	
 		backpackContents[] = {				
-				{"30Rnd_65x39_caseless_mag",6},
+				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},				
 		};
 	};
 	class AR: baseUnit {	
-		weapons[] = {"arifle_MX_SW_pointer_F",};
-		priKit[] = {"100Rnd_65x39_caseless_mag",};	
+		weapons[] = {"LMG_Mk200_LP_BI_F",};
+		priKit[] = {"200Rnd_65x39_cased_Box",};	
 			vestContents[] = {					
-				{"100Rnd_65x39_caseless_mag",3},
+				{"200Rnd_65x39_cased_Box",3},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 			};
 		backpackContents[] = {				
-				{"100Rnd_65x39_caseless_mag",4},
+				{"200Rnd_65x39_cased_Box",4},
 				{"HandGrenade",2},
 				{"SmokeShell",2},				
 		};
@@ -262,7 +251,7 @@ class NATOAI {
 	};
 };
 
-class NATOTFAR { 
+class AAFTFAR { 
 	class baseUnit {
 		ace_earplugs = 1;
 		headgearRandom = 0;
@@ -271,20 +260,20 @@ class NATOTFAR {
 		backpackRandom = 0;
 		vestRandom = 0;			
 		
-		weapons[] = {"arifle_MX_F",};
-		priKit[] = {"30Rnd_65x39_caseless_mag",};
+		weapons[] = {"arifle_Mk20_F",};
+		priKit[] = {"30Rnd_556x45_Stanag",};
 		secKit[] = {};
 		pisKit[] = {};
 		
 		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio"};
 		
 		headgear[] = {
-			"H_HelmetB"
+			"H_HelmetIA"
 		};
 		goggles[] = {};
 		
 		uniform[] = {
-			"U_B_CombatUniform_mcam",
+			"U_I_CombatUniform",
 		};
 			uniformContents[] = {
 				{"ACE_fieldDressing",3},
@@ -298,17 +287,17 @@ class NATOTFAR {
 			};
 			
 		vest[] = {
-			"V_PlateCarrier1_rgr",						
+			"V_PlateCarrierIA1_dgtl",						
 		};
 			vestContents[] = {					
-				{"30Rnd_65x39_caseless_mag",6},
+				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},
 				{"SmokeShell",2},
 				{"NVGoggles",1},
 			};
 			
 		backpack[] = {
-			"B_AssaultPack_cbr",
+			"B_AssaultPack_dgtl",
 		};
 		backpackContents[] = {
 				

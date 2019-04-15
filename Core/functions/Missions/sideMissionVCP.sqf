@@ -66,7 +66,7 @@ _time24 = [_time,"HH:MM"] call BIS_fnc_timeToString;
 [[west,["_task2","_task"],[format ["Hold VCP location until %1", _time24], format ["Hold VCP until %1.", _time24],"_task2marker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
 sleep 10;
-[_vcp, 100, 10] spawn H_fnc_randomAttacks;
+[_vcp, 60, 15] spawn H_fnc_randomAttacks;
 private _a = 0;
 private _b = 1200;
 while {_a < _b} do {

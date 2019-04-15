@@ -19,7 +19,7 @@
 	
 	};
 	
-	H_allyness = 0;
+	player setVariable ["H_allyness",0,true];
 	
 	_unit setGroupID [_UnitID];
 	

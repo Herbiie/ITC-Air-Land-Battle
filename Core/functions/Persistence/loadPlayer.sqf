@@ -12,7 +12,7 @@ if (_playerSaved) then {
 		_a = _a + 1;
 	} forEach H_alb_players;
 	private _playerArray = H_alb_players select _playerNumber;
-
+	
 	_playerArray params ["_playerIDSaved", "_score", "_dir", "_position", "_playerKit", "_commander","_subComamnder"];
 	_playerKit params ["_weapons", "_PriKit", "_SecKit", "_PisKit", "_backpack", "_backpackitems", "_headgear", "_uniform", "_uniformItems", "_vest", "_vestItems", "_goggles", "_assignedItems"];
 	private _backpackContents =  (_backpackItems) call BIS_fnc_consolidateArray;
@@ -77,7 +77,7 @@ if (_playerSaved) then {
 	};
 	player setPos _position;
 	player setDir _dir;
-	H_allyness = _score;
+	player setVariable ["H_Allyness",_score];
 	
 	
 };

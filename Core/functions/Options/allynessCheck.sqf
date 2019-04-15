@@ -1,4 +1,4 @@
-private _allyness = H_allyness;
+private _allyness = player getVariable "H_allyness";
 
 if (_allyness < 25) then {
 	hint format ["%1 Allyness Remaining. You're one of the least cool soldiers in theatre.", _allyness];

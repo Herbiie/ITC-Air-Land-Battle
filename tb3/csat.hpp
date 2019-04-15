@@ -188,6 +188,7 @@ class CSATAI {
 		headgear[] = {
 			"H_MilCap_ocamo",
 		};
+		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio"};
 			vestContents[] = {					
 				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},

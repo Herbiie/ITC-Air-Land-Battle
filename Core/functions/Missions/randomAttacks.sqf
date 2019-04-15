@@ -47,6 +47,27 @@ while {_a < _attacks} do {
 			_wp2 setWaypointCombatMode "RED";
 			_wp2 setWaypointFormation "WEDGE";
 			_wp2 setWaypointSpeed "NORMAL";
+			
+			private _pos3 = [_position, 200, 500, 5, 0, 20, 0]  call BIS_fnc_findSafePos;
+			private _nearRoad = [_pos3, 50] call BIS_fnc_nearestRoad;
+			private _closeObjects = count nearestObjects [_pos3, [], 20];
+			private _nBuilding = _pos3 distance (nearestBuilding _pos3);
+			while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
+				_pos3 = [_position, 200, 500, 5, 0, 20, 0]  call BIS_fnc_findSafePos;
+				_nearRoad = [_pos3, 50] call BIS_fnc_nearestRoad;
+				_closeObjects = count nearestObjects [_pos3, [], 20];
+				_nBuilding = _pos3 distance (nearestBuilding _pos3);
+			};
+
+			private _group3 = createGroup east;
+			[_group3, _pos] call H_fnc_OPFORFireteam; 
+			[leader _group3, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
+			_wp3 = _group3 addWaypoint [_position, 0];
+			_wp3 setWaypointType "MOVE";
+			_wp3 setWaypointBehaviour "AWARE";
+			_wp3 setWaypointCombatMode "RED";
+			_wp3 setWaypointFormation "WEDGE";
+			_wp3 setWaypointSpeed "NORMAL";
 		};
 		
 		case "Squad": {
@@ -70,6 +91,8 @@ while {_a < _attacks} do {
 			_wp setWaypointCombatMode "RED";
 			_wp setWaypointFormation "WEDGE";
 			_wp setWaypointSpeed "NORMAL";
+			
+			
 		};
 		
 		case "Mortar": {

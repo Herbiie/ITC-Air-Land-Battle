@@ -47,7 +47,7 @@ publicVariable "H_alb_players";
 	private _dir = getDir _savingPlayer;
 	private _playerKit = [_weapon, _PriKit, _SecKit, _PisKit, _backpack, _backpackitems, _headgear, _uniform, _uniformItems, _vest, _vestItems, _goggles, _assignedItems];
 	
-	private _score = _savingPlayer getVariable ["H_allyness",0];
+	private _score = _savingPlayer getVariable "H_allyness";
 	
 	private _isCommander = false;
 	

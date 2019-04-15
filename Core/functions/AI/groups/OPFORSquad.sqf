@@ -11,7 +11,7 @@ if (_playercount > 2) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -23,7 +23,7 @@ if (_playercount > 5) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -35,7 +35,7 @@ if (_playercount > 5) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -47,7 +47,7 @@ if (_playercount > 5) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -59,7 +59,7 @@ if (_playercount > 10) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -71,7 +71,7 @@ if (_playercount > 10) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -83,7 +83,7 @@ if (_playercount > 10) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -95,7 +95,7 @@ if (_playercount > 10) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -107,7 +107,7 @@ if (_playercount > 15) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -119,7 +119,7 @@ if (_playercount > 15) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -131,7 +131,7 @@ if (_playercount > 15) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -143,7 +143,7 @@ if (_playercount > 15) then {
 				params ['_dead', '_killer', '_instigator', '_useEffects'];
 				[1, true] remoteExec ['H_fnc_deploypoints',2];
 				[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-				[1] remoteExec ['H_fnc_allyness',_killer]}
+				_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 			];
 	", _aiSkill, "PRIVATE"];
 };
@@ -154,7 +154,7 @@ if (_playercount > 15) then {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
 			[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-			[1] remoteExec ['H_fnc_allyness',_killer]}
+			_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 		];
 	
 ", _aiSkill, "PRIVATE"];
@@ -165,7 +165,7 @@ if (_playercount > 15) then {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
 			[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-			[1] remoteExec ['H_fnc_allyness',_killer]}
+			_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 		];
 	
 ", _aiSkill, "PRIVATE"];
@@ -176,7 +176,7 @@ if (_playercount > 15) then {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
 			[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-			[1] remoteExec ['H_fnc_allyness',_killer]}
+			_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 		];
 	
 ", _aiSkill, "PRIVATE"];
@@ -188,7 +188,7 @@ if (_playercount > 15) then {
 			params ['_dead', '_killer', '_instigator', '_useEffects'];
 			[1, true] remoteExec ['H_fnc_deploypoints',2];
 			[1, position this, true] remoteExec ['H_fnc_townPoints',2];
-			[1] remoteExec ['H_fnc_allyness',_killer]}
+			_instigator setVariable ['H_Allyness', (_instigator getVariable 'H_Allyness') +1,true];}
 		];
 	
 ", _aiSkill, "CORPORAL"];

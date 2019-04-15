@@ -80,7 +80,7 @@ _time24 = [_time,"HH:MM"] call BIS_fnc_timeToString;
 
 [[west,["_task2","_task"],[format ["Hold crashsite until reinforcements arrive. Reinforcements are expected at %1", _time24], format ["Hold Crashsite until %1.", _time24],"_task2marker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 
-[_pos, 100, 15] spawn H_fnc_randomAttacks;
+[_pos, 60, 15] spawn H_fnc_randomAttacks;
 private _a = 0;
 private _b = 1200;
 private _failed = false;

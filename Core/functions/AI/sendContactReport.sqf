@@ -14,6 +14,8 @@ _contact setMarkerText _markerText;
 _contact setMarkerSize [0.5, 0.5];
 _contact setMarkerColor "ColorRed";
 _contact setMarkerAlpha 0.75;
+startingMarkers = startingmarkers + [_contact];
+publicVariable "startingMarkers";
 
 [] spawn H_fnc_radio;
 [_soldier, format ["Command this is %1, troops in contact at grid reference %2, %1 is engaging, out.", _callsign, _grid]]  remoteExec ["sideChat", 0]; 

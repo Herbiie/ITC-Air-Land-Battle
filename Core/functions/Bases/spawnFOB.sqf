@@ -2,15 +2,51 @@ params ["_fobpos"];
 
 	
 		["fobtask"] remoteExec ["BIS_fnc_deleteTask",0];
-		[_fobpos] call H_fnc_fob;
-		private _fobName = format ["FOB %1", (count H_alb_fobs) + 1];
+		_callsign = H_alb_platoons select count H_alb_fobs;
+		private _fobName = format ["FOB %1", _callsign];
 		private _fobmarker = createMarker [format ["%1Marker",_fobName], _fobpos];
 		_fobmarker setMarkerShape "ICON";
 		_fobmarker setMarkerType "mil_triangle";
 		_fobmarker setMarkerColor "ColorBlufor";
 		_fobmarker setMarkerText _fobName;
+		startingMarkers = startingmarkers + [_fobmarker];
+		publicVariable "startingMarkers";
 		
-		_callsign = H_alb_platoons select count H_alb_fobs;
+		[[west,["_task"],[format ["Set Up %1", _fobname],format ["Set Up %1", _fobname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+		[[west,["_task1","_task"],[format ["Move supplies to %1", _fobname],format ["Move supplies to %1", _fobname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+		
+		["Notification",["PB Supplies Ready",format ["Supplies for %1 spawned at %2.", _fobname, mapGridPosition getMarkerPos "carspawn"]]] remoteExec ["BIS_fnc_showNotification",0];
+				
+		private _crate = H_supplyVehicle createVehicle getMarkerPos "carspawn";
+		private _smoke = "SmokeShellBlue_Infinite" createVehicle _fobpos;
+		
+		waitUntil {((_crate distance _fobpos) < 5) && (speed _crate < 3)};
+		{
+			_x action ["Eject",vehicle _x];
+		} forEach crew _crate;
+		
+		deleteVehicle _smoke;
+		deleteVehicle _crate;
+		
+		[["_task1","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+		
+		[_fobpos, 35] call H_fnc_cones;
+		
+		[[west,["_task2","_task"],["Move away from the building site.","Move away from the building site.","_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+		
+		
+		waitUntil {({(_x distance _fobpos) < 36} count allPlayers) == 0};
+		
+		[["_task2","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+		
+		[_fobpos] call H_fnc_fob;
+		
+		{
+			if ((_x distance _fobpos) < 40) then {
+				deleteVehicle _x;
+			};
+		} forEach allMissionObjects "RoadBarrier_small_F";
+		
 		
 		private _group1 = createGroup WEST;
 		[_group1, _fobMarker, _fobname, false] call H_fnc_BLUFORSquad;
@@ -88,3 +124,5 @@ params ["_fobpos"];
 		_radar2 enableSimulation true;
 		_radar3 enableSimulation true;
 		_radar4 enableSimulation true;
+		
+		[["_task","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];

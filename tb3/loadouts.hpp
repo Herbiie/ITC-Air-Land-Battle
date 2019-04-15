@@ -8,4 +8,5 @@ class TB3_Gear {//Gear definitions stay within this.
 	#include "opfor.hpp"
 	#include "hnf.hpp"
 	#include "csat.hpp"
+	#include "aaf.hpp"
 };

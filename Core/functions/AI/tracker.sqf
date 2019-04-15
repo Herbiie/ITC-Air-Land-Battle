@@ -16,6 +16,9 @@ private _unitSize = createmarker [_size, _unit];
 _unitsize setMarkerType "group_1";
 _unitsize setMarkerText _callsign;
 
+startingMarkers = startingmarkers + [_marker];
+publicVariable "startingMarkers";
+
 while {count units _group > 0} do {
 	sleep 0.5;
 	_marker setMarkerPos position leader _group;

@@ -267,6 +267,7 @@ class CTRGAI {
 		headgear[] = {
 			"H_Cap_khaki_specops_UK",
 		};
+		assignedItems[] = {"ItemMap","ItemCompass","ItemWatch","ItemRadio"};
 			vestContents[] = {					
 				{"30Rnd_556x45_Stanag",6},
 				{"HandGrenade",2},

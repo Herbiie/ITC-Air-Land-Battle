@@ -19,7 +19,7 @@ if (H_alb_deploypoints >= 500) then {
 			["This location is not valid, either due to objects in the way or a slope."] remoteExec ["hint",0];
 			[]  call H_fnc_newFOB;
 		} else {
-			_fobpos remoteExec ["H_fnc_spawnFOB",2];
+			[_fobpos] remoteExec ["H_fnc_spawnFOB",2];
 			H_alb_deploypoints = H_alb_deploypoints - 500;
 			publicVariable "H_alb_deploypoints";
 			["Notification",["FOB Deployed",format ["FOB deployed at %1.<br/>%2 Deployment Points Remaining.", mapGridPosition _fobpos, H_alb_deploypoints]]] remoteExec ["BIS_fnc_showNotification",0];
