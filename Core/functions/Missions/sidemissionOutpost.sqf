@@ -37,7 +37,8 @@ private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
-[[west,["_task"],["Situation:<br/>
+private _task = _opname;
+[west,[_task],["Situation:<br/>
 An insurgent outpost has been identified at the location marked on the map.<br/>
 <br/>
 Situation Enemy Forces:<br/>
@@ -56,11 +57,11 @@ Service Support:<br/>
 As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
-As per SOPs.<br/>",format ["%1 Destroy Outpost", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+As per SOPs.<br/>",format ["%1 Destroy Outpost", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 200} count allUnits) == 0};
 
-[["_task","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
 deleteMarker _marker;
 	missionActive = false;
@@ -73,7 +74,3 @@ sleep 300;
 {
 	deleteVehicle _x;
 } forEach (_pos nearObjects 20);
-
-{
-	_x addScore 10;
-} forEach allPlayers;

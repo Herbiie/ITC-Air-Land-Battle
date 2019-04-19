@@ -24,7 +24,8 @@ while {(_nBuilding > 5)} do {
 private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
-[west,["_task"],["Situation:<br/>
+private _task = _opname;
+[west,[_task],["Situation:<br/>
 Insurgents are now occupying the area of a local town, highlighted in red on the map.<br/>
 <br/>
 Situation Enemy Forces:<br/>
@@ -43,7 +44,7 @@ Service Support:<br/>
 As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
-As per SOPs.<br/>",format ["%1 Clear Area", _opname],"_taskmarker"],objNull,1,2,true] remoteExec ["BIS_fnc_taskCreate", 0];
+As per SOPs.<br/>",format ["%1 Clear Area", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 
 private _group1 = createGroup east;
@@ -68,12 +69,8 @@ _marker2 setMarkerText "Insurgent Control";
 
 waitUntil {({side _x == EAST && (_x distance getMarkerPos _marker2) < 50} count allUnits) == 0};
 
-["_task","SUCCEEDED"] remoteExec ["BIS_fnc_taskSetState",0];
+[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 deleteMarker _marker;
 deleteMarker _marker2;
 [20, true] remoteExec ["H_fnc_deploypoints",2];
 [20, _base, true] remoteExec ["H_fnc_townPoints",2];
-
-{
-	_x addScore 10;
-} forEach allPlayers;

@@ -31,7 +31,8 @@ private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
-[[west,["_task"],["
+private _task = _opname;
+[west,[_task],["
 Situation:<br/>
 The insurgents have set up a roadblock nearby and are extracting taxes from civilians. This roadblock must be removed.<br/>
 <br/>
@@ -51,11 +52,11 @@ Service Support:<br/>
 As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
-As per SOPs.<br/>",format ["%1 Destroy Roadblock", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+As per SOPs.<br/>",format ["%1 Destroy Roadblock", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 200} count allUnits) == 0};
 
-[["_task","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
 deleteMarker _marker;
 	missionActive = false;

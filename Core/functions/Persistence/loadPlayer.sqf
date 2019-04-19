@@ -3,17 +3,13 @@ private _playerSaved = _playerID in H_alb_playerIDs;
 [player, "RED", "Arson 1'1", "R"] call H_fnc_setup;
 if (_playerSaved) then {
 
-	private _playerNumber = 0;
-	private _a = 0;
 	{
 		if (_playerID in _x) then {
-			_playerNumber = _a;
+			_playerArray = _x;
 		};
-		_a = _a + 1;
 	} forEach H_alb_players;
-	private _playerArray = H_alb_players select _playerNumber;
 	
-	_playerArray params ["_playerIDSaved", "_score", "_dir", "_position", "_playerKit", "_commander","_subComamnder"];
+	_playerArray params ["_playerIDSaved", "_score", "_dir", "_position", "_playerKit", "_commander","_subCommander"];
 	_playerKit params ["_weapons", "_PriKit", "_SecKit", "_PisKit", "_backpack", "_backpackitems", "_headgear", "_uniform", "_uniformItems", "_vest", "_vestItems", "_goggles", "_assignedItems"];
 	private _backpackContents =  (_backpackItems) call BIS_fnc_consolidateArray;
 	private _vestContents =  (_vestItems) call BIS_fnc_consolidateArray;
@@ -77,7 +73,7 @@ if (_playerSaved) then {
 	};
 	player setPos _position;
 	player setDir _dir;
-	player setVariable ["H_Allyness",_score];
+	player setVariable ["H_Allyness",_score,true];
 	
 	
 };

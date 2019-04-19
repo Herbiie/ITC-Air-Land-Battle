@@ -3,6 +3,7 @@ private _adjective = selectRandom ["Husky","Icy","Aboriginal","Troubled","Faithf
 private _noun = selectRandom ["Cheetah","Mole","Seal","Chimpanzee","Otter","Mongoose","Burro","Aoudad","Antelope","Chameleon","Capybara","Marten","Skunk","Kangaroo","Eagle","Owl","Bull","Bumble Bee","Vicuna","Starfish","Ferret","Polar Bear","Leopard","Monkey","Alpaca","Budgerigar","Grizzly Bear","Lovebird","Salamander","Panda","Yak","Deer","Ocelot","Sheep","Steer","Hog","Parrot","Colt","Elk","Llama","Gazelle","Duckbill Platypus","Pig","Warthog","Rat","Hamster","Bat","Anteater","Groundhog","Mandrill","Coyote"];
 
 private _opname = format ["Operation %1 %2", _adjective, _noun];
+private _task = _opname;
 
 
 	private _pos1 = [_base, 300, 1500, 10, 0, 10, 0]  call BIS_fnc_findSafePos;
@@ -51,7 +52,7 @@ while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20 OR (_pos4 dist
 	private _nBuilding = _pos4 distance (nearestBuilding _pos4);
 };
 
-[[west,["_task"],["
+[west,[_task],["
 Situation:<br/>
 A prominent insurgent commander has moved into the area in one of the four locations marked. The capture of this commander would be a blow to the insurgency.<br/>
 <br/>
@@ -72,7 +73,7 @@ As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
 As per SOPs.<br/>
-",format ["%1: Capture Insurgent Commander", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+",format ["%1: Capture Insurgent Commander", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 private _objType1 = selectRandom [H_fnc_hq1,H_fnc_hq2];
 private _objType2 = selectRandom [H_fnc_outpost1,H_fnc_outpost2,H_fnc_outpost3,H_fnc_outpost4,H_fnc_depot1,H_fnc_depot2,H_fnc_depot3,H_fnc_accom1,H_fnc_accom2,H_fnc_accom3];

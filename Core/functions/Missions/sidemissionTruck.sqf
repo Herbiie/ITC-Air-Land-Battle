@@ -41,7 +41,8 @@ private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
-[[west,["_task"],["
+private _task = _opname;
+[west,[_task],["
 Situation:<br/>
 Intelligence have discovered that the insurgents are using a camp somewhere in the red area as a supply point. They are using a 4x4 utility vehicle. Find it and destroy it.<br/>
 <br/>
@@ -61,12 +62,12 @@ Service Support:<br/>
 As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
-As per SOPs.<br/>",format ["%1 Find and Destroy Insurgent Utility Vehicle", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+As per SOPs.<br/>",format ["%1 Find and Destroy Insurgent Utility Vehicle", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 waitUntil {!alive _obj};
 
 
-[["_task","SUCCEEDED"], BIS_fnc_taskSetState] remoteExec ["call",0];
+[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
 deleteMarker _marker;
 	missionActive = false;

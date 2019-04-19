@@ -1,4 +1,4 @@
-private _savedVariable = profileNamespace getVariable "H_alb_Altis";
+private _savedVariable = profileNamespace getVariable "H_alb_Ruha";
 H_alb_fobs = _savedVariable select 0;
 publicVariable "H_alb_fobs";
 H_alb_locations = _savedVariable select 1;

@@ -50,8 +50,9 @@ private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
+private _task = _opname;
 
-[west,["_task"],["
+[west,[_task],["
 Situation:<br/>
 A journalist has been taken hostage by the insurgents. Rescue him and take him back to your base.<br/>
 <br/>
@@ -76,13 +77,13 @@ As per SOPs.<br/>",format ["%1 Rescue Hostage",_opname],"_taskmarker"],objNull,1
 private _loop = true;
 while {_loop} do {
 	if (!alive _hostage) then {
-		["_task","FAILED"] call BIS_fnc_taskSetState;
+		[_task,"FAILED"] call BIS_fnc_taskSetState;
 		deleteMarker _marker;
 		_loop = false;
 	};
 
 	if (_hostage distance _base <50) then {
-		["_task","SUCCEEDED"] call BIS_fnc_taskSetState;
+		[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 		deleteMarker _marker;
 		_loop = false;
 		deleteVehicle _hostage;
@@ -102,7 +103,3 @@ sleep 300;
 } forEach (_pos nearObjects 20);
 {deleteVehicle _x} forEach units _group1;
 {deleteVehicle _x} forEach units _group2;
-
-{
-	_x addScore 10;
-} forEach allPlayers;

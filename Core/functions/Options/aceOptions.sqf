@@ -9,6 +9,9 @@ H_action_radioOff = ["RadioOff","Turn Notification Sound Off","",{[] spawn H_fnc
 H_action_checkCommand = ["checkCommand","Check who is commander","",{[] call H_fnc_checkCommand},{true}] call ace_interact_menu_fnc_createAction;
 H_action_checkDeploy = ["checkDeploy","Check Deployment Points","",{hint format ["Deployment Points: %1", H_alb_deploypoints]},{true}] call ace_interact_menu_fnc_createAction;
 H_action_checkXP = ["checkXP","Check Player Allyness","",{[] call H_fnc_allynessCheck},{true}] call ace_interact_menu_fnc_createAction;
-H_action_savePlayer = ["savePlayer","Player Save and Exit","",{[player] call H_fnc_savePlayer; [] call H_fnc_playerExit},{true}] call ace_interact_menu_fnc_createAction;
-H_action_saveMission = ["saveMission","Mission Save","",{[] call H_fnc_saveMission},{true}] call ace_interact_menu_fnc_createAction;
-H_action_saveMissionExit = ["saveMissionExit","Mission Save and Exit","",{[] call H_fnc_saveMissionExit},{true}] call ace_interact_menu_fnc_createAction;
+H_action_savePlayer = ["savePlayer","Player Save and Exit","",{[] call H_fnc_savePlayer; [] call H_fnc_playerExit},{true}] call ace_interact_menu_fnc_createAction;
+H_action_saveMission = ["saveMission","Mission Save","",{[] remoteExec ["H_fnc_saveMission",2]},{true}] call ace_interact_menu_fnc_createAction;
+H_action_saveMissionExit = ["saveMissionExit","Mission Save and Exit","",{[] remoteExec ["H_fnc_saveMissionExit",2]},{true}] call ace_interact_menu_fnc_createAction;
+H_action_voteOptions = ["VOptions","Vote","",{},{true}] call ace_interact_menu_fnc_createAction;
+H_action_voteYes = ["VYes","Vote Yes","",{currentVoteYes = currentVoteYes + 1; publicvariable "currentVoteYes"; [player,1,["ACE_SelfActions","VOptions","VYes"]] call ace_interact_menu_fnc_removeActionFromObject; [player,1,["ACE_SelfActions","VOptions","VNo"]] call ace_interact_menu_fnc_removeActionFromObject;},{true}] call ace_interact_menu_fnc_createAction;
+H_action_VoteNo = ["VNo","Vote No","",{currentVoteNo = currentVoteNo + 1; publicvariable "currentVoteNo"; [player,1,["ACE_SelfActions","VOptions","VNo"]] call ace_interact_menu_fnc_removeActionFromObject; [player,1,["ACE_SelfActions","VOptions","VYes"]] call ace_interact_menu_fnc_removeActionFromObject;},{true}] call ace_interact_menu_fnc_createAction;

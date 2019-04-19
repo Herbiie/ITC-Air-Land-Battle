@@ -41,7 +41,8 @@ private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
-[[west,["_task"],["Situation:<br/>
+private _task = _opname;
+[west,[_task],["Situation:<br/>
 A prominent insurgent commander has been sighted at an Insurgent HQ. The capture of this commander would be a major blow for the insurgency.<br/>
 <br/>
 Situation Enemy Forces:<br/>
@@ -60,7 +61,7 @@ Service Support:<br/>
 As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
-As per SOPs.<br/>",format ["%1 Capture HVT", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+As per SOPs.<br/>",format ["%1 Capture HVT", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 waitUntil {{side _x == WEST && (_x distance _commander < 50)} count allunits > 0};
 [_commander, true] call ACE_captives_fnc_setSurrendered;
@@ -68,7 +69,7 @@ waitUntil {{side _x == WEST && (_x distance _commander < 50)} count allunits > 0
 waitUntil {(_commander distance _base < 50) OR !(alive _commander)};
 
 if (alive _commander) then {
-	["_task","SUCCEEDED"] remoteExec ["BIS_fnc_taskSetState",0];
+	[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 	deleteVehicle _commander;
 	deleteMarker _marker;
 		missionActive = false;
@@ -86,5 +87,5 @@ if (alive _commander) then {
 		_x addScore 10;
 	} forEach allPlayers;
 } else {
-	["_task","FAILED"] remoteExec ["BIS_fnc_taskSetState",0];
+	[_task,"FAILED"] call BIS_fnc_taskSetState;
 };

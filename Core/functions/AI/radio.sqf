@@ -1,1 +1,1 @@
-[] remoteExec ["H_fnc_playRadio",0];
+[] call H_fnc_playRadio;

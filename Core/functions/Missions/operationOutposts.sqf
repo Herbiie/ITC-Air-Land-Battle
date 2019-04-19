@@ -3,8 +3,9 @@ private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
+private _task = _opname;
 
-[[west,["_task"],["
+[west,[_task],["
 Situation:<br/>
 Several insurgent outposts have been identified in the area. The insurgents are clearly gathering for a major attack. To disrupt the attack, the outposts must be destroyed.<br/>
 <br/>
@@ -25,7 +26,7 @@ As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
 As per SOPs.<br/>
-",format ["%1 Destroy Insurgent Outposts", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+",format ["%1 Destroy Insurgent Outposts", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 	private _pos1 = [_base, 300, 1500, 10, 0, 10, 0]  call BIS_fnc_findSafePos;
     private _nearRoad = [_pos1, 50] call BIS_fnc_nearestRoad;
@@ -156,7 +157,7 @@ while {_obj1 OR _obj2 OR _obj3} do {
 	};
 };
 
-[["_task","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
 
 deleteMarker _marker1;

@@ -46,7 +46,8 @@ H_alb_vehiclestosave = [];
 } forEach H_alb_westVehicles;
 
 {
-	[_x] call H_fnc_savePlayer;
+	[] remoteExec ["H_fnc_savePlayer",_x];
+	sleep 1;
 } forEach allPlayers;
 
 private _crates = [];
@@ -79,7 +80,7 @@ private _fuelCanisters = [];
 
 
 private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates,H_alb_markerstosave,_fuelCanisters];
-profileNamespace setVariable ["H_alb_Altis",_saveVariable];
+profileNamespace setVariable ["H_alb_Ruha",_saveVariable];
 
 saveProfileNamespace;
 ["saveMission"] remoteExec ["BIS_fnc_endMissionServer",0];

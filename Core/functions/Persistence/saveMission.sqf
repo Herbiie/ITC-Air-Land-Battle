@@ -75,14 +75,13 @@ private _fuelCanisters = [];
 	_fuelCanisters = _fuelCanisters + [[_fuelPos, _fuelAmount]];
 }  forEach allMissionObjects "FlexibleTank_01_sand_F";
 
-
-
 {
-	[_x] call H_fnc_savePlayer;
+	[] remoteExec ["H_fnc_savePlayer",_x];
 } forEach allPlayers;
 
 private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates,H_alb_markerstosave,_fuelCanisters];
-profileNamespace setVariable ["H_alb_Altis",_saveVariable];
+profileNamespace setVariable ["H_alb_Ruha",_saveVariable];
+
 
 saveProfileNamespace;
 ["Notification",["Mission Saved",format ["%1 Saved the Mission", currentCommander select 2]]] remoteExec ["BIS_fnc_showNotification",0];

@@ -35,7 +35,8 @@ private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
 
 private _opname = format ["Operation %1 %2:", _adjective, _noun];
-[[west,["_task"],["
+private _task = _opname;
+[west,[_task],["
 Situation:<br/>
 A helicopter has crashed, secure the crashsite until reinforcements arrive.<br/>
 <br/>
@@ -55,11 +56,11 @@ Service Support:<br/>
 As per SOPs.<br/>
 <br/>
 Command and Signals:<br/>
-As per SOPs.<br/>",format ["%1 Defend Helicopter", _opname],"_taskmarker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+As per SOPs.<br/>",format ["%1 Defend Helicopter", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 sleep 4;
 
-[[west,["_task1","_task"],["Move to the crashsite. When you are close the pilots will pop red smoke.","Move To Crash Site.","_task1marker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+[west,["_task1",_task],["Move to the crashsite. When you are close the pilots will pop red smoke.","Move To Crash Site.","_task1marker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 waitUntil {
 {_x distance _pos < 200} count playableUnits > 0;
@@ -78,7 +79,7 @@ waitUntil {
 _time = daytime + ((1/3)*("TimeAcceleration" call BIS_fnc_getParamValue));
 _time24 = [_time,"HH:MM"] call BIS_fnc_timeToString;
 
-[[west,["_task2","_task"],[format ["Hold crashsite until reinforcements arrive. Reinforcements are expected at %1", _time24], format ["Hold Crashsite until %1.", _time24],"_task2marker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
+[west,["_task2",_task],[format ["Hold crashsite until reinforcements arrive. Reinforcements are expected at %1", _time24], format ["Hold Crashsite until %1.", _time24],"_task2marker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 [_pos, 60, 15] spawn H_fnc_randomAttacks;
 private _a = 0;
@@ -91,9 +92,9 @@ while {_a < _b} do {
 	[format ["%1 minutes remaining", _c]] remoteExec ["hint",0];
 	if ({_x distance _pos < 25 && side _x == west} count allUnits == 0) then {
 		_b = 0;
-		[["_task2","FAILED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+		["_task2","FAILED"] call BIS_fnc_taskSetState;
 		sleep 3;
-		[["_task","FAILED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+		[_task,"FAILED"] call BIS_fnc_taskSetState;
 		_failed = true;
 		deleteMarker _marker;
 		[20, false] remoteExec ["H_fnc_deploypoints",2];
@@ -102,17 +103,14 @@ while {_a < _b} do {
 };
 
 If (!_failed) then {
-	[["_task2","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+	["_task2","SUCCEEDED"] call BIS_fnc_taskSetState;
 	sleep 3;
-	[["_task","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
+	[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 	deleteMarker _marker;
 	[20, true] remoteExec ["H_fnc_deploypoints",2];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
 };
 
-{
-	_x addScore 10;
-} forEach allPlayers;
 sleep 300;
 {
 	deleteVehicle _x;

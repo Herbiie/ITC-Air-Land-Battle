@@ -17,6 +17,7 @@ _unitsize setMarkerType "group_1";
 _unitsize setMarkerText _callsign;
 
 startingMarkers = startingmarkers + [_marker];
+startingMarkers = startingmarkers + [_unitsize];
 publicVariable "startingMarkers";
 
 while {count units _group > 0} do {
