@@ -1,10 +1,11 @@
-private _playerID = getPlayerUID player;
-private _playerSaved = _playerID in H_alb_playerIDs;
 [player, "RED", "Arson 1'1", "R"] call H_fnc_setup;
+sleep 0.1;
+if (isNil "H_alb_playerIDs") then {H_alb_playerIDs = [];};
+private _playerSaved = getPlayerUID player in H_alb_playerIDs;
 if (_playerSaved) then {
-
+	private _playerArray = [];
 	{
-		if (_playerID in _x) then {
+		if (getPlayerUID player in _x) then {
 			_playerArray = _x;
 		};
 	} forEach H_alb_players;
@@ -51,13 +52,12 @@ if (_playerSaved) then {
 	if ((count _vestContents) > 0) then { [player,_vestContents] call tb3_fsetVestContents; };
 	
 	player setVariable ["ACE_hasEarPlugsIn", true, true];
-	sleep 0.1;
 	
 	if (_commander && (count currentCommander == 0)) then {
-		[_playerID, profileName] call H_fnc_becomeCommander;
+		[getPlayerUID player, profileName] call H_fnc_becomeCommander;
 	};
 	
-	if (_subComamnder) then {
+	if (_subCommander) then {
 		player setRank "Sergeant";
 		[arty,H_Arty_vehicles] call H_fnc_setUpOfficer;
 		[mt,H_MT_vehicles] call H_fnc_setUpOfficer;
@@ -68,7 +68,7 @@ if (_playerSaved) then {
 		[player, 1, ["ACE_SelfActions","COptions"],H_action_subcommanderResign] call ace_interact_menu_fnc_addActionToObject;
 		_playerName = profileName;
 		["Notification",["New Sub-Commander",format ["%1 is now a sub-commander.", _playerName]]] remoteExec ["BIS_fnc_showNotification",0];
-		subCommanders = subCommanders + [_playerID];
+		subCommanders = subCommanders + [getPlayerUID player];
 		publicVariable "subCommanders";
 	};
 	player setPos _position;

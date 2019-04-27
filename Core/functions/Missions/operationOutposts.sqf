@@ -174,3 +174,7 @@ deleteMarker _marker3;
 } forEach (_pos3 nearObjects 40);
 [50, true] remoteExec ["H_fnc_deploypoints",2];
 [50, _base, true] remoteExec ["H_fnc_townPoints",2];
+
+{
+	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+20,true];
+} forEach allPlayers;

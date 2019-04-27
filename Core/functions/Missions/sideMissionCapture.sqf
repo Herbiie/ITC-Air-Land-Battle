@@ -79,13 +79,10 @@ if (alive _commander) then {
 	sleep 300;
 	{deleteVehicle _x} forEach units _group1;
 	{deleteVehicle _x} forEach units _group2;
-	{
-		deleteVehicle _x;
-	} forEach (_pos nearObjects 20);
 
-	{
-		_x addScore 10;
-	} forEach allPlayers;
+{
+	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];
+} forEach allPlayers;
 } else {
 	[_task,"FAILED"] call BIS_fnc_taskSetState;
 };

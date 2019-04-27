@@ -61,6 +61,7 @@ publicVariable "H_alb_players";
 		_isSubCommander = true;
 	};
 	
+	sleep 1;
 	H_alb_players = H_alb_players + [[_playerID, _score, _dir, _position, _playerKit, _isCommander, _isSubCommander]];
 	publicVariable "H_alb_players";
 	H_alb_playerIDs = H_alb_playerIDs + [_playerID];

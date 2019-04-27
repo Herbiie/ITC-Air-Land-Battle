@@ -7,10 +7,7 @@ if (isServer) then {
 	private _factionValue = "Faction" call BIS_fnc_getParamValue;
 
 	switch (_factionValue) do {
-		case 1: {H_Faction = "CTRG"; H_supplyVehicle = "B_Truck_01_box_F";};
-		case 2: {H_Faction = "NATO"; H_supplyVehicle = "B_Truck_01_box_F";};
-		case 3: {H_Faction = "CSAT"; H_supplyVehicle = "O_Truck_03_device_F";};
-		case 4: {H_Faction = "AAF"; H_supplyVehicle = "I_Truck_02_covered_F";};
+		case 1: {H_Faction = "UKAF"; H_supplyVehicle = "B_Truck_01_box_F";};
 	};
 	publicVariable "H_Faction";
 	
@@ -51,13 +48,9 @@ H_fnc_PlaceVote = compile (preprocessFileLineNumbers "Core\functions\management\
 H_fnc_commanderVote = compile (preprocessFileLineNumbers "Core\functions\management\commanderVote.sqf");
 H_fnc_becomeCommander = compile (preprocessFileLineNumbers "Core\functions\management\becomeCommander.sqf");
 H_fnc_removeCommander = compile (preprocessFileLineNumbers "Core\functions\management\removeCommander.sqf");
-H_fnc_subCommander = compile (preprocessFileLineNumbers "Core\functions\management\subCommander.sqf");
-H_fnc_subCommanderDecision = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderDecision.sqf");
-H_fnc_acceptSubordinate = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderAccept.sqf");
-H_fnc_rejectSubordinate = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderReject.sqf");
 H_fnc_becomeSubCommander = compile (preprocessFileLineNumbers "Core\functions\management\becomeSubCommander.sqf");
-H_fnc_subCommanderRejected = compile (preprocessFileLineNumbers "Core\functions\management\subCommanderRejected.sqf");
 H_fnc_removeSubCommander = compile (preprocessFileLineNumbers "Core\functions\management\removeSubCommander.sqf");
+H_fnc_voteOptions = compile (preprocessFileLineNumbers "Core\functions\management\voteOptions.sqf");
 
 // Persistence Folder
 H_fnc_saveMission = compile (preprocessFileLineNumbers "Core\functions\persistence\saveMission.sqf");
@@ -71,6 +64,7 @@ H_fnc_loadPlayer = compile (preprocessFileLineNumbers "Core\functions\persistenc
 H_fnc_savePlayer = compile (preprocessFileLineNumbers "Core\functions\persistence\savePlayer.sqf");
 H_fnc_playerExit = compile (preprocessFileLineNumbers "Core\functions\persistence\playerExit.sqf");
 H_fnc_loadSupplies = compile (preprocessFileLineNumbers "Core\functions\persistence\loadSupplies.sqf");
+H_fnc_savePlayers = compile (preprocessFileLineNumbers "Core\functions\persistence\savePlayers.sqf");
 
 // Player Folder
 H_fnc_respawn = compile (preprocessFileLineNumbers "Core\functions\player\respawn.sqf");
@@ -90,6 +84,7 @@ H_fnc_aiSetup = compile (preprocessFileLineNumbers "Core\functions\ai\aiSetup.sq
 H_fnc_Radio = compile (preprocessFileLineNumbers "Core\functions\ai\radio.sqf");
 H_fnc_playRadio = compile (preprocessFileLineNumbers "Core\functions\ai\playradio.sqf");
 H_fnc_aiLoadout = compile (preprocessFileLineNumbers "Core\functions\ai\ailoadout.sqf");
+H_fnc_aiKilled = compile (preprocessFileLineNumbers "Core\functions\ai\aiKilled.sqf");
 
 // Groups
 H_fnc_opforFireteam = compile (preprocessFileLineNumbers "Core\functions\ai\groups\OPFORFireteam.sqf");

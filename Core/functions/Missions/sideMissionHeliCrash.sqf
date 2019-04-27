@@ -109,12 +109,12 @@ If (!_failed) then {
 	deleteMarker _marker;
 	[20, true] remoteExec ["H_fnc_deploypoints",2];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
+{
+	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];
+} forEach allPlayers;
 };
 
 sleep 300;
-{
-	deleteVehicle _x;
-} forEach (_pos nearObjects 20);
 {
 	deleteVehicle _x;
 } forEach units _pilotgroup;

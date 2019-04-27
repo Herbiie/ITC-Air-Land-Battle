@@ -24,13 +24,13 @@
 	_unit setGroupID [_UnitID];
 	
 	[_unit] spawn H_fnc_startOnSafe;
+	[] call H_fnc_initialOptions;
 	
-	 _EH = _unit addEventHandler ["killed", {
+	 _EH = _unit addMPEventHandler ["MPKilled", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		private _penalty = "DeathPenalty" call BIS_fnc_getParamValue;
-		[_penalty, false] remoteExec ["H_fnc_deploypoints",2];
-		[_this select 0] call H_fnc_savegear;
-		[_penalty, position _unit, false] remoteExec ["H_fnc_townPoints",2];	 
+		[_penalty, false] call H_fnc_deploypoints;
+		[_unit] call H_fnc_savegear;
+		[_penalty, position _unit, false] call H_fnc_townPoints;	 
 	 }];
 	 
-[] call H_fnc_initialOptions;

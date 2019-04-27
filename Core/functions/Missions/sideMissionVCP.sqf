@@ -87,7 +87,7 @@ deleteMarker _marker;
 deleteMarker _marker2;
 	[20, true] remoteExec ["H_fnc_deploypoints",2];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
-
 {
-	_x addScore 10;
+	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];
 } forEach allPlayers;
+

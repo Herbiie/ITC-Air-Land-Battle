@@ -20,7 +20,7 @@ _marker setMarkerText "Insurgent Roadblock";
 private _group1 = createGroup east;
 [_group1, _pos] call H_fnc_OPFORSquad;
 [leader _group1, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[_group1] call CBA_fnc_taskDefend;
+[_pos, nil, units _group1, 10, 0, false, true] call ace_ai_fnc_garrison;
 
 private _group2 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad;
@@ -54,7 +54,7 @@ As per SOPs.<br/>
 Command and Signals:<br/>
 As per SOPs.<br/>",format ["%1 Destroy Roadblock", _opname],"_taskmarker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
-waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 200} count allUnits) == 0};
+waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 50} count allUnits) == 0};
 
 [_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
@@ -62,14 +62,10 @@ deleteMarker _marker;
 	missionActive = false;
 	[20, true] remoteExec ["H_fnc_deploypoints",2];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
+{
+	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];
+} forEach allPlayers;
 
 sleep 300;
 {deleteVehicle _x} forEach units _group1;
 {deleteVehicle _x} forEach units _group2;
-{
-	deleteVehicle _x;
-} forEach (_pos nearObjects 20);
-
-{
-	_x addScore 10;
-} forEach allPlayers;

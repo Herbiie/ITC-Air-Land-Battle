@@ -45,10 +45,7 @@ H_alb_vehiclestosave = [];
 	H_alb_vehiclestosave = H_alb_vehiclestosave + [_vehicleArray];
 } forEach H_alb_westVehicles;
 
-{
-	[] remoteExec ["H_fnc_savePlayer",_x];
-	sleep 1;
-} forEach allPlayers;
+[] spawn H_fnc_savePlayers;
 
 private _crates = [];
 {
@@ -81,6 +78,8 @@ private _fuelCanisters = [];
 
 private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates,H_alb_markerstosave,_fuelCanisters];
 profileNamespace setVariable ["H_alb_Ruha",_saveVariable];
+
+waitUntil {H_finishedSaving};
 
 saveProfileNamespace;
 ["saveMission"] remoteExec ["BIS_fnc_endMissionServer",0];

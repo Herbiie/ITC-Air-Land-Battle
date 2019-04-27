@@ -8,12 +8,12 @@ for "_i" from 0 to _a do
 	"C_man_1" createUnit [_position, _group1,
 		"this addEventHandler [""killed"", {
 			params [""_unit"", ""_killer"", ""_instigator"", ""_useEffects""];	
-			private _penalty = ""DeathPenalty"" call BIS_fnc_getParamValue;
-			[1, false] remoteExec [""H_fnc_deploypoints"",2];
+			private _penalty = (""DeathPenalty"" call BIS_fnc_getParamValue)/4;
+			[1, false] call H_fnc_deploypoints;
 			if (side _killer == west) then {
-				[_penalty*2, position _unit, false] remoteExec [""H_fnc_townPoints"",2];
+				[_penalty*2, position _unit, false] call H_fnc_townPoints;
 			} else {
-				[_penalty, position _unit, false] remoteExec [""H_fnc_townPoints"",2];	
+				[_penalty, position _unit, false] call H_fnc_townPoints;	
 		};
 		}]; [this,""CIV"",""C""] call tb3_fLoadout;"
 	];
@@ -30,12 +30,12 @@ for "_i" from 0 to _b do
 	"C_man_1" createUnit [_pos, _group2,
 		"this addEventHandler [""killed"", {
 			params [""_unit"", ""_killer"", ""_instigator"", ""_useEffects""];	
-			private _penalty = ""DeathPenalty"" call BIS_fnc_getParamValue;
-			[1, false] remoteExec [""H_fnc_deploypoints"",2];
+			private _penalty = (""DeathPenalty"" call BIS_fnc_getParamValue)/4;
+			[1, false] call H_fnc_deploypoints;
 			if (side _killer == west) then {
-				[_penalty*2, position _unit, false] remoteExec [""H_fnc_townPoints"",2];
+				[_penalty*2, position _unit, false] call H_fnc_townPoints;
 			} else {
-				[_penalty, position _unit, false] remoteExec [""H_fnc_townPoints"",2];	
+				[_penalty, position _unit, false] call H_fnc_townPoints;	
 		};
 		}]; [this,""CIV"",""C""] call tb3_fLoadout;"
 	];
