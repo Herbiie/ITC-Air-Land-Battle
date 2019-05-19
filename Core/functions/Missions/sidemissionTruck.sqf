@@ -22,7 +22,7 @@ private _objective = [_pos, sideEmpty, _objType,[],[],[],[],[],random 360] call 
 private _group1 = createGroup east;
 [_group1, _pos] call H_fnc_OPFORSquad;
 [leader _group1, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[_group1] call CBA_fnc_taskDefend;
+[_pos, nil, units _group1, 10, 0, false, true] call ace_ai_fnc_garrison;
 
 private _group2 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad;

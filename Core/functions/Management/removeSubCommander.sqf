@@ -6,4 +6,6 @@ private _playerName = profileName;
 private _playerID = getPlayerUID player;
 [player,1,["ACE_SelfActions","COptions","SubCommanderResign"]] call ace_interact_menu_fnc_removeActionFromObject;
 player setRank "PRIVATE";
+subcommanders = subcommanders - [_playerID];
+publicVariable "subcommanders";
 ["Notification",["Sub-Commander Resigns",format ["%1 has resigned as sub-commander.", _playerName]]] remoteExec ["BIS_fnc_showNotification",0];
