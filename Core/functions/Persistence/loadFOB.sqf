@@ -144,10 +144,24 @@ sleep 5;
 		
 		private _group1 = createGroup WEST;
 		[_group1, _fobMarker, _fobname, false] call H_fnc_BLUFORSquad;
-		[getMarkerPos _fobmarker, nil, units _group1, 30, 0, false, true] call ace_ai_fnc_garrison;
+		
 		{
-			_x forceSpeed 0;
+			_x disableai "path";
 		} forEach units _group1;
+		private _positions = [];
+		{
+			if ((_x distance _fobpos) < 50) then {
+				private _pos1 = [(_x getRelPos [2.7108,229.554]) # 0,(_x getRelPos [2.7108,229.554]) # 1,4.34548];
+				_positions pushBack _pos1;
+				private _pos2 = [(_x getRelPos [2.82469,124.161]) # 0,(_x getRelPos [2.82469,124.161]) # 1,4.34548];
+				_positions pushBack _pos2;				
+			};
+		} forEach allMissionObjects "Land_Cargo_Patrol_V1_F";
+		{
+			private _unit = (units _group1) # _forEachIndex;
+			_unit setPos _x;
+			_unit setUnitPos "UP";
+		} forEach _positions;
 		
 		
 		private _group2 = createGroup WEST;
@@ -188,6 +202,8 @@ sleep 5;
 		private _co = _coGroup createUnit ["B_officer_F", _copos, [], 0, "NONE"];
 		_co disableai "move";
 		_co allowDamage false;
+		[_co, missionNameSpace getVariable "H_aiFaction", "OF"] call tb3_fLoadout;
+		[_co, ["Return to theatre HQ","[] call H_fnc_teleport",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		[_co, ["Request Mission","[_this select 0] spawn H_fnc_sideMissionRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		[_co, ["Request Operation","[_this select 0] spawn H_fnc_operationRandom",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];
 		[_co, ["Purchase Items", "[] call H_fnc_openShop",nil,1.5,true,true,"","true",5]] remoteExec ["addAction",0];

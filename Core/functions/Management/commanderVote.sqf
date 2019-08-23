@@ -1,7 +1,6 @@
 private _playerID = getPlayerUID player;
 private _playerName = profileName;
-voteOver = false;
-publicVariable "voteOver";
+missionNameSpace setVariable ["voteOver",false,true];
 private _vote = format ["%1 for Commander", _playerName];
 [_vote, 60, 0.5] spawn H_fnc_callVote;
 waitUntil {voteOver};

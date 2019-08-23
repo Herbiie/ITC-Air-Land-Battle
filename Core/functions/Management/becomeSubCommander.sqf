@@ -12,7 +12,6 @@ if (_applicantID in subCommanders) then {
 		[player, 1, ["ACE_SelfActions","COptions"],H_action_subcommanderResign] call ace_interact_menu_fnc_addActionToObject;
 		_playerName = profileName;
 		["Notification",["New Sub-Commander",format ["%1 is now a sub-commander.", _playerName]]] remoteExec ["BIS_fnc_showNotification",0];
-		subCommanders = subCommanders + [_applicantID];
-		publicVariable "subCommanders";
+		subCommanders pushBack _applicantID;
 	};
 };

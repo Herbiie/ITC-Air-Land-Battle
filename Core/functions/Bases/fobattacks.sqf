@@ -7,17 +7,15 @@ while {_loop} do {
 	locationPositions = [];
 	
 	{
-		private _distance = (_x select 1)  distance getMarkerPos _marker;
-		locationPositions pushback [_distance, _x select 0];
-	} forEach H_alb_locations;
+		private _distance = (_x # 1)  distance getMarkerPos _marker;
+		locationPositions pushback [_distance, [_x]];
+	} forEach (missionNameSpace getVariable "H_alb_locations");
 	
 	locationPositions sort true;
 	
-	private _nearestLocation = locationPositions select 0;
-	private _nearestLocationName = (_nearestLocation select 1) splitstring "-";
-	private _locationNumber = parseNumber (_nearestLocationName select (count _nearestLocationName - 1));
-	private _chosenLocation = H_alb_locations select _locationNumber;
-	private _currentPoints = _chosenLocation select 2;
+	private _nearestLocation = locationPositions # 1;
+	private _chosenLocation = (missionNameSpace getVariable "H_alb_locations") # ((missionNameSpace getVariable "H_alb_locations") find _nearestLocation);
+	private _currentPoints = _chosenLocation # 2;
 	
 	if (_currentPoints >= 400) then {
 		actionChance = 2;

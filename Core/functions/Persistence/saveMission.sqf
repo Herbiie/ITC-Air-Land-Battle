@@ -1,7 +1,10 @@
+
+missionNameSpace setVariable ["H_finishedSaving",false,true];
+
 H_alb_markerstosave = [];
 
 {
-	if (!(_x in startingMarkers)) then {
+	if (!(_x in (missionNameSpace getVariable "startingMarkers"))) then {
 		private _markerType = getMarkerType _x;
 		private _markerColor = getMarkerColor _x;
 		private _markerSize = getMarkerSize _x;
@@ -11,7 +14,7 @@ H_alb_markerstosave = [];
 		private _markerBrush = markerBrush _x;
 		private _markerText = markerText _x;
 		private _marker = [_x, _markerType, _markerColor, _markerSize, _markerPos, _markerShape, _markerDir, _markerBrush, _markerText];
-		H_alb_markerstosave = H_alb_markerstosave + [_marker];
+		H_alb_markerstosave pushBack _marker;
 	};
 } forEach allMapMarkers;
 
@@ -43,9 +46,9 @@ H_alb_vehiclestosave = [];
 			_damage = _damage + [_thisDamage];
 		} forEach (_damageArray select 0);
 		private _vehicleArray = [_vehicleType, _position, _direction, _fuel, _cost,_magazines, _weapons, _items, _backpacks, _damage];
-		H_alb_vehiclestosave = H_alb_vehiclestosave + [_vehicleArray];
+		H_alb_vehiclestosave pushBack _vehicleArray;
 	};
-} forEach H_alb_westVehicles;
+} forEach (missionNameSpace getVariable "H_alb_westVehicles");
 
 private _crates = [];
 {
@@ -63,7 +66,7 @@ private _crates = [];
 		private _items = itemCargo _x;
 		private _nearestMarker = [allMapMarkers, _x] call BIS_fnc_nearestPosition;
 		private _crateVariable = [_nearestMarker, _backpacks, _magazines, _items, _weapons];
-		_crates = _crates + [_crateVariable];
+		_crates pushBack _crateVariable;
 	};
 } forEach allMissionObjects "B_supplyCrate_F";
 
@@ -72,15 +75,16 @@ private _fuelCanisters = [];
 {
 	private _fuelPos = position _x;
 	private _fuelAmount = [_x] call ace_refuel_fnc_getFuel;
-	_fuelCanisters = _fuelCanisters + [[_fuelPos, _fuelAmount]];
+	_fuelCanisters pushBack [_fuelPos, _fuelAmount];
 }  forEach allMissionObjects "FlexibleTank_01_sand_F";
 
 [] spawn H_fnc_savePlayers;
 
-private _saveVariable = [H_alb_fobs,H_alb_locations,H_alb_deploypoints,H_alb_gearTier,date,H_alb_playerIDs,H_alb_players,H_alb_vehiclestosave,_crates,H_alb_markerstosave,_fuelCanisters];
-profileNamespace setVariable ["H_alb_Ruha",_saveVariable];
+waitUntil {missionNameSpace getVariable "H_finishedSaving"};
 
-waitUntil {H_finishedSaving};
+private _saveVariable = [(missionNameSpace getVariable "H_alb_fobs"),(missionNameSpace getVariable "H_alb_locations"),(missionNameSpace getVariable "H_alb_deploypoints"),(missionNameSpace getVariable "H_alb_gearTier"),date,(missionNameSpace getVariable "H_alb_playerIDs"),(missionNameSpace getVariable "H_alb_players"),H_alb_vehiclestosave,_crates,H_alb_markerstosave,_fuelCanisters];
+profileNamespace setVariable ["H_alb_Altis",_saveVariable];
+
 
 saveProfileNamespace;
 ["Notification",["Mission Saved",format ["%1 Saved the Mission", currentCommander select 2]]] remoteExec ["BIS_fnc_showNotification",0];

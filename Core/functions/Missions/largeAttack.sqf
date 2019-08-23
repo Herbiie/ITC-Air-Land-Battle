@@ -241,7 +241,7 @@ waitUntil {
 	[["_task2","SUCCEEDED"], BIS_fnc_taskSetState] remoteExec ["call",0];
 	[] spawn H_fnc_radio;
 	[command, format ["All units, %1 is now secure, return to normal duties, out.", _fobname]]  remoteExec ["sideChat", 0];
-	[40, true] remoteExec ["H_fnc_deploypoints",2];
+	missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+40,true];
 	[40, getMarkerPos _base, true] remoteExec ["H_fnc_townPoints",2];
 
 

@@ -10,6 +10,8 @@ H_action_subcommanderResign = ["SubCommanderResign","Resign as Subordinate Comma
 
 H_action_missionOptions = ["ALBOptions","ALB Mission Options","",{},{true}] call ace_interact_menu_fnc_createAction;
 
+H_action_acceptMission = ["MissionAccept","Accept Mission","",{wait = false},{true}] call ace_interact_menu_fnc_createAction;
+
 H_action_radioOn = ["RadioOn","Turn Notification Sound On","",{[] spawn H_fnc_radioOn},{true}] call ace_interact_menu_fnc_createAction;
 
 H_action_radioOff = ["RadioOff","Turn Notification Sound Off","",{[] spawn H_fnc_radioOff},{true}] call ace_interact_menu_fnc_createAction;
@@ -17,11 +19,11 @@ H_action_radioOff = ["RadioOff","Turn Notification Sound Off","",{[] spawn H_fnc
 H_action_checkCommand = ["checkCommand","Check who is commander","",{[] call H_fnc_checkCommand},{true}] call ace_interact_menu_fnc_createAction;
 
 H_action_checkDeploy = ["checkDeploy","Check Deployment Points","",{hint format ["Deployment Points: %1", 
-H_alb_deploypoints]},{true}] call ace_interact_menu_fnc_createAction;
+(missionNameSpace getVariable "H_alb_deploypoints")]},{true}] call ace_interact_menu_fnc_createAction;
 
 H_action_checkXP = ["checkXP","Check Player Allyness","",{[] call H_fnc_allynessCheck},{true}] call ace_interact_menu_fnc_createAction;
 
-H_action_savePlayer = ["savePlayer","Player Save and Exit","",{[] call H_fnc_savePlayer; [] call H_fnc_playerExit},{true}] call ace_interact_menu_fnc_createAction;
+H_action_savePlayer = ["savePlayer","Player Save and Exit","",{[] spawn H_fnc_savePlayer; [] spawn H_fnc_playerExit},{true}] call ace_interact_menu_fnc_createAction;
 
 H_action_saveMission = ["saveMission","Mission Save","",{[] remoteExec ["H_fnc_saveMission",2]},{true}] call ace_interact_menu_fnc_createAction;
 
@@ -29,9 +31,9 @@ H_action_saveMissionExit = ["saveMissionExit","Mission Save and Exit","",{[] rem
 
 H_action_voteOptions = ["VOptions","Vote","",{},{true}] call ace_interact_menu_fnc_createAction;
 
-H_action_voteYes = ["VYes","Vote Yes","",{currentVoteYes = currentVoteYes + 1; publicvariable "currentVoteYes"; [player,1,["ACE_SelfActions","VOptions","VYes"]] call ace_interact_menu_fnc_removeActionFromObject; [player,1,["ACE_SelfActions","VOptions","VNo"]] call ace_interact_menu_fnc_removeActionFromObject;},{true}] call ace_interact_menu_fnc_createAction;
+H_action_voteYes = ["VYes","Vote Yes","",{missionNameSpace setVariable ["currentVoteYes",(missionNameSpace getVariable "currentVoteYes")+1,true]; [player,1,["ACE_SelfActions","VOptions","VYes"]] call ace_interact_menu_fnc_removeActionFromObject; [player,1,["ACE_SelfActions","VOptions","VNo"]] call ace_interact_menu_fnc_removeActionFromObject;},{true}] call ace_interact_menu_fnc_createAction;
 
-H_action_VoteNo = ["VNo","Vote No","",{currentVoteNo = currentVoteNo + 1; publicvariable "currentVoteNo"; [player,1,["ACE_SelfActions","VOptions","VNo"]] call ace_interact_menu_fnc_removeActionFromObject; [player,1,["ACE_SelfActions","VOptions","VYes"]] call ace_interact_menu_fnc_removeActionFromObject;},{true}] call ace_interact_menu_fnc_createAction;
+H_action_VoteNo = ["VNo","Vote No","",{missionNameSpace setVariable ["currentVoteNo",(missionNameSpace getVariable "currentVoteNo")+1,true]; [player,1,["ACE_SelfActions","VOptions","VNo"]] call ace_interact_menu_fnc_removeActionFromObject; [player,1,["ACE_SelfActions","VOptions","VYes"]] call ace_interact_menu_fnc_removeActionFromObject;},{true}] call ace_interact_menu_fnc_createAction;
 
 H_action_makeSubcommander = ["makeSub","Make Sub-Commander",{},{[_target] remoteExec ["H_fnc_becomeSubCommander",0]},{(count currentCommander) > 0 && {(currentCommander select 1) == player}}] call ace_interact_menu_fnc_createAction;
 

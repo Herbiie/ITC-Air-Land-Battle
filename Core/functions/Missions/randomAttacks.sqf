@@ -96,28 +96,12 @@ while {_a < _attacks} do {
 		};
 		
 		case "Mortar": {
-			private _pos = [_position, 500, 1000, 5, 0, 10, 0]  call BIS_fnc_findSafePos;
-			private _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
-			private _closeObjects = count nearestObjects [_pos, [], 20];
-			private _nBuilding = _pos distance (nearestBuilding _pos);
-			while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
-				_pos = [_position, 500, 1000, 5, 0, 10, 0]  call BIS_fnc_findSafePos;
-				_nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
-				_closeObjects = count nearestObjects [_pos, [], 20];
-				_nBuilding = _pos distance (nearestBuilding _pos);
+			private _tempMarker = createMarker ["tempMarker",_position];
+			[_tempMarker] spawn H_fnc_mortarAttack;
+			[] spawn {
+				sleep 30;
+				deleteMarker "tempMarker";
 			};
-			private _mortar = "I_Mortar_01_F" createVehicle _pos;
-			createVehicleCrew _mortar;
-			private _group = createGroup east;
-			(crew _mortar) joinSilent _group;
-			sleep 3;
-			private _marker = createMarkerLocal ["random 1000", _position];
-			private _target = [[[getMarkerPos _marker, 150]],[[getMarkerPos _marker, 30]]] call BIS_fnc_randomPos;
-			private _rounds = ceil random 3;
-			_mortar doArtilleryFire [_target, "8Rnd_82mm_Mo_shells", _rounds];
-			deleteMarkerLocal _marker; 			
-			sleep _time;
-			deleteVehicle _mortar;
 		};
 		
 		

@@ -4,6 +4,5 @@ player setRank "Captain";
 if (count currentCommander > 0) then {
 	[] remoteExec ["H_fnc_removeCommander",(currentCommander select 1)];
 };
-currentCommander = [_playerID, player, _playerName];
-publicVariable "currentCommander";
+missionNameSpace setVariable ["currentCommander",[_playerID, player, _playerName],true];
 [] call H_fnc_commanderOptions;

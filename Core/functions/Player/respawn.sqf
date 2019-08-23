@@ -1,22 +1,18 @@
- params ["_assignedItems","_weapons","_backpack","_headgear","_uniform","_vest","_goggles","_priKit","_secKit","_pisKit","_backpackContents","_vestContents","_uniformContents"];
- 
- 
+private _weapons =  player getVariable "unitWeapons";
+private _priKit =  player getVariable "unitPriKit";
+private _secKit =  player getVariable "unitSecKit";
+private _pisKit =  player getVariable "unitPisKit";
+private _backpack =  player getVariable "unit_Backpack";
+private _backpackContents =  (player getVariable "unit_BackpackItems") call BIS_fnc_consolidateArray;
+private _headgear =  player getVariable "unit_HeadGear";
+private _uniform =  player getVariable "unit_Uniform";
+private _uniformContents =  (player getVariable "unit_UniformItems") call BIS_fnc_consolidateArray;
+private _vest =  player getVariable "unit_Vest";
+private _vestContents =  (player getVariable "unit_VestItems") call BIS_fnc_consolidateArray;
+private _goggles =  player getVariable "unit_Goggles";
+private _assigneditems =  player getVariable "unitAssignedItems";
 
-_weapons =  missionNameSpace getVariable "unitWeapons";
-_priKit =  missionNameSpace getVariable "unitPriKit";
-_secKit =  missionNameSpace getVariable "unitSecKit";
-_pisKit =  missionNameSpace getVariable "unitPisKit";
-_backpack =  missionNameSpace getVariable "unit_Backpack";
-_backpackContents =  (missionNameSpace getVariable "unit_BackpackItems") call BIS_fnc_consolidateArray;
-_headgear =  missionNameSpace getVariable "unit_HeadGear";
-_uniform =  missionNameSpace getVariable "unit_Uniform";
-_uniformContents =  (missionNameSpace getVariable "unit_UniformItems") call BIS_fnc_consolidateArray;
-_vest =  missionNameSpace getVariable "unit_Vest";
-_vestContents =  (missionNameSpace getVariable "unit_VestItems") call BIS_fnc_consolidateArray;
-_goggles =  missionNameSpace getVariable "unit_Goggles";
-_assigneditems =  missionNameSpace getVariable "unitAssignedItems";
-
-//missionNameSpace setVariable ["VariableDebug",_backpackContents select 0,true];
+//player setVariable ["VariableDebug",_backpackContents select 0,true];
 
 
 if (player isKindOf "Man") then {
@@ -59,8 +55,7 @@ player setVariable ["ACE_hasEarPlugsIn", true, true];
 _EH = player addEventHandler ["killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	private _penalty = "DeathPenalty" call BIS_fnc_getParamValue;
-	H_alb_deploypoints = H_alb_deploypoints - _penalty;
-	publicVariable "H_alb_deploypoints";
+	missionNameSpace setVariable ["H_alb_deploypoints",(missionNameSpace getVariable "H_alb_deploypoints")- _penalty,true];
 	[_this select 0] call H_fnc_savegear;
 	[_penalty, position _unit, false] remoteExec ["H_fnc_townPoints",2];
 

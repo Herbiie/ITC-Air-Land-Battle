@@ -172,7 +172,7 @@ deleteMarker _marker3;
 {
 	deleteVehicle _x;
 } forEach (_pos3 nearObjects 40);
-[50, true] remoteExec ["H_fnc_deploypoints",2];
+missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+50,true];
 [50, _base, true] remoteExec ["H_fnc_townPoints",2];
 
 {

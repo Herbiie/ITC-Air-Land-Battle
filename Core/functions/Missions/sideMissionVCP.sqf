@@ -2,7 +2,7 @@ params ["_base"];
 
 private _roads = _base nearRoads 1500;
 private _vcp = position (selectRandom _roads);
-while {_vcp distance _base < 500 OR (_vcp distance getMarkerPos "marker_0" < 500)} do {
+while {_vcp distance _base < 500 OR (_vcp distance getMarkerPos "hqmarker" < 1000)} do {
 	private _roads = _base nearRoads 1500;
 	private _vcp = position (selectRandom _roads);
 };
@@ -85,7 +85,7 @@ sleep 3;
 [["_task","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
 deleteMarker _marker;
 deleteMarker _marker2;
-	[20, true] remoteExec ["H_fnc_deploypoints",2];
+	missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+20,true];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
 {
 	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];

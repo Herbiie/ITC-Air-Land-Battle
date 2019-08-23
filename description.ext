@@ -8,15 +8,6 @@ class Extended_PreInit_EventHandlers {
 		init = "call ('core\preInit.sqf' call SLX_XEH_COMPILE)";
 	};
 };
-class CfgSettings {
-	class CBA {
-		class Caching {
-			compile = 0;
-			xeh = 0;
-			functions = 0;
-		};
-	};
-};
 
 #include "settings\description.hpp"
 
@@ -115,9 +106,9 @@ class Params
 	class AISkill
 	{
 		title = "AI Skill";
-		values[] = {0.25, 0.5, 0.75, 1};
+		values[] = {1, 2, 3, 4};
 		texts[] = {"Low","Moderate","High","Severe"};
-		default = 0.5;
+		default = 2;
 	};
 	class DynamicSimulation
 	{

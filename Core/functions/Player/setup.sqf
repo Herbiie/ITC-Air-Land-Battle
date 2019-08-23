@@ -1,7 +1,7 @@
 
 	params ["_unit", "_colour","_UnitID","_loadout"];
 	
-	[_unit, H_Faction,_loadout] call H_fnc_Loadout;
+	[_unit, missionNameSpace getVariable "H_Faction",_loadout] call H_fnc_Loadout;
 	
 	switch (_colour) do {
 		case "RED": {
@@ -29,7 +29,7 @@
 	 _EH = _unit addMPEventHandler ["MPKilled", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		private _penalty = "DeathPenalty" call BIS_fnc_getParamValue;
-		[_penalty, false] call H_fnc_deploypoints;
+		missionNameSpace setVariable ["H_alb_deploypoints",(missionNameSpace getVariable "H_alb_deploypoints")- _penalty,true];
 		[_unit] call H_fnc_savegear;
 		[_penalty, position _unit, false] call H_fnc_townPoints;	 
 	 }];

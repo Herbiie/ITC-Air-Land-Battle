@@ -76,20 +76,20 @@ waitUntil {
 
 [["_task1","SUCCEEDED"],BIS_fnc_taskSetState] remoteExec ["call",0];
 
-_time = daytime + ((1/3)*("TimeAcceleration" call BIS_fnc_getParamValue));
+_time = daytime + ((1/6)*("TimeAcceleration" call BIS_fnc_getParamValue));
 _time24 = [_time,"HH:MM"] call BIS_fnc_timeToString;
 
 [west,["_task2",_task],[format ["Hold crashsite until reinforcements arrive. Reinforcements are expected at %1", _time24], format ["Hold Crashsite until %1.", _time24],"_task2marker"],objNull,1,2,true] call BIS_fnc_taskCreate;
 
 [_pos, 60, 15] spawn H_fnc_randomAttacks;
 private _a = 0;
-private _b = 1200;
+private _b = 600;
 private _failed = false;
 while {_a < _b} do {
 	sleep 5;
 	_a = _a + 5;
 	_c = round ((_b - _a)/60);
-	[format ["%1 minutes remaining", _c]] remoteExec ["hint",0];
+	[format ["%1 minutes remaining", _c]] remoteExec ["hintSilent",0];
 	if ({_x distance _pos < 25 && side _x == west} count allUnits == 0) then {
 		_b = 0;
 		["_task2","FAILED"] call BIS_fnc_taskSetState;
@@ -107,7 +107,7 @@ If (!_failed) then {
 	sleep 3;
 	[_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 	deleteMarker _marker;
-	[20, true] remoteExec ["H_fnc_deploypoints",2];
+	missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+20,true];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
 {
 	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];

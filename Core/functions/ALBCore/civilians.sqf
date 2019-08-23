@@ -6,16 +6,16 @@ for "_i" from 0 to _a do
 {
     private _position = [_pos, 0, 500, 2, 0, 1, 0]  call BIS_fnc_findSafePos;
 	"C_man_1" createUnit [_position, _group1,
-		"this addEventHandler [""killed"", {
-			params [""_unit"", ""_killer"", ""_instigator"", ""_useEffects""];	
-			private _penalty = (""DeathPenalty"" call BIS_fnc_getParamValue)/4;
-			[1, false] call H_fnc_deploypoints;
+		"this addEventHandler ['killed', {
+			params ['_unit', '_killer', '_instigator', '_useEffects'];	
+			private _penalty = ('DeathPenalty' call BIS_fnc_getParamValue)/4;
+			missionNameSpace setVariable ['H_alb_deploypoints',(missionNameSpace getVariable 'H_alb_deploypoints')-_penalty,true];
 			if (side _killer == west) then {
 				[_penalty*2, position _unit, false] call H_fnc_townPoints;
 			} else {
 				[_penalty, position _unit, false] call H_fnc_townPoints;	
 		};
-		}]; [this,""CIV"",""C""] call tb3_fLoadout;"
+		}]; [this,'CIV','C'] call tb3_fLoadout;"
 	];
 };
 
@@ -28,16 +28,16 @@ private _b = 2+(round random 2);
 for "_i" from 0 to _b do
 {
 	"C_man_1" createUnit [_pos, _group2,
-		"this addEventHandler [""killed"", {
-			params [""_unit"", ""_killer"", ""_instigator"", ""_useEffects""];	
-			private _penalty = (""DeathPenalty"" call BIS_fnc_getParamValue)/4;
-			[1, false] call H_fnc_deploypoints;
+		"this addEventHandler ['killed', {
+			params ['_unit', '_killer', '_instigator', '_useEffects'];	
+			private _penalty = ('DeathPenalty' call BIS_fnc_getParamValue)/4;
+			missionNameSpace setVariable ['H_alb_deploypoints',(missionNameSpace getVariable 'H_alb_deploypoints')-_penalty,true];
 			if (side _killer == west) then {
 				[_penalty*2, position _unit, false] call H_fnc_townPoints;
 			} else {
 				[_penalty, position _unit, false] call H_fnc_townPoints;	
 		};
-		}]; [this,""CIV"",""C""] call tb3_fLoadout;"
+		}]; [this,'CIV','C'] call tb3_fLoadout;"
 	];
 };
 _group2 enableDynamicSimulation true;

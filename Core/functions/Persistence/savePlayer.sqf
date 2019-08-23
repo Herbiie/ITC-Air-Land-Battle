@@ -1,18 +1,13 @@
 private _playerID = getPlayerUID player;
 // Remove Old Save
-private _idNumber = H_alb_playerIDs find _playerID;
-H_alb_playerIDs deleteAt _idNumber;
-publicVariable "H_alb_playerIDs";
+H_alb_playerIDs deleteAt ((missionNameSpace getVariable "H_alb_playerIDs") find _playerID);
 private _playerNumber = 0;
-private _a = 0;
 {
 	if (_playerID in _x) then {
-		_playerNumber = _a;
+		_playerNumber = _forEachIndex;
 	};
-	_a = _a + 1;
-} forEach H_alb_players;
+} forEach (missionNameSpace getVariable "H_alb_players");
 H_alb_players deleteAt _playerNumber;
-publicVariable "H_alb_players";
 
 
 
@@ -49,20 +44,18 @@ publicVariable "H_alb_players";
 	private _score = player getVariable "H_allyness";
 	
 	private _isCommander = false;
-	if (count currentCommander > 0) then {
-		if ((currentCommander select 1) == player) then {
+	if (count (missionNameSpace getVariable "currentCommander") > 0) then {
+		if (((missionNameSpace getVariable "currentCommander") select 1) == player) then {
 			_isCommander = true;
 		};
 	};
 	
 	private _isSubCommander = false;
 	
-	if (_playerID in subCommanders) then {
+	if (_playerID in (missionNameSpace getVariable "subCommanders")) then {
 		_isSubCommander = true;
 	};
 	
 	sleep 1;
-	H_alb_players = H_alb_players + [[_playerID, _score, _dir, _position, _playerKit, _isCommander, _isSubCommander]];
-	publicVariable "H_alb_players";
-	H_alb_playerIDs = H_alb_playerIDs + [_playerID];
-	publicVariable "H_alb_playerIDs"
+	H_alb_players pushBack [_playerID, _score, _dir, _position, _playerKit, _isCommander, _isSubCommander];
+	H_alb_playerIDs pushBack _playerID;

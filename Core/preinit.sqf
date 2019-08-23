@@ -7,27 +7,27 @@ if (isServer) then {
 	private _factionValue = "Faction" call BIS_fnc_getParamValue;
 
 	switch (_factionValue) do {
-		case 1: {H_Faction = "UKAF"; H_supplyVehicle = "B_Truck_01_box_F";};
+		case 1: {missionNameSpace setVariable ["H_Faction","CTRG",true]; H_supplyVehicle = "B_Truck_01_box_F";};
+		case 2: {missionNameSpace setVariable ["H_Faction","NATO",true]; H_supplyVehicle = "B_Truck_01_box_F";};
+		case 3: {missionNameSpace setVariable ["H_Faction","CSAT",true]; H_supplyVehicle = "O_Truck_03_device_F";};
+		case 4: {missionNameSpace setVariable ["H_Faction","AAF",true]; H_supplyVehicle = "I_Truck_02_covered_F";};
 	};
-	publicVariable "H_Faction";
 	
-	H_aiFaction = format ["%1AI",H_Faction];
-	publicVariable "H_aiFaction";
+	missionNameSpace setVariable ["H_aiFaction",format ["%1AI",H_Faction],true];
 	
 	private _enfactionValue = "enFaction" call BIS_fnc_getParamValue;
 
 	switch (_enfactionValue) do {
 		case 1: {
-			H_enFaction = "ALTISI"
+			missionNameSpace setVariable ["H_enFaction","ALTISI",true]
 		};
 		case 2: {
-			H_enFaction = "ALTISG"
+			missionNameSpace setVariable ["H_enFaction","ALTISG",true]
 		};
 		case 3: {
-			H_enFaction = "TANOAR"
+			missionNameSpace setVariable ["H_enFaction","TANOAR",true]
 		};
 	};
-	publicVariable "H_enFaction";
 };
 
 
@@ -44,7 +44,6 @@ H_fnc_allynessCheck = compile (preprocessFileLineNumbers "Core\functions\options
 
 // Management Folder
 H_fnc_callVote = compile (preprocessFileLineNumbers "Core\functions\management\callVote.sqf");
-H_fnc_PlaceVote = compile (preprocessFileLineNumbers "Core\functions\management\placeVote.sqf");
 H_fnc_commanderVote = compile (preprocessFileLineNumbers "Core\functions\management\commanderVote.sqf");
 H_fnc_becomeCommander = compile (preprocessFileLineNumbers "Core\functions\management\becomeCommander.sqf");
 H_fnc_removeCommander = compile (preprocessFileLineNumbers "Core\functions\management\removeCommander.sqf");
@@ -83,8 +82,6 @@ H_fnc_contact = compile (preprocessFileLineNumbers "Core\functions\ai\contact.sq
 H_fnc_aiSetup = compile (preprocessFileLineNumbers "Core\functions\ai\aiSetup.sqf");
 H_fnc_Radio = compile (preprocessFileLineNumbers "Core\functions\ai\radio.sqf");
 H_fnc_playRadio = compile (preprocessFileLineNumbers "Core\functions\ai\playradio.sqf");
-H_fnc_aiLoadout = compile (preprocessFileLineNumbers "Core\functions\ai\ailoadout.sqf");
-H_fnc_aiKilled = compile (preprocessFileLineNumbers "Core\functions\ai\aiKilled.sqf");
 
 // Groups
 H_fnc_opforFireteam = compile (preprocessFileLineNumbers "Core\functions\ai\groups\OPFORFireteam.sqf");
@@ -97,7 +94,6 @@ H_fnc_BLUFORFireTeam = compile (preprocessFileLineNumbers "Core\functions\ai\gro
 
 // Bases Folder
 H_fnc_pb = compile (preprocessFileLineNumbers "Core\functions\bases\pb.sqf");
-H_fnc_op = compile (preprocessFileLineNumbers "Core\functions\bases\op.sqf");
 H_fnc_spawnPB = compile (preprocessFileLineNumbers "Core\functions\bases\spawnPB.sqf");
 H_fnc_newPB = compile (preprocessFileLineNumbers "Core\functions\bases\newPB.sqf");
 H_fnc_NewFOB = compile (preprocessFileLineNumbers "Core\functions\bases\newFOB.sqf");
@@ -105,11 +101,10 @@ H_fnc_spawnFOB = compile (preprocessFileLineNumbers "Core\functions\bases\spawnF
 H_fnc_fob = compile (preprocessFileLineNumbers "Core\functions\bases\fob.sqf");
 H_fnc_fobAttacks = compile (preprocessFileLineNumbers "Core\functions\bases\fobAttacks.sqf");
 H_fnc_closeBase = compile (preprocessFileLineNumbers "Core\functions\bases\closeBase.sqf");
+H_fnc_teleport= compile (preprocessFileLineNumbers "Core\functions\bases\teleport.sqf");
 
 // ALB Core Folder
-H_fnc_deploypoints = compile (preprocessFileLineNumbers "Core\functions\ALBCore\deploypoints.sqf");
 H_fnc_townPoints = compile (preprocessFileLineNumbers "Core\functions\ALBCore\townPoints.sqf");
-H_fnc_militaryBuildings = compile (preprocessFileLineNumbers "Core\functions\ALBCore\militaryBuildings.sqf");
 H_fnc_setUpLocation = compile (preprocessFileLineNumbers "Core\functions\ALBCore\setUpLocation.sqf");
 H_fnc_setUpJIP = compile (preprocessFileLineNumbers "Core\functions\ALBCore\setUpJIP.sqf");
 H_fnc_civilians = compile (preprocessFileLineNumbers "Core\functions\ALBCore\civilians.sqf");
@@ -130,7 +125,6 @@ H_fnc_VCP = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMiss
 H_fnc_randomAttacks = compile (preprocessFileLineNumbers "Core\functions\Missions\randomAttacks.sqf");
 H_fnc_HeliCrash = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionHeliCrash.sqf");
 H_fnc_operationOutposts = compile (preprocessFileLineNumbers "Core\functions\Missions\operationOutposts.sqf");
-H_fnc_operationCapture = compile (preprocessFileLineNumbers "Core\functions\Missions\operationCapture.sqf");
 H_fnc_AreaClear = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionClear.sqf");
 H_fnc_CaptureHVT = compile (preprocessFileLineNumbers "Core\functions\Missions\sideMissionCapture.sqf");
 
@@ -139,7 +133,6 @@ H_fnc_spawnVehicle = compile (preprocessFileLineNumbers "Core\functions\Logistic
 H_fnc_placeVehicle = compile (preprocessFileLineNumbers "Core\functions\Logistics\placeVehicle.sqf");
 H_fnc_SetUpCommand = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupCommand.sqf");
 H_fnc_SetUpArmourer = compile (preprocessFileLineNumbers "Core\functions\Logistics\setupArmourer.sqf");
-H_fnc_penalty = compile (preprocessFileLineNumbers "Core\functions\Logistics\penalty.sqf");
 H_fnc_arsenal = compile (preprocessFileLineNumbers "Core\functions\Logistics\arsenal.sqf");
 H_fnc_upgradeGear = compile (preprocessFileLineNumbers "Core\functions\Logistics\upgradeGear.sqf");
 H_fnc_buyItem = compile (preprocessFileLineNumbers "Core\functions\Logistics\buyItem.sqf");

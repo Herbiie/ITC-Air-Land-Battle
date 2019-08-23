@@ -9,8 +9,7 @@
 		private _fobSelect = H_alb_fobs find _closestFOB;
 		private _deletedFOB = H_alb_fobs deleteAt _fobSelect;
 		if ((_deletedFOB select 0) == "PB") then {
-			H_alb_deploypoints = H_alb_deploypoints + 50;
-			publicVariable "H_alb_deploypoints";
+			missionNameSpace setVariable ["H_alb_deploypoints",(missionNameSpace getVariable "H_alb_deploypoints")+50,true];
 			{
 				deleteVehicle _x;
 			} forEach units (_deletedFOB select 4);
@@ -24,11 +23,10 @@
 			
 			deleteMarker (_deletedFOB select 3);
 			
-			["Notification",["PB Closed Down",format ["%1 has been closed down.<br/>%2 Deployment Points Remaining.", (_deletedFOB select 1), H_alb_deploypoints]]] remoteExec ["BIS_fnc_showNotification",0];
+			["Notification",["PB Closed Down",format ["%1 has been closed down.<br/>%2 Deployment Points Remaining.", (_deletedFOB select 1), (missionNameSpace getVariable "H_alb_deploypoints")]]] remoteExec ["BIS_fnc_showNotification",0];
 		};
 		if ((_deletedFOB select 0) == "FOB") then {
-			H_alb_deploypoints = H_alb_deploypoints + 250;
-			publicVariable "H_alb_deploypoints";
+			missionNameSpace setVariable ["H_alb_deploypoints",(missionNameSpace getVariable "H_alb_deploypoints")+250,true];
 			{
 				deleteVehicle _x;
 			} forEach units (_deletedFOB select 4);
@@ -45,6 +43,6 @@
 			
 			deleteMarker (_deletedFOB select 3);
 			
-			["Notification",["PB Closed Down",format ["%1 has been closed down.<br/>%2 Deployment Points Remaining.", (_deletedFOB select 1), H_alb_deploypoints]]] remoteExec ["BIS_fnc_showNotification",0];
+			["Notification",["PB Closed Down",format ["%1 has been closed down.<br/>%2 Deployment Points Remaining.", (_deletedFOB select 1), (missionNameSpace getVariable "H_alb_deploypoints")]]] remoteExec ["BIS_fnc_showNotification",0];
 		};
 	}];

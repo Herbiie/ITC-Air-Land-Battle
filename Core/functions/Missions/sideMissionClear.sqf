@@ -72,7 +72,7 @@ waitUntil {({side _x == EAST && (_x distance getMarkerPos _marker2) < 50} count 
 [_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 deleteMarker _marker;
 deleteMarker _marker2;
-[20, true] remoteExec ["H_fnc_deploypoints",2];
+missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+20,true];
 [20, _base, true] remoteExec ["H_fnc_townPoints",2];
 {
 	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];

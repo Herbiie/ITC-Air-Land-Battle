@@ -65,7 +65,7 @@ waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 200} count 
 
 deleteMarker _marker;
 	missionActive = false;
-	[20, true] remoteExec ["H_fnc_deploypoints",2];
+	missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+20,true];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
 {
 	_x setvariable ["H_Allyness",(_x getVariable "H_Allyness")+10,true];

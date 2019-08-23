@@ -13,9 +13,8 @@ if (side _unit == west) then {
 
 	if (_patrol) then {
 		[_unit, getMarkerPos _base, 1000] spawn H_fnc_patrol;
-		allPatrols = allPatrols + [group _unit];
-		publicVariable "allPatrols";
-	};
+		allPatrols pushBack (group _unit);
+		};
 	
 	if (_patrol && (_tracking == 1)) then {
 		[_unit] spawn H_fnc_tracker;

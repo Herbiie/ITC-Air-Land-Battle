@@ -1,5 +1,4 @@
-if (H_alb_deploypoints >= 100) then {
-	publicVariable "H_alb_deploypoints";
+if ((missionNameSpace getVariable "H_alb_deploypoints") >= 100) then {
 	openMap [true, false];
 	addMissionEventHandler ["MapSingleClick", {
 		params ["_units", "_pos", "_alt", "_shift"];
@@ -21,9 +20,8 @@ if (H_alb_deploypoints >= 100) then {
 			[]  call H_fnc_newPB;
 		} else {
 			[_fobpos] remoteExec ["H_fnc_spawnPB",2];
-			H_alb_deploypoints = H_alb_deploypoints - 100;
-			publicVariable "H_alb_deploypoints";
-			["Notification",["PB Deployed",format ["PB ready for deployment at %1.<br/>%2 Deployment Points Remaining.", mapGridPosition _fobpos, H_alb_deploypoints]]] remoteExec ["BIS_fnc_showNotification",0];
+			missionNameSpace setVariable ["H_alb_deploypoints",(missionNameSpace getVariable "H_alb_deploypoints")-100,true];
+			["Notification",["PB Deployed",format ["PB ready for deployment at %1.<br/>%2 Deployment Points Remaining.", mapGridPosition _fobpos, (missionNameSpace getVariable "H_alb_deploypoints")]]] remoteExec ["BIS_fnc_showNotification",0];
 			openMap [false, false];
 			};
 		}];
