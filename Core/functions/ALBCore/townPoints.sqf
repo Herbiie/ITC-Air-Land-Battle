@@ -1,9 +1,6 @@
 params ["_points","_position","_add"];
 	
-	_closestLoc = nil;
-	{
-	   if(isNil "_closestLoc" || {(_position distance (_x # 1)) < (_position distance (_closestLoc # 1))}) then {_closestLoc = _x};
-	} forEach (missionNameSpace getVariable "H_alb_locations");
+	_closestLoc = [_position] call H_fnc_findClosestTown;
 	private _chosenLocation = (missionNameSpace getVariable "H_alb_locations") deleteAt ((missionNameSpace getVariable "H_alb_locations") find _closestLoc);
 	private _currentPoints = _chosenLocation select 2;
 	

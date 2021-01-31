@@ -19,5 +19,13 @@ switch (H_Faction) do {
 		missionNameSpace setVariable ["H_Air_vehicles",[["I_Heli_light_03_unarmed_F",100],["I_Heli_light_03_dynamicLoadout_F",150],["I_Heli_Transport_02_F",250],["ITC_A519",750],["ITC_Gripen",1000],["ITC_F181E",1250],["ITC_A10E",1500]],true];
 		missionNameSpace setVariable ["H_Arty_vehicles",[["B_Mortar_01_F",100],["itc_land_o_sph_sochor2",400],["itc_land_o_mlrs_zamak",700]],true];
 	};
+	case "CUSTOM": {
+		private _MT = missionNameSpace getVariable ["H_custom_MT",[]];
+		private _air = missionNameSpace getVariable ["H_custom_air",[]];
+		private _arty = missionNameSpace getVariable ["H_custom_arty",[]];
+		missionNameSpace setVariable ["H_MT_vehicles",_MT,true];
+		missionNameSpace setVariable ["H_Air_vehicles",_air,true];
+		missionNameSpace setVariable ["H_Arty_vehicles",_arty,true];
+	};
 
 };

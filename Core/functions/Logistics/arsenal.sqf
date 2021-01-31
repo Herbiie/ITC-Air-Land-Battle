@@ -2,7 +2,7 @@ params ["_box"];
 
 
 
-[_box, ["ItemMap", "ItemCompass", "ItemWatch","ACE_fieldDressing","ACE_earplugs","ACE_morphine","ACE_tourniquet","ACE_packingBandage","ACE_quikclot","ACE_elasticBandage","ace_maptools","ACE_Flashlight_KSF1","HandGrenade","B_IR_Grenade","16Rnd_9x21_Mag","hgun_P07_khk_F","SmokeShell","SmokeShellRed","SmokeShellGreen","SmokeShellBlue","SmokeShellYellow","ACE_salineIV_250","ACE_salineIV_500","ACE_salineIV","Binocular","ACE_CableTie","ACE_ATragMX","ACE_SprayPaintBlack","ACE_SprayPaintRed","ACE_SprayPaintGreen","ACE_SprayPaintBlue","ACE_DefusalKit","ACE_EntrenchingTool","ACE_HuntIR_Monitor","ACE_IR_Strobe_Item","ACE_M26_Clacker","ACE_Clacker","ACE_PersonalAidKit","ACE_RangeCard","ACE_Sandbag_Empty","ACE_SurgicalKit","Toolkit","ACE_UavBattery","ACE_Wirecutters","DemoCharge_Remote_Mag","Chemlight_Blue","Chemlight_Green","ACE_Chemlight_HiOrange","ACE_Chemlight_HiOrange","ACE_Chemlight_HiRed","ACE_Chemlight_HiWhite","ACE_Chemlight_HiYellow","ACE_Chemlight_IR","ACE_Chemlight_Orange","Chemlight_Red","ACE_Chemlight_White","Chemlight_Yellow","B_IR_Grenade","ACE_HandFlare_Green","ACE_HandFlare_Red","ACE_HandFlare_White","ACE_HandFlare_Yellow","ACE_M84","HandGrenade_Stone","1Rnd_HE_Grenade_shell","1Rnd_Smoke_Grenade_shell","1Rnd_SmokeRed_Grenade_shell","1Rnd_SmokeGreen_Grenade_shell","1Rnd_SmokeYellow_Grenade_shell","1Rnd_SmokePurple_Grenade_shell","1Rnd_SmokeBlue_Grenade_shell","1Rnd_SmokeOrange_Grenade_shell","UGL_FlareWhite_F","UGL_FlareGreen_F","UGL_FlareRed_F","UGL_FlareYellow_F","UGL_FlareCIR_F","U_B_HeliPilotCoveralls","U_B_PilotCoveralls","H_PilotHelmetFighter_B","H_PilotHelmetHeli_B","H_CrewHelmetHeli_B","B_respawn_TentDome_F"]] call ace_arsenal_fnc_initBox;
+[_box, ["ItemMap", "ItemCompass", "ItemWatch","ACE_Splint","ACE_fieldDressing","ACE_earplugs","ACE_morphine","ACE_tourniquet","ACE_packingBandage","ACE_quikclot","ACE_elasticBandage","ace_maptools","ACE_Flashlight_KSF1","HandGrenade","B_IR_Grenade","16Rnd_9x21_Mag","hgun_P07_khk_F","SmokeShell","SmokeShellRed","SmokeShellGreen","SmokeShellBlue","SmokeShellYellow","ACE_salineIV_250","ACE_salineIV_500","ACE_salineIV","Binocular","ACE_CableTie","ACE_ATragMX","ACE_SprayPaintBlack","ACE_SprayPaintRed","ACE_SprayPaintGreen","ACE_SprayPaintBlue","ACE_DefusalKit","ACE_EntrenchingTool","ACE_HuntIR_Monitor","ACE_IR_Strobe_Item","ACE_M26_Clacker","ACE_Clacker","ACE_PersonalAidKit","ACE_RangeCard","ACE_Sandbag_Empty","ACE_SurgicalKit","Toolkit","ACE_UavBattery","ACE_Wirecutters","DemoCharge_Remote_Mag","Chemlight_Blue","Chemlight_Green","ACE_Chemlight_HiOrange","ACE_Chemlight_HiOrange","ACE_Chemlight_HiRed","ACE_Chemlight_HiWhite","ACE_Chemlight_HiYellow","ACE_Chemlight_IR","ACE_Chemlight_Orange","Chemlight_Red","ACE_Chemlight_White","Chemlight_Yellow","B_IR_Grenade","ACE_HandFlare_Green","ACE_HandFlare_Red","ACE_HandFlare_White","ACE_HandFlare_Yellow","ACE_M84","HandGrenade_Stone","1Rnd_HE_Grenade_shell","1Rnd_Smoke_Grenade_shell","1Rnd_SmokeRed_Grenade_shell","1Rnd_SmokeGreen_Grenade_shell","1Rnd_SmokeYellow_Grenade_shell","1Rnd_SmokePurple_Grenade_shell","1Rnd_SmokeBlue_Grenade_shell","1Rnd_SmokeOrange_Grenade_shell","UGL_FlareWhite_F","UGL_FlareGreen_F","UGL_FlareRed_F","UGL_FlareYellow_F","UGL_FlareCIR_F","U_B_HeliPilotCoveralls","U_B_PilotCoveralls","H_PilotHelmetFighter_B","H_PilotHelmetHeli_B","H_CrewHelmetHeli_B","B_respawn_TentDome_F"]] call ace_arsenal_fnc_initBox;
 
 _faction = "Faction" call BIS_fnc_getParamValue;
 
@@ -27,8 +27,11 @@ _faction = "Faction" call BIS_fnc_getParamValue;
 			// AAF
 			[_box, ["H_HelmetIA","H_HelmetIA_camo","H_Cap_blk_Raven","H_Booniehat_dgtl","H_MilCap_dgtl","arifle_Mk20_F","V_PlateCarrierIA1_dgtl","V_Chestrig_oli","30Rnd_556x45_Stanag","launch_NLAW_F","30Rnd_556x45_Stanag_Tracer_Red","NVGoggles_INDEP"]] call ace_arsenal_fnc_addVirtualItems;
 		};
-
-
+		case 5: {
+			// Custom
+			private _gear = missionNameSpace getVariable ["H_custom_arsenalTier1",[]];
+			[_box,_gear]  call ace_arsenal_fnc_addVirtualItems;
+		};
 
 	};
 	
@@ -51,6 +54,11 @@ if (H_alb_gearTier >= 1) then {
 		case 4: {
 			// AAF
 			[_box, ["srifle_EBR_F","20Rnd_762x51_Mag","LMG_Mk200_LP_BI_F","200Rnd_65x39_cased_Box","arifle_Mk20_GL_F"]] call ace_arsenal_fnc_addVirtualItems;
+		};
+		case 5: {
+			// Custom
+			private _gear = missionNameSpace getVariable ["H_custom_arsenalTier2",[]];
+			[_box,_gear]  call ace_arsenal_fnc_addVirtualItems;
 		};
 	};
 };
@@ -75,6 +83,11 @@ if (H_alb_gearTier >= 2) then {
 			// AAF
 			[_box, ["launch_MRAWS_olive_rail_F","MRAWS_HEAT_F","MRAWS_HE_F"]] call ace_arsenal_fnc_addVirtualItems;
 		};
+		case 5: {
+			// Custom
+			private _gear = missionNameSpace getVariable ["H_custom_arsenalTier3",[]];
+			[_box,_gear]  call ace_arsenal_fnc_addVirtualItems;
+		};
 	};
 };
 	
@@ -98,11 +111,16 @@ if (H_alb_gearTier >= 3) then {
 			// AAF
 			[_box, ["launch_Titan_F","launch_B_Titan_short_F","Titan_AA","Titan_AT","Titan_AP","srifle_GM6_F","5Rnd_127x108_Mag"]] call ace_arsenal_fnc_addVirtualItems;
 		};
+		case 5: {
+			// Custom
+			private _gear = missionNameSpace getVariable ["H_custom_arsenalTier4",[]];
+			[_box,_gear]  call ace_arsenal_fnc_addVirtualItems;
+		};
 	};
 };
 
-private _acre = isClass (configfile >> "CfgPatches" >> "acre_main");
-private _tfar = isClass (configfile >> "CfgPatches" >> "task_force_radio");
+private _acre = missionNameSpace getVariable ["H_acreEnabled",false];
+private _tfar = missionNameSpace getVariable ["H_tfarEnabled",false];
 
 if (_acre) then {
 [_box,

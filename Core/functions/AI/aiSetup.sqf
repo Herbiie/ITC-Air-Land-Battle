@@ -12,7 +12,7 @@ if (side _unit == west) then {
 	};
 
 	if (_patrol) then {
-		[_unit, getMarkerPos _base, 1000] spawn H_fnc_patrol;
+		[_unit, getMarkerPos _base, 1000, 7, "MOVE", "SAFE", "YELLOW", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol;
 		allPatrols pushBack (group _unit);
 		};
 	
@@ -20,12 +20,6 @@ if (side _unit == west) then {
 		[_unit] spawn H_fnc_tracker;
 	};
 	group _unit deleteGroupWhenEmpty true;
-	{
-	    _x addEventHandler ["killed", "
-				[2, false] remoteExec [""H_fnc_deploypoints"",2];
-				[2, position (_this select 0), false] remoteExec [""H_fnc_townPoints"",2]
-				"];
-	} forEach units group _unit;
 };
 
 if (side _unit == independent) then {
@@ -33,13 +27,8 @@ if (side _unit == independent) then {
 		[_unit] spawn H_fnc_tracker;
 	};
 	group _unit deleteGroupWhenEmpty true;
-	{
-	    _x addEventHandler ["killed", "
-				[2, position (_this select 0), false] remoteExec [""H_fnc_townPoints"",2]
-				"];
-	} forEach units group _unit;
 	if (_patrol) then {
-		[_unit, getMarkerPos _base, 1000] spawn H_fnc_patrol;
+		[_unit, getMarkerPos _base, 1000, 7, "MOVE", "SAFE", "YELLOW", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol;
 	};
 };
 

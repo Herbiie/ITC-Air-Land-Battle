@@ -31,10 +31,10 @@ private _group1 = createGroup east;
 private _group2 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad;
 [leader _group2, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[leader _group2, _pos, 200] spawn H_fnc_patrol;
+[leader _group2, _pos, 200, 7, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol;
 
 private _commander =  _group1 createUnit ["O_G_Soldier_F", _pos, [], 0, "NONE"];
-[_commander,H_enFaction,"OF"] call tb3_fLoadout;	
+[_commander,H_enFaction,"OF"] call tb3_fnc_Loadout;	
 _commander disableAI "move";
 
 private _adjective = selectRandom h_alb_opNameA;

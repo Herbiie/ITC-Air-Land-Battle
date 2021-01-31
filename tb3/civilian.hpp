@@ -1,5 +1,5 @@
 class CIV { 
-	class baseUnit {
+	class C {
 		ace_earplugs = 1;
 		headgearRandom = 1;
 		gogglesRandom = 0;
@@ -68,7 +68,6 @@ class CIV {
 			"U_C_ShirtSurfer_shorts",
 			"U_C_TeeSurfer_shorts_1",
 			"U_C_Scientist",
-			"U_NikosAgedBody",
 			"U_C_Scientist",
 		};
 			uniformContents[] = {
@@ -90,5 +89,10 @@ class CIV {
 		magazines[] = {}; items[] = {};
 	};
 	
-	class C: baseUnit {};
+	class CL: C {
+		uniform[] = {
+			"U_NikosAgedBody",
+		};		
+	};
+			
 };

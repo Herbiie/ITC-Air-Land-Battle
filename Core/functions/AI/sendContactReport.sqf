@@ -17,8 +17,7 @@ _contact setMarkerAlpha 0.75;
 startingMarkers = startingmarkers + [_contact];
 publicVariable "startingMarkers";
 
-[] spawn H_fnc_playRadio;
-_soldier sideChat format ["Command this is %1, troops in contact at grid reference %2, %1 is engaging, out.", _callsign, _grid]; 
+[_soldier, format ["Command this is %1, troops in contact at grid reference %2, %1 is engaging, out.", _callsign, _grid]] remoteExec ["H_fnc_sideChat",0]; 
 
 
 private _a = 0;
@@ -27,8 +26,7 @@ while {_a < 300} do {
 	private _group = group _soldier;
 	private _leader = leader _group;
 	if ({(_leader knowsAbout _x >= 1) && (side _x == east)} count allUnits == 0) then {
-		[] spawn H_fnc_radio;
-		_leader sideChat format ["Command this is %1, %1 is no longer in contact, out.", _callsign];
+		[_leader, format ["Command this is %1, %1 is no longer in contact, out.", _callsign]] remoteExec ["H_fnc_sideChat",0]; 
 		_a = 300;
 	};
 	_a = _a + 5;

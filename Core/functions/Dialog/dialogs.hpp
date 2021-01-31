@@ -255,7 +255,7 @@ class RscEdit
         0,
         0,
         0,
-        0
+        0.75
     };
     colorText[] = 
     {

@@ -1,0 +1,13 @@
+params ["_str","_unit"];
+[_unit] call H_fnc_leaveSquad;
+private _allGroups = missionNameSpace getVariable ["h_groups",[]];
+private _groupNo = parseNumber _str;
+private _squad = _allGroups # _groupNo;
+_squad params ["_group","_name","_team","_teamIDs","_locked"];
+[_unit] joinSilent _group;
+_team pushBack _unit;
+_teamIDs pushBack (getPlayerUID _unit);
+_squad = [_group,_name,_team,_teamIDs,_locked];
+_allGroups deleteAt _groupNo;
+_allGroups pushBack _squad;
+missionNameSpace setVariable ["h_groups",_allGroups,true];

@@ -26,12 +26,12 @@ _marker setMarkerText "Insurgent Outpost";
 private _group1 = createGroup east;
 [_group1, _pos] call H_fnc_OPFORSquad;
 [leader _group1, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[_pos, nil, units _group1, 10, 0, false, true] call ace_ai_fnc_garrison;
+[_group1] call cba_fnc_taskDefend;
 
 private _group2 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad;
 [leader _group2, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[leader _group2, _pos, 200] spawn H_fnc_patrol; 
+[leader _group2, _pos, 200, 7, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol; 
 
 private _adjective = selectRandom h_alb_opNameA;
 private _noun = selectRandom H_alb_opNameB;
@@ -64,7 +64,6 @@ waitUntil {({side _x == east && (_x distance getMarkerPos _marker) < 200} count 
 [_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
 deleteMarker _marker;
-	missionActive = false;
 	missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+20,true];
 	[20, _base, true] remoteExec ["H_fnc_townPoints",2];
 {

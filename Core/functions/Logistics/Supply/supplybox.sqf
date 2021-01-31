@@ -9,6 +9,7 @@ clearBackpackCargoGlobal _box;
 // Global Equipment
 _box addItemCargoGlobal ["ACE_fieldDressing", 20];
 _box addItemCargoGlobal ["ACE_earplugs", 10];
+_box addItemCargoGlobal ["ACE_splint", 10];
 _box addItemCargoGlobal ["ACE_morphine", 30];
 _box addItemCargoGlobal ["ACE_tourniquet", 30];
 _box addItemCargoGlobal ["ACE_packingBandage", 30];
@@ -140,6 +141,87 @@ switch (_faction) do {
 			_box addWeaponCargoGlobal ["srifle_GM6_F", 1];
 			_box additemCargoGlobal ["optic_SOS", 1];
 		};
+	case 5: {
+	// Custom
+		private _tier1w = missionNamespace getVariable ["H_custom_tier1w",[]];
+		private _tier1m = missionNamespace getVariable ["H_custom_tier1m",[]];
+		private _tier1i = missionNamespace getVariable ["H_custom_tier1i",[]];
+		private _tier2w = missionNamespace getVariable ["H_custom_tier2w",[]];
+		private _tier2m = missionNamespace getVariable ["H_custom_tier2m",[]];
+		private _tier2i = missionNamespace getVariable ["H_custom_tier2i",[]];
+		private _tier3w = missionNamespace getVariable ["H_custom_tier3w",[]];
+		private _tier3m = missionNamespace getVariable ["H_custom_tier3m",[]];
+		private _tier3i = missionNamespace getVariable ["H_custom_tier3i",[]];
+		private _tier4w = missionNamespace getVariable ["H_custom_tier4w",[]];
+		private _tier4m = missionNamespace getVariable ["H_custom_tier4m",[]];
+		private _tier4i = missionNamespace getVariable ["H_custom_tier4i",[]];
+		{
+			private _item = _x # 0;
+			private _amount = _x # 1;
+			_box addWeaponCargoGlobal [_item,_amount];
+		} forEach _tier1w;
+		{
+			private _item = _x # 0;
+			private _amount = _x # 1;
+			_box addMagazineCargoGlobal [_item,_amount];
+		} forEach _tier1m;
+		{
+			private _item = _x # 0;
+			private _amount = _x # 1;
+			_box addItemCargoGlobal [_item,_amount];
+		} forEach _tier1i;
+		if (H_alb_gearTier >= 1) then {
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addWeaponCargoGlobal [_item,_amount];
+			} forEach _tier2w;
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addMagazineCargoGlobal [_item,_amount];
+			} forEach _tier2m;
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addItemCargoGlobal [_item,_amount];
+			} forEach _tier2i;
+		};
+		if (H_alb_gearTier >= 2) then {
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addWeaponCargoGlobal [_item,_amount];
+			} forEach _tier3w;
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addMagazineCargoGlobal [_item,_amount];
+			} forEach _tier3m;
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addItemCargoGlobal [_item,_amount];
+			} forEach _tier3i;
+		};
+		if (H_alb_gearTier >= 3) then {
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addWeaponCargoGlobal [_item,_amount];
+			} forEach _tier4w;
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addMagazineCargoGlobal [_item,_amount];
+			} forEach _tier4m;
+			{
+				private _item = _x # 0;
+				private _amount = _x # 1;
+				_box addItemCargoGlobal [_item,_amount];
+			} forEach _tier4i;
+		};
+	};
 	
 	};
 };

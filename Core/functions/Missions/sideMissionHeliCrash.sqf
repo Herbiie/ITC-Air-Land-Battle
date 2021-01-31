@@ -68,7 +68,7 @@ waitUntil {
 
 
 private _smoke = "SmokeShellRed" createVehicle [(_pos select 0)-6, (_pos select 1)-5, 0];
-[_pilot1, format ["Any callsign this is %1, poping smoke now, over.", _callsign]]  remoteExec ["sideChat", 0]; 
+[_pilot1, format ["Any callsign this is %1, poping smoke now, over.", _callsign]]  remoteExec ["H_fnc_sideChat", 0]; 
 
 waitUntil {
 {_x distance _pos < 20} count playableUnits > 0;

@@ -1,4 +1,4 @@
-[player, "RED", "Arson 1'1", "R"] call H_fnc_setup;
+[player, "Unassigned", "R"] call H_fnc_setup;
 waitUntil {missionNameSpace getVariable "H_alb_loaded"};
 private _playerSaved = getPlayerUID player in (missionNameSpace getVariable "H_alb_playerIDs");
 if (_playerSaved) then {
@@ -19,16 +19,19 @@ if (_playerSaved) then {
 		if ( local player ) then {
 			removeAllAssignedItems player; 
 			removeAllItemsWithMagazines player;
+			removeBackPack player;
+			removeVest player;
+			removeUniform player;
 			{player removeWeapon _x;} forEach weapons player;
 		
 			if ( _uniform != "") then {
-				[player,_uniform] call tb3_fSetUniform;
+				[player,_uniform] call tb3_fnc_SetUniform;
 			};
 			if (_backpack != "") then {
-				[player,[_backpack,1]] call tb3_fSetbackpack;
+				[player,[_backpack,1]] call tb3_fnc_Setbackpack;
 			};
 			if (_vest != "") then {
-				[player,_vest] call tb3_fSetvest;
+				[player,_vest] call tb3_fnc_Setvest;
 			};
 			
 			removeGoggles player;
@@ -36,19 +39,19 @@ if (_playerSaved) then {
 		};
 	};
 
-	if ((count _assignedItems) > 0) then { [player,_assignedItems] call tb3_fSetLinkedItems; };
+	if ((count _assignedItems) > 0) then { [player,_assignedItems] call tb3_fnc_SetLinkedItems; };
 	if (_headgear != "") then { 
-		[player,_headgear] call tb3_fSetHeadgear;
+		[player,_headgear] call tb3_fnc_SetHeadgear;
 	};		
 	if (_goggles != "") then {
-		[player,_goggles] call tb3_fSetGoggles;
+		[player,_goggles] call tb3_fnc_SetGoggles;
 	};
 	
-	if ((count _weapons) > 0) then { [player,_weapons,_priKit,_secKit,_pisKit] call tb3_fSetWeapons; };
+	if ((count _weapons) > 0) then { [player,_weapons,_priKit,_secKit,_pisKit] call tb3_fnc_SetWeapons; };
 	
-	if ((count _backpackContents) > 0) then { [player,_backpackContents] call tb3_fsetRuckContents; };
-	if ((count _uniformContents) > 0) then { [player,_uniformContents] call tb3_fsetUniformContents; };
-	if ((count _vestContents) > 0) then { [player,_vestContents] call tb3_fsetVestContents; };
+	if ((count _backpackContents) > 0) then { [player,_backpackContents] call tb3_fnc_setRuckContents; };
+	if ((count _uniformContents) > 0) then { [player,_uniformContents] call tb3_fnc_setUniformContents; };
+	if ((count _vestContents) > 0) then { [player,_vestContents] call tb3_fnc_setVestContents; };
 	
 	player setVariable ["ACE_hasEarPlugsIn", true, true];
 	

@@ -1,15 +1,15 @@
 params ["_base","_fobname"];
 
 	[] spawn H_fnc_radio;
-	[command, "All units this is command, Priority message, break."]  remoteExec ["sideChat", 0];
+	[command, "All units this is command, Priority message, break."]  remoteExec ["H_fnc_sideChat", 0];
 	sleep 3;
-	[command, "I continue, a large force of insurgents is assembling with the intent to overrun one of our FOBs, break."]  remoteExec ["sideChat", 0];
+	[command, "I continue, a large force of insurgents is assembling with the intent to overrun one of our FOBs, break."]  remoteExec ["H_fnc_sideChat", 0];
 	sleep 3;
-	[command, format ["I continue, the insurgents' most likely target is %1, break.", _fobname]]  remoteExec ["sideChat", 0];
+	[command, format ["I continue, the insurgents' most likely target is %1, break.", _fobname]]  remoteExec ["H_fnc_sideChat", 0];
 	sleep 3;
-	[command, format ["I continue, all available units are to move to %1 ASAP to assist with the defence, break.", _fobname]]  remoteExec ["sideChat", 0];
+	[command, format ["I continue, all available units are to move to %1 ASAP to assist with the defence, break.", _fobname]]  remoteExec ["H_fnc_sideChat", 0];
 	sleep 3;
-	[command, "I continue, the insurgent attack is expected in 15 minutes [real world], all units acknowledge."]  remoteExec ["sideChat", 0];
+	[command, "I continue, the insurgent attack is expected in 15 minutes [real world], all units acknowledge."]  remoteExec ["H_fnc_sideChat", 0];
 	sleep 3;
 	
 	_attackTime = daytime + (0.25*("TimeAcceleration" call BIS_fnc_getParamValue));
@@ -220,7 +220,7 @@ waitUntil {
 
 	sleep 3;
 	[] spawn H_fnc_radio;
-	[command, "All units,the insurgent force is severely weakened, recommend conducting clearance patrols of the surrounding area, out."]  remoteExec ["sideChat", 0];
+	[command, "All units,the insurgent force is severely weakened, recommend conducting clearance patrols of the surrounding area, out."]  remoteExec ["H_fnc_sideChat", 0];
 	[["_task1","SUCCEEDED"], BIS_fnc_taskSetState] remoteExec ["call",0];
 	sleep 1;
 	[[west,["_task2"],["There are only few insurgents left, push into the surrounding area and clear them out.","Conduct Clearance Patrols","_taskmarker"],objNull,1,2,true], BIS_fnc_taskCreate] remoteExec ["call",0];
@@ -240,7 +240,7 @@ waitUntil {
 	sleep 3;
 	[["_task2","SUCCEEDED"], BIS_fnc_taskSetState] remoteExec ["call",0];
 	[] spawn H_fnc_radio;
-	[command, format ["All units, %1 is now secure, return to normal duties, out.", _fobname]]  remoteExec ["sideChat", 0];
+	[command, format ["All units, %1 is now secure, return to normal duties, out.", _fobname]]  remoteExec ["H_fnc_sideChat", 0];
 	missionNameSpace setVariable ["H_alb_deployPoints",(missionNameSpace getVariable "H_alb_deployPoints")+40,true];
 	[40, getMarkerPos _base, true] remoteExec ["H_fnc_townPoints",2];
 

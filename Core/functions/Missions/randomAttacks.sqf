@@ -3,7 +3,7 @@ params ["_position","_time","_attacks"];
 private _a = 0;
 while {_a < _attacks} do {
 	_a = _a + 1;
-	private _attackType = selectRandom ["Fireteam","Squad","Mortar"];
+	private _attackType = selectRandom ["Fireteam","Fireteam","Fireteam","Mortar"];
 	switch (_attackType) do {
 		case "Fireteam": {
 			private _pos = [_position, 200, 500, 5, 0, 20, 0]  call BIS_fnc_findSafePos;
@@ -70,31 +70,6 @@ while {_a < _attacks} do {
 			_wp3 setWaypointSpeed "NORMAL";
 		};
 		
-		case "Squad": {
-			private _pos = [_position, 200, 500, 5, 0, 20, 0]  call BIS_fnc_findSafePos;
-			private _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
-			private _closeObjects = count nearestObjects [_pos, [], 20];
-			private _nBuilding = _pos distance (nearestBuilding _pos);
-			while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20} do {
-				_pos = [_position, 200, 500, 5, 0, 20, 0]  call BIS_fnc_findSafePos;
-				_nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
-				_closeObjects = count nearestObjects [_pos, [], 20];
-				_nBuilding = _pos distance (nearestBuilding _pos);
-			};
-
-			private _group = createGroup east;
-			[_group, _pos] call H_fnc_OPFORSquad; 
-			[leader _group, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-			_wp = _group addWaypoint [_position, 0];
-			_wp setWaypointType "MOVE";
-			_wp setWaypointBehaviour "AWARE";
-			_wp setWaypointCombatMode "RED";
-			_wp setWaypointFormation "WEDGE";
-			_wp setWaypointSpeed "NORMAL";
-			
-			
-		};
-		
 		case "Mortar": {
 			private _tempMarker = createMarker ["tempMarker",_position];
 			[_tempMarker] spawn H_fnc_mortarAttack;
@@ -106,6 +81,6 @@ while {_a < _attacks} do {
 		
 		
 	};
-	sleep _time + random 20;
+	sleep _time + random 60;
 
 }; 

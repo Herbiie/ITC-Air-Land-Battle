@@ -1,12 +1,11 @@
 	params ["_base"];
 	
-	missionActive = true;
-	private _pos = [_base, 300, 1500, 25, 0, 10, 0]  call BIS_fnc_findSafePos;
+	private _pos = [_base, 300, 1500, 10, 0, 10, 0]  call BIS_fnc_findSafePos;
     private _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	private _closeObjects = count nearestObjects [_pos, [], 20];
 	private _nBuilding = _pos distance (nearestBuilding _pos);
 while {!isNull _nearRoad OR _closeObjects < 12 OR _nBuilding < 20 OR (_pos distance getMarkerPos "marker_0" < 500)} do {
-    _pos = [_base, 300, 1500, 25, 0, 10, 0]  call BIS_fnc_findSafePos;
+    _pos = [_base, 300, 1500, 10, 0, 10, 0]  call BIS_fnc_findSafePos;
     _nearRoad = [_pos, 50] call BIS_fnc_nearestRoad;
 	_closeObjects = count nearestObjects [_pos, [], 20];
 	private _nBuilding = _pos distance (nearestBuilding _pos);
@@ -16,18 +15,15 @@ private _objType = selectRandom [H_fnc_depot1,H_fnc_depot2,H_fnc_depot3];
 
 [_pos] call _objType;
 
-private _objective = [_pos, sideEmpty, _objType,[],[],[],[],[],random 360] call BIS_fnc_spawnGroup;
-
-
 private _group1 = createGroup east;
 [_group1, _pos] call H_fnc_OPFORSquad;
 [leader _group1, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[_pos, nil, units _group1, 10, 0, false, true] call ace_ai_fnc_garrison;
+[_group1] call cba_fnc_taskDefend;
 
 private _group2 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad;
 [leader _group2, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[leader _group2, _pos, 200] spawn H_fnc_patrol;
+[leader _group2, _pos, 200, 7, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol;
 
 _obj = "I_G_Offroad_01_repair_F" createVehicle _pos; 
 

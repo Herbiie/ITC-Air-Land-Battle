@@ -1,21 +1,19 @@
+private _saveGame = profileNamespace getVariable "H_alb_Altis";
 missionNameSpace setVariable ["H_alb_loaded",false,true];
-missionNameSpace setVariable ["H_alb_fobs",H_saved # 0,true];
-H_alb_locations = H_saved select 1;
-publicVariable "H_alb_locations";
-missionNameSpace setVariable ["H_alb_locations",H_saved # 1,true];
-missionNameSpace setVariable ["H_alb_deploypoints",H_saved # 2,true];
+missionNameSpace setVariable ["H_alb_fobs",_saveGame # 0,true];
+missionNameSpace setVariable ["H_alb_locations",_saveGame # 1,true];
+missionNameSpace setVariable ["H_alb_deploypoints",_saveGame # 2,true];
 missionNameSpace setVariable ["H_alb_westVehicles",[],true];
-missionNameSpace setVariable ["H_alb_gearTier",H_saved # 3,true];
-missionNameSpace setVariable ["H_alb_date",H_saved # 4,true];
+missionNameSpace setVariable ["H_alb_gearTier",_saveGame # 3,true];
+missionNameSpace setVariable ["H_alb_date",_saveGame # 4,true];
 setDate H_alb_date;
-missionNameSpace setVariable ["H_alb_playerIDs",H_saved # 5,true];
-missionNameSpace setVariable ["H_alb_players",H_saved # 6,true];
-missionNameSpace setVariable ["H_alb_savedVehicles",H_saved # 7,true];
-H_alb_crates = H_saved select 8;
-publicVariable "H_alb_crates";
-missionNameSpace setVariable ["H_alb_crates",H_saved # 8,true];
-missionNameSpace setVariable ["H_alb_markers",H_saved # 9,true];
-missionNameSpace setVariable ["H_alb_fuelCanisters",H_saved # 10,true];
+missionNameSpace setVariable ["H_alb_playerIDs",_saveGame # 5,true];
+missionNameSpace setVariable ["H_alb_players",_saveGame # 6,true];
+missionNameSpace setVariable ["H_alb_savedVehicles",_saveGame # 7,true];
+missionNameSpace setVariable ["H_alb_crates",_saveGame # 8,true];
+missionNameSpace setVariable ["H_alb_markers",_saveGame # 9,true];
+missionNameSpace setVariable ["H_alb_fuelCanisters",_saveGame # 10,true];
+missionNameSpace setVariable ["H_alb_wheels",_saveGame # 11,true];
 missionNameSpace setVariable ["startingMarkers",allMapMarkers,true];
 {
 	if ((_x select 0) == "PB") then {
@@ -29,7 +27,7 @@ missionNameSpace setVariable ["startingMarkers",allMapMarkers,true];
 {
 	[_x select 0, _x select 1]  spawn H_fnc_loadlocation;
 } forEach H_alb_locations;
-
+sleep 0.01;
 [] spawn H_fnc_loadVehicles;
 
 [] spawn H_fnc_loadSupplies;
@@ -45,4 +43,5 @@ missionNameSpace setVariable ["startingMarkers",allMapMarkers,true];
 	_newMarker setMarkerBrush _markerBrush;
 	_newmarker setMarkerText _markerText;
 } forEach H_alb_markers;
+
 missionNameSpace setVariable ["H_alb_loaded",true,true];

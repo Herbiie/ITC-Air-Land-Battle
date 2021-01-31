@@ -1,11 +1,21 @@
-#include "tb3\loadouts.hpp"
 
-class Extended_PreInit_EventHandlers {
+class TB3_Gear {
+	#include "tb3\loadouts.hpp"
+	#include "custom\loadouts.hpp"
+};
+
+class CfgFunctions {
 	class tb3 {
-		init = "call ('tb3\preInit.sqf' call SLX_XEH_COMPILE)";
+        #include "tb3\f\gear\CfgFunctions.hpp"
 	};
-	class itc_framework {
-		init = "call ('core\preInit.sqf' call SLX_XEH_COMPILE)";
+	class H {
+		class custom {
+			class customSetup {
+				file = "custom\custom.sqf";
+				preinit = 1;
+			};
+		};
+        #include "core\CfgFunctions.hpp"
 	};
 };
 
@@ -64,8 +74,8 @@ class Params
 	class Faction
 	{
 		title = "Player Faction";
-		values[] = {1,2,3,4};
-		texts[] = {"CTRG","NATO","CSAT","AAF"};
+		values[] = {1,2,3,4,5};
+		texts[] = {"CTRG","NATO","CSAT","AAF","Custom"};
 		default = 1;
 	};
 	class EnFaction
@@ -126,23 +136,6 @@ class Params
 	};
 };
 
-class CfgSounds
-{
-	sounds[] = {};
-	class Radio1
-	{
-		name		= "Radio1";
-		sound[]		= { "@a3\Ui_F_Curator\Data\Sound\CfgSound\ping01.wss", 1.5, 1, 100 };
-		titles[]	= { 0, "" };
-	};
-	class Radio2
-	{
-		name		= "Radio2";
-		sound[]		= { "@a3\Ui_F_Curator\Data\Sound\CfgSound\ping02.wss", 1.5, 1, 100 };
-		titles[]	= { 0, "" };
-	};
-};
-
 class CfgNotifications
 {
 	class Notification
@@ -180,7 +173,7 @@ class ITEMS_DIALOG {
 			x = 0.25;
 			y = 0.75;
 			w = safeZoneW/8;
-			h = safeZoneH/8;
+			h = safeZoneH/16;
 			text = "Buy";
 			action = "[lbData [1500,(lbCurSel 1500)]] call H_fnc_buyItem";
 		};
@@ -190,7 +183,139 @@ class ITEMS_DIALOG {
 			x = 0.25+(safeZoneW/8);
 			y = 0.75;
 			w = safeZoneW/8;
-			h = safeZoneH/8;
+			h = safeZoneH/16;
+			text = "Cancel";
+			action = "closeDialog 0";
+		};
+	};
+};
+
+class VEHICLES_DIALOG {
+	idd = 19991;
+	movingEnable = true;
+	controlsBackground[] = { };
+	objects[] = { };
+	class controls {
+		class RscListbox_1501: RscListbox
+		{
+			idc = 1501;
+			x = 0.25;
+			y = 0.75-(safeZoneH/2);
+			w = safeZoneW/4;
+			h = safeZoneH/2;
+		};
+		class RscButton_1603: RscButton
+		{
+			idc = 1603;
+			x = 0.25;
+			y = 0.75;
+			w = safeZoneW/8;
+			h = safeZoneH/16;
+			text = "Request vehicle";
+			action = "hint 'Helicopter en route, check map for progress.'; private _pos = position player; [lbData [1501,(lbCurSel 1501)],_pos] remoteExec ['H_fnc_requestMPVehicle',2]; closeDialog 0";
+		};
+		class RscButton_1604: RscButton
+		{
+			idc = 1604;
+			x = 0.25+(safeZoneW/8);
+			y = 0.75;
+			w = safeZoneW/8;
+			h = safeZoneH/16;
+			text = "Cancel";
+			action = "closeDialog 0";
+		};
+	};
+};
+
+class SQUADS_DIALOG {
+	idd = 19992;
+	movingEnable = true;
+	controlsBackground[] = { };
+	objects[] = { };
+	class controls {
+		class RscListbox_1502: RscListbox
+		{
+			idc = 1502;
+			x = 0.25;
+			y = 0.75-(safeZoneH/2);
+			w = safeZoneW/4;
+			h = safeZoneH/2;
+		};
+		class RscButton_1605: RscButton
+		{
+			idc = 1605;
+			x = 0.25;
+			y = 0.75;
+			w = safeZoneW/8;
+			h = safeZoneH/16;
+			text = "Join Squad";
+			action = "[lbData [1502,(lbCurSel 1502)],player] call H_fnc_joinSquad; closeDialog 0";
+		};
+		class RscButton_1606: RscButton
+		{
+			idc = 1606;
+			x = 0.25+(safeZoneW/8);
+			y = 0.75;
+			w = safeZoneW/8;
+			h = safeZoneH/16;
+			text = "Create Squad";
+			action = "closeDialog 0; createDialog 'NEWSQUAD_DIALOG'";
+		};
+		class RscButton_1607: RscButton
+		{
+			idc = 1607;
+			x = 0.25;
+			y = 0.75+(safeZoneH/16);
+			w = safeZoneW/4;
+			h = safeZoneH/32;
+			text = "Close Menu";
+			action = "closeDialog 0";
+		};
+		class RscButton_1608: RscButton
+		{
+			idc = 1608;
+			x = 0.25;
+			y = 0.75+(safeZoneH/16)+(safeZoneH/32);
+			w = safeZoneW/4;
+			h = safeZoneH/32;
+			text = "Leave Current Squad";
+			action = "[player] call H_fnc_leaveSquad; closeDialog 0";
+		};
+	};
+};
+
+class NEWSQUAD_DIALOG {
+	idd = 19993;
+	movingEnable = true;
+	controlsBackground[] = { };
+	objects[] = { };
+	class controls {
+		class RscEdit_1700: RscEdit
+		{
+			idc = 1700;
+			maxChars = 20;
+			x = 0.25;
+			y = 0.5-(safeZoneH/16);
+			w = safeZoneW/4;
+			h = safeZoneH/16;
+		};
+		class RscButton_1609: RscButton
+		{
+			idc = 1609;
+			x = 0.25;
+			y = 0.5;
+			w = safeZoneW/8;
+			h = safeZoneH/16;
+			text = "Create Squad";
+			action = "[player,ctrlText 1700] call H_fnc_newSquad";
+		};
+		class RscButton_1610: RscButton
+		{
+			idc = 1610;
+			x = 0.25+(safeZoneW/8);
+			y = 0.5;
+			w = safeZoneW/8;
+			h = safeZoneH/16;
 			text = "Cancel";
 			action = "closeDialog 0";
 		};

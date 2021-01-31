@@ -1,5 +1,5 @@
 [20, false] call H_fnc_deploypoints;
-private _crate = "Land_PaperBox_open_full_F" createVehicle getMarkerPos "supplyspawn";
+private _crate = "CargoNet_01_box_F" createVehicle getMarkerPos "supplyspawn";
 [_crate, 1] call ace_cargo_fnc_setSize;
 [_crate, true, [0, 1.5, 0.3]] call ace_dragging_fnc_setCarryable;
 
@@ -13,3 +13,4 @@ private _crate = "Land_PaperBox_open_full_F" createVehicle getMarkerPos "supplys
 		deleteVehicle _target;
 	};
 }]] remoteExec ["addAction",0];
+_crate 

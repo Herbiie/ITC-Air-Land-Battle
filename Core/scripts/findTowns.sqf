@@ -11,9 +11,9 @@ missionNameSpace setVariable ["H_alb_loaded",false,true];
 		_marker setMarkerShape "ICON";
 		_marker setMarkerType "mil_marker";
 		_marker setMarkerColor "ColorRed";
-		_locationdata = [_x, locationPosition _x, 0];
+		_locationdata = [_locationName, locationPosition _x, 0];
 		_locationsData pushBackUnique _locationdata;
-		[_x, locationPosition _x] spawn H_fnc_setuplocation;
+		[_locationName, locationPosition _x] spawn H_fnc_setuplocation;
 } forEach _locations;
 missionNameSpace setVariable ["H_alb_locations",_locationsData,true];
 

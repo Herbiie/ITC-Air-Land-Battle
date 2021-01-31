@@ -4,18 +4,8 @@ private _loop = true;
 while {_loop} do {
 	sleep 300;
 	sleep (random 900);
-	locationPositions = [];
-	
-	{
-		private _distance = (_x # 1)  distance getMarkerPos _marker;
-		locationPositions pushback [_distance, [_x]];
-	} forEach (missionNameSpace getVariable "H_alb_locations");
-	
-	locationPositions sort true;
-	
-	private _nearestLocation = locationPositions # 1;
-	private _chosenLocation = (missionNameSpace getVariable "H_alb_locations") # ((missionNameSpace getVariable "H_alb_locations") find _nearestLocation);
-	private _currentPoints = _chosenLocation # 2;
+	_closestLoc = [getMarkerPos _marker] call H_fnc_findClosestTown;
+	private _currentPoints = _closestLoc # 2;
 	
 	if (_currentPoints >= 400) then {
 		actionChance = 2;

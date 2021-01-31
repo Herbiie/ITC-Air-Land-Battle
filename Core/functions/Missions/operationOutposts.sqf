@@ -80,7 +80,7 @@ private _group11 = createGroup east;
 private _group12 = createGroup east;
 [_group12, _pos] call H_fnc_OPFORSquad; 
 [leader _group12, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[leader _group12, _pos1, 200] spawn H_fnc_patrol; 
+[leader _group12, _pos1, 200, 7, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol; 
 
 private _objType2 = selectRandom [H_fnc_outpost1,H_fnc_outpost2,H_fnc_outpost3,H_fnc_outpost4];
 
@@ -100,7 +100,7 @@ private _group21 = createGroup east;
 private _group22 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group22, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[leader _group22, _pos2, 200] spawn H_fnc_patrol; 
+[leader _group22, _pos2, 200, 7, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol; 
 
 private _objType3 = selectRandom [H_fnc_outpost1,H_fnc_outpost2,H_fnc_outpost3,H_fnc_outpost4];
 
@@ -120,12 +120,12 @@ private _group31 = createGroup east;
 private _group32 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group32, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[leader _group32, _pos3, 200] spawn H_fnc_patrol;
+[leader _group32, _pos3, 200, 7, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol;
 
 private _group33 = createGroup east;
 [_group2, _pos] call H_fnc_OPFORSquad; 
 [leader _group33, format ["Enemy Group %1", random 1000], false] spawn H_fnc_aiSetup;
-[leader _group33, _pos3, 200] spawn H_fnc_patrol;
+[leader _group33, _pos3, 200, 7, "MOVE", "SAFE", "RED", "LIMITED", "COLUMN", "this call CBA_fnc_searchNearby", [3, 6, 9]] call CBA_fnc_taskPatrol;
 
 [[west,["_task1","_task"],["Destroy Outpost.","Destroy Insurgent Outpost","_task1marker"],objNull,1,2,true],BIS_fnc_taskCreate] remoteExec ["call", 0];
 

@@ -3,8 +3,8 @@ params ["_base"];
 private _roads = _base nearRoads 1500;
 private _vcp = position (selectRandom _roads);
 while {_vcp distance _base < 500 OR (_vcp distance getMarkerPos "hqmarker" < 1000)} do {
-	private _roads = _base nearRoads 1500;
-	private _vcp = position (selectRandom _roads);
+	_roads = _base nearRoads 1500;
+	_vcp = position (selectRandom _roads);
 };
 	
 	
@@ -71,12 +71,12 @@ private _a = 0;
 private _b = 1200;
 while {_a < _b} do {
 	sleep 5;
-	if ({_x distance _vcp < 25} count playableUnits > 0) then {
+	if ({_x distance _vcp < 50} count playableUnits > 0) then {
 		_a = _a + 5;
 		_c = round ((_b - _a)/60);
-		[format ["%1 minutes remaining", _c]] remoteExec ["hint",0];
+		[format ["%1 minutes remaining", _c]] remoteExec ["hintSilent",0];
 	} else {
-	["Reoccupy the VCP!"] remoteExec ["hint",0];
+	["Reoccupy the VCP!"] remoteExec ["hintSilent",0];
 	};
 };
 

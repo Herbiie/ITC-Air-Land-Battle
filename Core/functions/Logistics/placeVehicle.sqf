@@ -12,5 +12,7 @@ _vehicle addEventHandler ["Killed", {
 }];
 missionNameSpace setVariable ["H_alb_deploypoints",(missionNameSpace getVariable "H_alb_deploypoints")-_cost,true];
 H_alb_westVehicles pushBack [_vehicle,_cost];
+[_vehicle] remoteExec ["H_fnc_addVehicleActions",0];
 ["Notification",["Vehicle Purchased",format ["%1 spawned at %2.<br/>%3 Deployment Points Remaining.", getText (configFile >> "CfgVehicles" >> _class >> "displayName"), mapGridPosition _position, (missionNameSpace getVariable "H_alb_deploypoints")]]] remoteExec ["BIS_fnc_showNotification",0];
+_vehicle
 	

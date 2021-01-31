@@ -1,7 +1,7 @@
 params ["_subject","_length","_margin"];
-[] spawn H_fnc_radio;
+
 private _c = 0;
-waitUntil {!voteInProgress};
+waitUntil {!(missionNameSpace getVariable ["voteInProgress",false])};
 ["Notification",["New Vote",format ["%1 vote will start in 10 Seconds", _subject]]] remoteExec ["BIS_fnc_showNotification",0];
 missionNameSpace setVariable ["voteInProgress",true,true];
 while {_c <= 10} do {
@@ -20,7 +20,10 @@ missionNameSpace setVariable ["voteOver",false,true];
 private _a = 0;
 while {_a <= _length} do {
 	private _b = _length - _a;
-	[[format ["<t align='center' shadow='1'><br/><br/>%1 VOTE IN PROGRESS %2 Y:%3 N:%4</t>", _subject,_b, (missionNameSpace getVariable "currentVoteYes"), (missionNameSpace getVariable "currentVoteNo")],0,1,0]] remoteExec ["BIS_fnc_EXP_camp_SITREP",0];
+	[[format ["<t align='center' shadow='1'><br/><br/>%1 VOTE IN PROGRESS %2 Y:%3 N:%4<br/>(Use ACE Self Interact to Vote)</t>", _subject,_b, (missionNameSpace getVariable "currentVoteYes"), (missionNameSpace getVariable "currentVoteNo")],0,1,0]] remoteExec ["BIS_fnc_EXP_camp_SITREP",0];
+	if (((missionNameSpace getVariable "currentVoteYes") + (missionNameSpace getVariable "currentVoteNo")) > count allPlayers) exitWith {true};
+	if ((missionNameSpace getVariable "currentVoteYes") > ((count allPlayers)/2)) exitWith {true};
+	if ((missionNameSpace getVariable "currentVoteNo") > ((count allPlayers)/2)) exitWith {true};
 	_a = _a + 1;
 	sleep 1;
 };

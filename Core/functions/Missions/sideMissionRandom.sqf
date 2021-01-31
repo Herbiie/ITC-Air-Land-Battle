@@ -5,6 +5,7 @@ hint "Finding mission...";
 private _mission = selectRandom ["H_fnc_Outpost","H_fnc_Hostage","H_fnc_Truck","H_fnc_VCP","H_fnc_HeliCrash","H_fnc_RoadBlock","H_fnc_AreaClear","H_fnc_captureHVT"];
 private _text = "";
 wait = true;
+cancel = false;
 switch (_mission) do {
 	case "H_fnc_Outpost": {_text = "Destroy Outpost"};
 	case "H_fnc_Hostage": {_text = "Rescue Hostage"};
@@ -17,8 +18,12 @@ switch (_mission) do {
 };
 hint format ["Mission is: %1. Use self interact to accept within 30 seconds.",_text];
 [player, 1, ["ACE_SelfActions","ALBOptions"],H_action_acceptMission] call ace_interact_menu_fnc_addActionToObject;
+[player, 1, ["ACE_SelfActions","ALBOptions"],H_action_declineMission] call ace_interact_menu_fnc_addActionToObject;
 private _start = diag_ticktime;
-waitUntil {!(wait) || ((diag_tickTime - _start) > 30)};
+waitUntil {
+	if (cancel) exitWith {true};
+	!(wait) || ((diag_tickTime - _start) > 30)
+};
 
 if (!(wait)) then {
 	hint "Starting mission...";
@@ -28,3 +33,4 @@ if (!(wait)) then {
 };
 
 [player,1,["ACE_SelfActions","ALBOptions","MissionAccept"]] call ace_interact_menu_fnc_removeActionFromObject;
+[player,1,["ACE_SelfActions","ALBOptions","MissionDecline"]] call ace_interact_menu_fnc_removeActionFromObject;
